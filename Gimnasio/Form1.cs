@@ -19,16 +19,7 @@ namespace Gimnasio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Cliente cli = new Cliente();
-                cli.bajaLogica(3);
-                MessageBox.Show("EXITO");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
+            
         }
     }
 }
