@@ -12,6 +12,7 @@
           <Property Name="actividad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="borrado_logico" Type="bit" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -66,6 +67,7 @@
           <Property Name="plan_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cant_dias" Type="int" Nullable="false" />
           <Property Name="fecha_limite" Type="date" />
+          <Property Name="borrado_logico" Type="bit" />
         </EntityType>
         <EntityType Name="Registro">
           <Key>
@@ -83,6 +85,7 @@
           </Key>
           <Property Name="rol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="borrado_logico" Type="bit" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -232,6 +235,7 @@
           <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Entrenador_Actividad" Relationship="Self.FK__Entrenado__activ__2E1BDC42" FromRole="Actividad" ToRole="Entrenador_Actividad" />
           <NavigationProperty Name="Inscripcion" Relationship="Self.FK__Inscripci__activ__37A5467C" FromRole="Actividad" ToRole="Inscripcion" />
+          <Property Name="borrado_logico" Type="Boolean" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -295,6 +299,7 @@
           <Property Name="cant_dias" Type="Int32" Nullable="false" />
           <Property Name="fecha_limite" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Inscripcion" Relationship="Self.FK__Inscripci__plan___38996AB5" FromRole="Plaan" ToRole="Inscripcion" />
+          <Property Name="borrado_logico" Type="Boolean" />
         </EntityType>
         <EntityType Name="Registro">
           <Key>
@@ -314,6 +319,7 @@
           <Property Name="rol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__rol_id__25869641" FromRole="Rol" ToRole="Usuario" />
+          <Property Name="borrado_logico" Type="Boolean" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -460,6 +466,7 @@
           <EntitySetMapping Name="Actividad">
             <EntityTypeMapping TypeName="GimnasioModel.Actividad">
               <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="borrado_logico" ColumnName="borrado_logico" />
                 <ScalarProperty Name="actividad_id" ColumnName="actividad_id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
@@ -519,6 +526,7 @@
           <EntitySetMapping Name="Plaan">
             <EntityTypeMapping TypeName="GimnasioModel.Plaan">
               <MappingFragment StoreEntitySet="Plaan">
+                <ScalarProperty Name="borrado_logico" ColumnName="borrado_logico" />
                 <ScalarProperty Name="plan_id" ColumnName="plan_id" />
                 <ScalarProperty Name="cant_dias" ColumnName="cant_dias" />
                 <ScalarProperty Name="fecha_limite" ColumnName="fecha_limite" />
@@ -539,6 +547,7 @@
           <EntitySetMapping Name="Rol">
             <EntityTypeMapping TypeName="GimnasioModel.Rol">
               <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="borrado_logico" ColumnName="borrado_logico" />
                 <ScalarProperty Name="rol_id" ColumnName="rol_id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
