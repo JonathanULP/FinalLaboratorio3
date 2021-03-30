@@ -32,7 +32,7 @@
           <Property Name="entrenador_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="dni" Type="int" Nullable="false" />
+          <Property Name="dni" Type="bigint" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="sexo" Type="varchar" MaxLength="20" />
           <Property Name="titulo" Type="varchar" MaxLength="20" />
