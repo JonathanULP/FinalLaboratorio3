@@ -11,7 +11,8 @@ namespace Gimnasio
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -95,6 +96,12 @@ namespace Gimnasio
                 db.Cliente.Remove(cli);
                 db.SaveChanges();
             }
+        }
+
+        public DbSet<Cliente> obtenerClientes()
+        {
+            GimnasioEntities db = new GimnasioEntities();
+            return db.Cliente;
         }
 
     }
