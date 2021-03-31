@@ -33,7 +33,7 @@
           <Property Name="entrenador_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="dni" Type="int" Nullable="false" />
+          <Property Name="dni" Type="bigint" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="sexo" Type="varchar" MaxLength="20" />
           <Property Name="titulo" Type="varchar" MaxLength="20" />
@@ -94,7 +94,7 @@
           <Property Name="usuario_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="contraseña" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contraseña" Type="varchar" MaxLength="200" />
           <Property Name="dni" Type="bigint" Nullable="false" />
           <Property Name="rol_id" Type="int" Nullable="false" />
           <Property Name="borrado_logico" Type="bit" />
@@ -328,7 +328,7 @@
           <Property Name="usuario_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="dni" Type="Int64" Nullable="false" />
           <Property Name="rol_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__rol_id__25869641" FromRole="Usuario" ToRole="Rol" />

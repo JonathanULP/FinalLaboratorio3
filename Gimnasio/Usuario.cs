@@ -11,7 +11,11 @@ namespace Gimnasio
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Security.Cryptography;
+    using System.Text;
+    using System.Linq;
+
+
     public partial class Usuario
     {
         public int usuario_id { get; set; }
@@ -23,5 +27,61 @@ namespace Gimnasio
         public Nullable<bool> borrado_logico { get; set; }
     
         public virtual Rol Rol { get; set; }
+
+        //metodo para encriptar contraseña --ni idea como funciona--
+        private string GetSHA1(string str)
+        {
+            SHA1 sha1 = SHA1Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha1.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+
+        //metodo para registrarse
+        public void crearUsuario(string nombre,string apellido,string contraseña,long dni,int rol_id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Usuario user = new Usuario();
+
+                user.nombre = nombre;
+                user.apellido = apellido;
+                user.contraseña = GetSHA1(contraseña);
+                user.dni = dni;
+                user.rol_id = rol_id;
+                user.borrado_logico = false;
+
+                db.Usuario.Add(user);
+                db.SaveChanges();
+            }
+        }
+
+        //metodo para login
+        public bool ingresoUser(string nombre, string contraseña)
+        {
+            bool respuesta;
+            string contraseñaE = GetSHA1(contraseña);
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                //seleccionamos el usuario el cual coincida el nombre y la contraseña
+                var user = (from u in db.Usuario
+                            where u.nombre == nombre && u.contraseña == contraseñaE
+                            select u).FirstOrDefault();
+
+                if (user != null)
+                {
+                    respuesta = true;
+                }
+                else
+                {
+                    respuesta = false;
+                }
+            }
+
+            return respuesta;
+        }
     }
 }

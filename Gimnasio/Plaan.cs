@@ -24,7 +24,6 @@ namespace Gimnasio
         public int cant_dias { get; set; }
         public Nullable<System.DateTime> fecha_limite { get; set; }
         public Nullable<bool> borrado_logico { get; set; }
-
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripcion> Inscripcion { get; set; }
