@@ -22,5 +22,31 @@ namespace Gimnasio.Controllers
                 ins.activo = true;
             }
         }
+
+        public void bajaLogica(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion = db.Inscripcion.Find(id);
+
+                inscripcion.activo = false;
+
+                db.Entry(inscripcion).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges(); 
+            }
+        }
+
+        public void bajaFisica(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion = db.Inscripcion.Find(id);
+
+                db.Inscripcion.Remove(inscripcion);
+                db.SaveChanges();
+            }
+        }
     }
 }
