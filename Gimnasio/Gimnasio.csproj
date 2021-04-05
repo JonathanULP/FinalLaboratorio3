@@ -66,6 +66,11 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>GimnasioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ActividadController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EntrenadorController.cs" />
+    <Compile Include="Controllers\InscripcionController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Entrenador.cs">
       <DependentUpon>GimnasioDB.tt</DependentUpon>
     </Compile>

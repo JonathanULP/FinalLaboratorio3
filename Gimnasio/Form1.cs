@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gimnasio.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,33 +23,16 @@ namespace Gimnasio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /* try
-             {
-                 Usuario user = new Usuario();
-
-                 user.crearUsuario("Jonathan", "Montiel", "123456", 39137505, 1);
-                 MessageBox.Show("Usuario creado con exito");
-             }
-             catch(Exception ex)
-             {
-                 MessageBox.Show(ex.Message,"Error");
-             }*/
-
             try
             {
-                Usuario user = new Usuario();
-
-                if (user.ingresoUser("Jonathan", "12346"))
-                {
-                    MessageBox.Show("Existe usuario");
-                }else
-                {
-                    MessageBox.Show("datos invalidos");
-                }
+                EntrenadorController user = new EntrenadorController();
+                user.insertarEntrenador("Gustavo","Alcaraz",39990100,DateTime.Now,"masculino","PF");
+                MessageBox.Show("Entrenador agregado correctamente");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error",ex.Message);
+                MessageBox.Show(ex.Message,"ERROR");
+
             }
 
 
