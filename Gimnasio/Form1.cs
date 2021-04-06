@@ -25,9 +25,16 @@ namespace Gimnasio
         {
             try
             {
-                EntrenadorController user = new EntrenadorController();
-                user.insertarEntrenador("Diego","Montiel",39990100,DateTime.Now,"masculino","PF");
-                MessageBox.Show("Entrenador agregado correctamente");
+                Validacion val = new Validacion();
+                if (val.validarNombre("femeninos"))
+                {
+                    MessageBox.Show("Exito");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+                
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,28 @@ namespace Gimnasio.Controllers
                 db.Registro.Remove(register);
                 db.SaveChanges();
             }
+        }
+
+        public DbSet<Registro> obtenerRegistros()
+        {
+            GimnasioEntities db = new GimnasioEntities();
+            return db.Registro;
+        }
+
+        //hay que probarlo, probablemente hay que cambiar el tipo de retorno
+        public Registro obtenerRegistroDeCliente(int cliente_id)
+        {
+            Registro register;
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                var resultado = (from r in db.Registro
+                                 where r.cliente_id == cliente_id
+                                 select r).FirstOrDefault();
+
+                register = resultado;
+            }
+
+            return register;
         }
     }
 }
