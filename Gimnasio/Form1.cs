@@ -23,26 +23,6 @@ namespace Gimnasio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Validacion val = new Validacion();
-                if (val.validarNombre("femeninos"))
-                {
-                    MessageBox.Show("Exito");
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"ERROR");
-
-            }
-
-
         }
     }
 }

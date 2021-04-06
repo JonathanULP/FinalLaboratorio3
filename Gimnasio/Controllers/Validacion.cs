@@ -37,5 +37,19 @@ namespace Gimnasio.Controllers
             }
         }
 
+        public bool validarGenero(string genero)
+        {
+            Regex pattern = new Regex("^(masculino|femenino)$");
+
+            if (pattern.IsMatch(genero))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
