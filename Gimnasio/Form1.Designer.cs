@@ -30,14 +30,14 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbnombreuser = new System.Windows.Forms.TextBox();
-            this.tbcontraseñauser = new System.Windows.Forms.TextBox();
-            this.lblnombre = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblnombre = new System.Windows.Forms.Label();
+            this.tbcontraseñauser = new System.Windows.Forms.TextBox();
+            this.tbnombreuser = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -64,6 +64,19 @@
             this.panel1.Size = new System.Drawing.Size(666, 92);
             this.panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(666, 92);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Gimnasio";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -74,19 +87,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(666, 80);
             this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.lblnombre);
-            this.panel3.Controls.Add(this.tbcontraseñauser);
-            this.panel3.Controls.Add(this.tbnombreuser);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 92);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(666, 162);
-            this.panel3.TabIndex = 3;
             // 
             // button2
             // 
@@ -103,34 +103,31 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Registrarse";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // panel3
             // 
-            this.label1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(666, 92);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Gimnasio";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.lblnombre);
+            this.panel3.Controls.Add(this.tbcontraseñauser);
+            this.panel3.Controls.Add(this.tbnombreuser);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 92);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(666, 162);
+            this.panel3.TabIndex = 3;
             // 
-            // tbnombreuser
+            // label2
             // 
-            this.tbnombreuser.Location = new System.Drawing.Point(278, 61);
-            this.tbnombreuser.Name = "tbnombreuser";
-            this.tbnombreuser.Size = new System.Drawing.Size(169, 20);
-            this.tbnombreuser.TabIndex = 0;
-            // 
-            // tbcontraseñauser
-            // 
-            this.tbcontraseñauser.Location = new System.Drawing.Point(278, 112);
-            this.tbcontraseñauser.Name = "tbcontraseñauser";
-            this.tbcontraseñauser.PasswordChar = '*';
-            this.tbcontraseñauser.Size = new System.Drawing.Size(169, 20);
-            this.tbcontraseñauser.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(155, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Contraseña";
             // 
             // lblnombre
             // 
@@ -143,16 +140,20 @@
             this.lblnombre.TabIndex = 2;
             this.lblnombre.Text = "Nombre";
             // 
-            // label2
+            // tbcontraseñauser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(155, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Contraseña";
+            this.tbcontraseñauser.Location = new System.Drawing.Point(278, 112);
+            this.tbcontraseñauser.Name = "tbcontraseñauser";
+            this.tbcontraseñauser.PasswordChar = '*';
+            this.tbcontraseñauser.Size = new System.Drawing.Size(169, 20);
+            this.tbcontraseñauser.TabIndex = 1;
+            // 
+            // tbnombreuser
+            // 
+            this.tbnombreuser.Location = new System.Drawing.Point(278, 61);
+            this.tbnombreuser.Name = "tbnombreuser";
+            this.tbnombreuser.Size = new System.Drawing.Size(169, 20);
+            this.tbnombreuser.TabIndex = 0;
             // 
             // Form1
             // 

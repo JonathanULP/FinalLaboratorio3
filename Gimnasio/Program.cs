@@ -16,7 +16,25 @@ namespace Gimnasio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Form1 form1 = new Form1();
+            form1.FormClosed += form1_Closed;
+            form1.Show();
+            Application.Run();
+        }
+
+        private static void form1_Closed(object sender, FormClosedEventArgs e)
+        {
+            ((Form)sender).FormClosed -= form1_Closed;
+
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.ExitThread();
+            }
+            else
+            {
+                Application.OpenForms[0].FormClosed += form1_Closed;
+            }
         }
     }
 }
