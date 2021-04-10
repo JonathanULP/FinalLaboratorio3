@@ -72,6 +72,7 @@
     <Compile Include="Controllers\InscripcionController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\Validacion.cs" />
     <Compile Include="Entrenador.cs">
@@ -144,6 +145,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="GimnasioDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -177,6 +179,12 @@
       <DependentUpon>GimnasioDB.edmx</DependentUpon>
       <LastGenOutput>GimnasioDB.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\4092564-about-mobile-ui-profile-ui-user-website_114033.ico" />
+    <None Include="Resources\exit21.png" />
+    <None Include="Resources\exit2.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\salir.png" />
+    <None Include="Resources\salir2.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
