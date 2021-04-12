@@ -14,7 +14,7 @@ namespace Gimnasio
 {
     public partial class Form1 : Form
     {
-        frmHome home;
+        frmHome1 home;
         frmRegistro register;
         public Form1()
         {
@@ -32,7 +32,7 @@ namespace Gimnasio
 
                 if(((home == null) || (home.IsDisposed)) && (result))
                 {
-                    home = new frmHome();
+                    home = new frmHome1();
                     home.Show();
 
                     this.Close();
