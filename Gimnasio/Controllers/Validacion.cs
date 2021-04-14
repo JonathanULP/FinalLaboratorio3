@@ -12,7 +12,7 @@ namespace Gimnasio.Controllers
         public bool validarNombre(string nombre)
         {
             //debe comenzar con mayuscula y seguir con minimo dos caracteres mas en minusculas
-            Regex pattern = new Regex("[A-Z]{1}[a-z]{2,12}");
+            Regex pattern = new Regex(@"^[A-Z]{1}[a-z]{2,12}$");
 
             if (pattern.IsMatch(nombre)){
 

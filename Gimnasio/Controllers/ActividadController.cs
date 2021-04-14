@@ -51,10 +51,35 @@ namespace Gimnasio.Controllers
             }
         }
 
-        public DbSet<Actividad> obtenerActividad()
+        public void bajaLogica(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Actividad act = new Actividad();
+                act = db.Actividad.Find(id);
+
+                act.borrado_logico = true;
+
+                db.Entry(act).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public List<Actividad> obtenerActividad()
         {
             GimnasioEntities db = new GimnasioEntities();
-            return db.Actividad;
+            return db.Actividad.ToList();
+        }
+
+        public Actividad buscarId(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Actividad act = new Actividad();
+                act = db.Actividad.Find(id);
+
+                return act;
+            }
         }
     }
 }

@@ -48,5 +48,16 @@ namespace Gimnasio.Controllers
                 db.SaveChanges();
             }
         }
+
+        public List<Inscripcion> obtenerInscripciones()
+        {
+            List<Inscripcion> lista = new List<Inscripcion>();
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                lista = db.Inscripcion.ToList();
+            }
+
+            return lista;
+        }
     }
 }
