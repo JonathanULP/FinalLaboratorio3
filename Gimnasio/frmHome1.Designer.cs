@@ -29,14 +29,55 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnagregar = new System.Windows.Forms.Button();
+            this.btneditar = new System.Windows.Forms.Button();
+            this.btneliminar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.rbhabilitar = new System.Windows.Forms.RadioButton();
+            this.rbdeshabilitar = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbactivo = new System.Windows.Forms.TextBox();
+            this.cboactividades = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbtipoactividad = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbnombreactividad = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.btnagregarcliente = new System.Windows.Forms.Button();
+            this.tbsexocliente = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpcliente = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbdnicliente = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbapellidocliente = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbnombrecliente = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,11 +85,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
@@ -60,38 +103,26 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboactividades = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbnombreactividad = new System.Windows.Forms.TextBox();
-            this.tbtipoactividad = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbactivo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.btneditar = new System.Windows.Forms.Button();
-            this.btneliminar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnagregar = new System.Windows.Forms.Button();
-            this.rbdeshabilitar = new System.Windows.Forms.RadioButton();
-            this.rbhabilitar = new System.Windows.Forms.RadioButton();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_nac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.panel17.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -123,13 +154,243 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.panel15);
+            this.panel12.Controls.Add(this.panel14);
+            this.panel12.Controls.Add(this.panel13);
+            this.panel12.Controls.Add(this.btnagregar);
+            this.panel12.Controls.Add(this.btneditar);
+            this.panel12.Controls.Add(this.btneliminar);
+            this.panel12.Controls.Add(this.label6);
+            this.panel12.Location = new System.Drawing.Point(575, 10);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(324, 346);
+            this.panel12.TabIndex = 10;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.Green;
+            this.panel15.Location = new System.Drawing.Point(306, 241);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(10, 47);
+            this.panel15.TabIndex = 14;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Green;
+            this.panel14.Location = new System.Drawing.Point(306, 184);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(10, 47);
+            this.panel14.TabIndex = 13;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.Green;
+            this.panel13.Location = new System.Drawing.Point(306, 124);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(10, 47);
+            this.panel13.TabIndex = 12;
+            // 
+            // btnagregar
+            // 
+            this.btnagregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnagregar.FlatAppearance.BorderSize = 0;
+            this.btnagregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnagregar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnagregar.Location = new System.Drawing.Point(0, 124);
+            this.btnagregar.Name = "btnagregar";
+            this.btnagregar.Size = new System.Drawing.Size(310, 47);
+            this.btnagregar.TabIndex = 11;
+            this.btnagregar.Text = "Agregar";
+            this.btnagregar.UseVisualStyleBackColor = true;
+            this.btnagregar.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // btneditar
+            // 
+            this.btneditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneditar.FlatAppearance.BorderSize = 0;
+            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneditar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btneditar.Location = new System.Drawing.Point(0, 184);
+            this.btneditar.Name = "btneditar";
+            this.btneditar.Size = new System.Drawing.Size(310, 47);
+            this.btneditar.TabIndex = 9;
+            this.btneditar.Text = "Editar";
+            this.btneditar.UseVisualStyleBackColor = true;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneliminar.FlatAppearance.BorderSize = 0;
+            this.btneliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneliminar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btneliminar.Location = new System.Drawing.Point(0, 244);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(310, 47);
+            this.btneliminar.TabIndex = 10;
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.UseVisualStyleBackColor = true;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(324, 86);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Acciones";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.rbhabilitar);
+            this.panel11.Controls.Add(this.rbdeshabilitar);
+            this.panel11.Controls.Add(this.label1);
+            this.panel11.Controls.Add(this.tbactivo);
+            this.panel11.Controls.Add(this.cboactividades);
+            this.panel11.Controls.Add(this.label5);
+            this.panel11.Controls.Add(this.label2);
+            this.panel11.Controls.Add(this.tbtipoactividad);
+            this.panel11.Controls.Add(this.label3);
+            this.panel11.Controls.Add(this.label4);
+            this.panel11.Controls.Add(this.tbnombreactividad);
+            this.panel11.Location = new System.Drawing.Point(196, 10);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(381, 346);
+            this.panel11.TabIndex = 9;
+            // 
+            // rbhabilitar
+            // 
+            this.rbhabilitar.AutoSize = true;
+            this.rbhabilitar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rbhabilitar.Location = new System.Drawing.Point(231, 293);
+            this.rbhabilitar.Name = "rbhabilitar";
+            this.rbhabilitar.Size = new System.Drawing.Size(102, 17);
+            this.rbhabilitar.TabIndex = 10;
+            this.rbhabilitar.Text = "Habilitar agregar";
+            this.rbhabilitar.UseVisualStyleBackColor = true;
+            this.rbhabilitar.CheckedChanged += new System.EventHandler(this.rbhabilitar_CheckedChanged);
+            // 
+            // rbdeshabilitar
+            // 
+            this.rbdeshabilitar.AutoSize = true;
+            this.rbdeshabilitar.Checked = true;
+            this.rbdeshabilitar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rbdeshabilitar.Location = new System.Drawing.Point(35, 294);
+            this.rbdeshabilitar.Name = "rbdeshabilitar";
+            this.rbdeshabilitar.Size = new System.Drawing.Size(119, 17);
+            this.rbdeshabilitar.TabIndex = 9;
+            this.rbdeshabilitar.TabStop = true;
+            this.rbdeshabilitar.Text = "Deshabilitar agregar";
+            this.rbdeshabilitar.UseVisualStyleBackColor = true;
+            this.rbdeshabilitar.Click += new System.EventHandler(this.rbdeshabilitar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(3, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 18);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Actividades";
+            // 
+            // tbactivo
+            // 
+            this.tbactivo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbactivo.Location = new System.Drawing.Point(149, 244);
+            this.tbactivo.Name = "tbactivo";
+            this.tbactivo.ReadOnly = true;
+            this.tbactivo.Size = new System.Drawing.Size(184, 21);
+            this.tbactivo.TabIndex = 8;
+            // 
+            // cboactividades
+            // 
+            this.cboactividades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboactividades.FormattingEnabled = true;
+            this.cboactividades.Location = new System.Drawing.Point(149, 11);
+            this.cboactividades.Name = "cboactividades";
+            this.cboactividades.Size = new System.Drawing.Size(184, 21);
+            this.cboactividades.TabIndex = 1;
+            this.cboactividades.SelectedIndexChanged += new System.EventHandler(this.cboactividades_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(32, 247);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 14);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Activo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(3, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 18);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Detalles";
+            // 
+            // tbtipoactividad
+            // 
+            this.tbtipoactividad.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbtipoactividad.Location = new System.Drawing.Point(149, 197);
+            this.tbtipoactividad.Name = "tbtipoactividad";
+            this.tbtipoactividad.Size = new System.Drawing.Size(184, 21);
+            this.tbtipoactividad.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(32, 153);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 14);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Nombre";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(32, 200);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 14);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Tipo";
+            // 
+            // tbnombreactividad
+            // 
+            this.tbnombreactividad.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbnombreactividad.Location = new System.Drawing.Point(149, 150);
+            this.tbnombreactividad.Name = "tbnombreactividad";
+            this.tbnombreactividad.Size = new System.Drawing.Size(184, 21);
+            this.tbnombreactividad.TabIndex = 4;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(905, 364);
+            this.tabPage2.Size = new System.Drawing.Size(908, 389);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -138,7 +399,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(905, 364);
+            this.tabPage3.Size = new System.Drawing.Size(908, 389);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -148,7 +409,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(905, 364);
+            this.tabPage4.Size = new System.Drawing.Size(908, 389);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -158,27 +419,264 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(905, 364);
+            this.tabPage5.Size = new System.Drawing.Size(908, 389);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
+            this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.tabPage6.Controls.Add(this.panel18);
+            this.tabPage6.Controls.Add(this.panel17);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(905, 364);
+            this.tabPage6.Size = new System.Drawing.Size(908, 389);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.button9);
+            this.panel18.Controls.Add(this.button8);
+            this.panel18.Controls.Add(this.dgvClientes);
+            this.panel18.Location = new System.Drawing.Point(196, 13);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(428, 368);
+            this.panel18.TabIndex = 16;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.SteelBlue;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(101, 325);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(78, 37);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Eliminar";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.SteelBlue;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(17, 325);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(78, 37);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "Editar";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // dgvClientes
+            // 
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.nombre,
+            this.apellido,
+            this.dni,
+            this.fecha_nac,
+            this.sexo});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvClientes.EnableHeadersVisualStyles = false;
+            this.dgvClientes.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgvClientes.Location = new System.Drawing.Point(6, 51);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvClientes.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(422, 256);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.btnagregarcliente);
+            this.panel17.Controls.Add(this.tbsexocliente);
+            this.panel17.Controls.Add(this.label12);
+            this.panel17.Controls.Add(this.dtpcliente);
+            this.panel17.Controls.Add(this.label11);
+            this.panel17.Controls.Add(this.tbdnicliente);
+            this.panel17.Controls.Add(this.label10);
+            this.panel17.Controls.Add(this.tbapellidocliente);
+            this.panel17.Controls.Add(this.label9);
+            this.panel17.Controls.Add(this.tbnombrecliente);
+            this.panel17.Controls.Add(this.label8);
+            this.panel17.Controls.Add(this.label7);
+            this.panel17.Location = new System.Drawing.Point(627, 10);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(273, 371);
+            this.panel17.TabIndex = 15;
+            // 
+            // btnagregarcliente
+            // 
+            this.btnagregarcliente.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnagregarcliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnagregarcliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnagregarcliente.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnagregarcliente.Location = new System.Drawing.Point(104, 304);
+            this.btnagregarcliente.Name = "btnagregarcliente";
+            this.btnagregarcliente.Size = new System.Drawing.Size(139, 38);
+            this.btnagregarcliente.TabIndex = 26;
+            this.btnagregarcliente.Text = "Agregar";
+            this.btnagregarcliente.UseVisualStyleBackColor = true;
+            this.btnagregarcliente.Click += new System.EventHandler(this.btnagregarcliente_Click);
+            // 
+            // tbsexocliente
+            // 
+            this.tbsexocliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbsexocliente.Location = new System.Drawing.Point(104, 266);
+            this.tbsexocliente.Name = "tbsexocliente";
+            this.tbsexocliente.Size = new System.Drawing.Size(152, 22);
+            this.tbsexocliente.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.Location = new System.Drawing.Point(3, 269);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 16);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Sexo";
+            // 
+            // dtpcliente
+            // 
+            this.dtpcliente.Location = new System.Drawing.Point(104, 224);
+            this.dtpcliente.Name = "dtpcliente";
+            this.dtpcliente.Size = new System.Drawing.Size(152, 20);
+            this.dtpcliente.TabIndex = 23;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label11.Location = new System.Drawing.Point(3, 226);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 16);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Fecha de nac.";
+            // 
+            // tbdnicliente
+            // 
+            this.tbdnicliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnicliente.Location = new System.Drawing.Point(104, 180);
+            this.tbdnicliente.Name = "tbdnicliente";
+            this.tbdnicliente.Size = new System.Drawing.Size(152, 22);
+            this.tbdnicliente.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(3, 183);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 16);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "DNI";
+            // 
+            // tbapellidocliente
+            // 
+            this.tbapellidocliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbapellidocliente.Location = new System.Drawing.Point(104, 136);
+            this.tbapellidocliente.Name = "tbapellidocliente";
+            this.tbapellidocliente.Size = new System.Drawing.Size(152, 22);
+            this.tbapellidocliente.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(3, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 16);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Apellido";
+            // 
+            // tbnombrecliente
+            // 
+            this.tbnombrecliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbnombrecliente.Location = new System.Drawing.Point(104, 92);
+            this.tbnombrecliente.Name = "tbnombrecliente";
+            this.tbnombrecliente.Size = new System.Drawing.Size(152, 22);
+            this.tbnombrecliente.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.Location = new System.Drawing.Point(3, 95);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Nombre";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Verdana", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(101, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(129, 18);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Nuevo Cliente";
             // 
             // tabPage7
             // 
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(905, 364);
+            this.tabPage7.Size = new System.Drawing.Size(908, 389);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -188,7 +686,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(905, 364);
+            this.tabPage8.Size = new System.Drawing.Size(908, 389);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -246,8 +744,8 @@
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.pictureBox4);
             this.panel2.Controls.Add(this.panel8);
-            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.panel7);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.button4);
@@ -263,6 +761,40 @@
             this.panel2.Size = new System.Drawing.Size(200, 383);
             this.panel2.TabIndex = 2;
             // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.MediumBlue;
+            this.panel16.Location = new System.Drawing.Point(3, 188);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(10, 26);
+            this.panel16.TabIndex = 14;
+            // 
+            // button7
+            // 
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button7.ImageList = this.imageList1;
+            this.button7.Location = new System.Drawing.Point(12, 188);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(185, 26);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "Ingreso";
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "running_sport_5053.ico");
+            this.imageList1.Images.SetKeyName(1, "dumbbell_sport_5072.ico");
+            this.imageList1.Images.SetKeyName(2, "-fitness-center_90564.png");
+            this.imageList1.Images.SetKeyName(3, "-fitness-center_90564.ico");
+            this.imageList1.Images.SetKeyName(4, "Sports-Dumbbell-icon.png");
+            // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -277,10 +809,18 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.MediumBlue;
-            this.panel8.Location = new System.Drawing.Point(3, 348);
+            this.panel8.Location = new System.Drawing.Point(3, 315);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(10, 26);
             this.panel8.TabIndex = 11;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.MediumBlue;
+            this.panel7.Location = new System.Drawing.Point(3, 347);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(10, 26);
+            this.panel7.TabIndex = 9;
             // 
             // button6
             // 
@@ -289,32 +829,14 @@
             this.button6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(12, 348);
+            this.button6.Location = new System.Drawing.Point(12, 315);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(185, 26);
             this.button6.TabIndex = 10;
-            this.button6.Text = "Acerca de";
+            this.button6.Text = "Clientes";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "running_sport_5053.ico");
-            this.imageList1.Images.SetKeyName(1, "dumbbell_sport_5072.ico");
-            this.imageList1.Images.SetKeyName(2, "-fitness-center_90564.png");
-            this.imageList1.Images.SetKeyName(3, "-fitness-center_90564.ico");
-            this.imageList1.Images.SetKeyName(4, "Sports-Dumbbell-icon.png");
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.MediumBlue;
-            this.panel7.Location = new System.Drawing.Point(3, 316);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(10, 26);
-            this.panel7.TabIndex = 9;
             // 
             // button5
             // 
@@ -323,7 +845,7 @@
             this.button5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(12, 316);
+            this.button5.Location = new System.Drawing.Point(12, 347);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 26);
             this.button5.TabIndex = 8;
@@ -444,259 +966,42 @@
             this.panel10.Size = new System.Drawing.Size(10, 371);
             this.panel10.TabIndex = 4;
             // 
-            // label1
+            // id
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(3, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Actividades";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
-            // cboactividades
+            // nombre
             // 
-            this.cboactividades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboactividades.FormattingEnabled = true;
-            this.cboactividades.Location = new System.Drawing.Point(149, 11);
-            this.cboactividades.Name = "cboactividades";
-            this.cboactividades.Size = new System.Drawing.Size(184, 21);
-            this.cboactividades.TabIndex = 1;
-            this.cboactividades.SelectedIndexChanged += new System.EventHandler(this.cboactividades_SelectedIndexChanged);
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
-            // label2
+            // apellido
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(3, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Detalles";
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
             // 
-            // label3
+            // dni
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(32, 153);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 14);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Nombre";
+            this.dni.HeaderText = "DNI";
+            this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
             // 
-            // tbnombreactividad
+            // fecha_nac
             // 
-            this.tbnombreactividad.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbnombreactividad.Location = new System.Drawing.Point(149, 150);
-            this.tbnombreactividad.Name = "tbnombreactividad";
-            this.tbnombreactividad.Size = new System.Drawing.Size(184, 21);
-            this.tbnombreactividad.TabIndex = 4;
+            this.fecha_nac.HeaderText = "Fecha Nac.";
+            this.fecha_nac.Name = "fecha_nac";
+            this.fecha_nac.ReadOnly = true;
             // 
-            // tbtipoactividad
+            // sexo
             // 
-            this.tbtipoactividad.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbtipoactividad.Location = new System.Drawing.Point(149, 197);
-            this.tbtipoactividad.Name = "tbtipoactividad";
-            this.tbtipoactividad.Size = new System.Drawing.Size(184, 21);
-            this.tbtipoactividad.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(32, 200);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 14);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Tipo";
-            // 
-            // tbactivo
-            // 
-            this.tbactivo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbactivo.Location = new System.Drawing.Point(149, 244);
-            this.tbactivo.Name = "tbactivo";
-            this.tbactivo.ReadOnly = true;
-            this.tbactivo.Size = new System.Drawing.Size(184, 21);
-            this.tbactivo.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(32, 247);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 14);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Activo";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.rbhabilitar);
-            this.panel11.Controls.Add(this.rbdeshabilitar);
-            this.panel11.Controls.Add(this.label1);
-            this.panel11.Controls.Add(this.tbactivo);
-            this.panel11.Controls.Add(this.cboactividades);
-            this.panel11.Controls.Add(this.label5);
-            this.panel11.Controls.Add(this.label2);
-            this.panel11.Controls.Add(this.tbtipoactividad);
-            this.panel11.Controls.Add(this.label3);
-            this.panel11.Controls.Add(this.label4);
-            this.panel11.Controls.Add(this.tbnombreactividad);
-            this.panel11.Location = new System.Drawing.Point(196, 10);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(381, 346);
-            this.panel11.TabIndex = 9;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.panel15);
-            this.panel12.Controls.Add(this.panel14);
-            this.panel12.Controls.Add(this.panel13);
-            this.panel12.Controls.Add(this.btnagregar);
-            this.panel12.Controls.Add(this.btneditar);
-            this.panel12.Controls.Add(this.btneliminar);
-            this.panel12.Controls.Add(this.label6);
-            this.panel12.Location = new System.Drawing.Point(575, 10);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(324, 346);
-            this.panel12.TabIndex = 10;
-            // 
-            // btneditar
-            // 
-            this.btneditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btneditar.FlatAppearance.BorderSize = 0;
-            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneditar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneditar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btneditar.Location = new System.Drawing.Point(0, 184);
-            this.btneditar.Name = "btneditar";
-            this.btneditar.Size = new System.Drawing.Size(310, 47);
-            this.btneditar.TabIndex = 9;
-            this.btneditar.Text = "Editar";
-            this.btneditar.UseVisualStyleBackColor = true;
-            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btneliminar.FlatAppearance.BorderSize = 0;
-            this.btneliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneliminar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btneliminar.Location = new System.Drawing.Point(0, 244);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(310, 47);
-            this.btneliminar.TabIndex = 10;
-            this.btneliminar.Text = "Eliminar";
-            this.btneliminar.UseVisualStyleBackColor = true;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(324, 86);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Acciones";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnagregar
-            // 
-            this.btnagregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnagregar.FlatAppearance.BorderSize = 0;
-            this.btnagregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnagregar.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnagregar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnagregar.Location = new System.Drawing.Point(0, 124);
-            this.btnagregar.Name = "btnagregar";
-            this.btnagregar.Size = new System.Drawing.Size(310, 47);
-            this.btnagregar.TabIndex = 11;
-            this.btnagregar.Text = "Agregar";
-            this.btnagregar.UseVisualStyleBackColor = true;
-            this.btnagregar.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // rbdeshabilitar
-            // 
-            this.rbdeshabilitar.AutoSize = true;
-            this.rbdeshabilitar.Checked = true;
-            this.rbdeshabilitar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.rbdeshabilitar.Location = new System.Drawing.Point(35, 294);
-            this.rbdeshabilitar.Name = "rbdeshabilitar";
-            this.rbdeshabilitar.Size = new System.Drawing.Size(119, 17);
-            this.rbdeshabilitar.TabIndex = 9;
-            this.rbdeshabilitar.TabStop = true;
-            this.rbdeshabilitar.Text = "Deshabilitar agregar";
-            this.rbdeshabilitar.UseVisualStyleBackColor = true;
-            this.rbdeshabilitar.Click += new System.EventHandler(this.rbdeshabilitar_Click);
-            // 
-            // rbhabilitar
-            // 
-            this.rbhabilitar.AutoSize = true;
-            this.rbhabilitar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.rbhabilitar.Location = new System.Drawing.Point(231, 293);
-            this.rbhabilitar.Name = "rbhabilitar";
-            this.rbhabilitar.Size = new System.Drawing.Size(102, 17);
-            this.rbhabilitar.TabIndex = 10;
-            this.rbhabilitar.Text = "Habilitar agregar";
-            this.rbhabilitar.UseVisualStyleBackColor = true;
-            this.rbhabilitar.CheckedChanged += new System.EventHandler(this.rbhabilitar_CheckedChanged);
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.Green;
-            this.panel13.Location = new System.Drawing.Point(306, 124);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(10, 47);
-            this.panel13.TabIndex = 12;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.Green;
-            this.panel14.Location = new System.Drawing.Point(306, 184);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(10, 47);
-            this.panel14.TabIndex = 13;
-            // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.Green;
-            this.panel15.Location = new System.Drawing.Point(306, 241);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(10, 47);
-            this.panel15.TabIndex = 14;
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.MediumBlue;
-            this.panel16.Location = new System.Drawing.Point(3, 188);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(10, 26);
-            this.panel16.TabIndex = 14;
-            // 
-            // button7
-            // 
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(12, 188);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(185, 26);
-            this.button7.TabIndex = 13;
-            this.button7.Text = "Ingreso";
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            this.sexo.HeaderText = "Sexo";
+            this.sexo.Name = "sexo";
+            this.sexo.ReadOnly = true;
             // 
             // frmHome1
             // 
@@ -714,15 +1019,20 @@
             this.Text = "frmHome1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -781,5 +1091,28 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Button btnagregarcliente;
+        private System.Windows.Forms.TextBox tbsexocliente;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpcliente;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbdnicliente;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbapellidocliente;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbnombrecliente;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_nac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
     }
 }

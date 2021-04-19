@@ -28,6 +28,7 @@ namespace Gimnasio
             asignarActividades();
             rellenarLabels();
             rbdeshabilitar.Select();
+            llenarGrillaCliente();
         }
 
         //esta funcion permite llenar el combobox con datos traidos desde la base de datos
@@ -128,15 +129,19 @@ namespace Gimnasio
             tabControl1.SelectedIndex = 4;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 5;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
+            llenarGrillaCliente();
             tabControl1.SelectedIndex = 6;
+            
         }
+
+       
 
 
        
@@ -260,6 +265,176 @@ namespace Gimnasio
         //--------------------------------------hasta aca llega la parte de actividad-------------------------
         //-----------------------------------------------------------------------------------------------------
 
+
+        //------------------aca empieza la parte de cliente--------------------------------
+        //---------------------------------------------------------------
+
+
+              
        
+
+        //-----------------metodo para llenar grilla con clientes obtenidos desde la base de datos-------------------------------
+        public void llenarGrillaCliente()
+        {
+            try
+            {
+                ClienteController cli = new ClienteController();
+                int x = 0;
+                foreach (var item in cli.obtenerClientes())
+                {
+                    dgvClientes.Rows.Add();
+                    dgvClientes.Rows[x].Cells["id"].Value = item.cliente_id;
+                    dgvClientes.Rows[x].Cells["nombre"].Value = item.nombre;
+                    dgvClientes.Rows[x].Cells["apellido"].Value = item.apellido;
+                    dgvClientes.Rows[x].Cells["dni"].Value = item.dni;
+                    dgvClientes.Rows[x].Cells["fecha_nac"].Value = item.fecha_nac;
+                    dgvClientes.Rows[x].Cells["sexo"].Value = item.sexo;
+                    x++;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener clientes"+ex.Message, "Error");
+            }
+        }
+
+        //metodo para obtener id desde la grilla
+        private int? getID()
+        {
+            try
+            {
+                return Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentRow.Index].Cells[0].Value.ToString());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        //-------------------------metodo para agregar un cliente nuevo--------------------------
+        private void btnagregarcliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClienteController cli = new ClienteController();
+                Validacion val = new Validacion();
+                if (val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))) && (val.validarGenero(tbsexocliente.Text)))
+                {
+                    cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, tbsexocliente.Text);
+                    MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarGrillaCliente();
+                    limpiarLabels();
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese valores correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        //metodo para seleccionar una celda y poder editarla
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ClienteController cli = new ClienteController();
+                Cliente c = new Cliente();
+
+                int id = Convert.ToInt32(getID());
+
+                c = cli.obtenerClienteID(id);
+                tbnombrecliente.Text = c.nombre;
+                tbapellidocliente.Text = c.apellido;
+                tbdnicliente.Text = c.dni.ToString();
+                dtpcliente.Text = c.fecha_nac.ToString();
+                tbsexocliente.Text = c.sexo;
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al mostrar cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+        //---------------------metodo para modificar cliente-------------------------------------
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClienteController cli = new ClienteController();
+                Validacion val = new Validacion();
+                int id = Convert.ToInt32(getID());
+
+                if(val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))) && (val.validarGenero(tbsexocliente.Text)))
+                {
+                    cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, tbsexocliente.Text);
+                    MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarGrillaCliente();
+                    limpiarLabels();
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese valores correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al modificar cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        //----------------metodo para eliminar clientes------------------------------------
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(getID());
+                ClienteController cli = new ClienteController();
+                DialogResult res = MessageBox.Show("Seguro quiere eliminar este cliente", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(res == DialogResult.Yes)
+                {
+                    cli.bajaFisica(id);
+                    MessageBox.Show("Cliente eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarGrillaCliente();
+                }
+       
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                llenarGrillaCliente();
+            }
+        }
+
+        //-------------------------metodo para limpiar labels------------------------
+        public void limpiarLabels()
+        {
+            tbnombrecliente.Clear();
+            tbapellidocliente.Clear();
+            tbdnicliente.Clear();
+            tbsexocliente.Clear();
+
+            tbnombrecliente.Focus();
+        }
     }
 }

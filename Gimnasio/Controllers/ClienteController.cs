@@ -72,10 +72,22 @@ namespace Gimnasio.Controllers
             }
         }
 
-        public DbSet<Cliente> obtenerClientes()
+        public List<Cliente> obtenerClientes()
         {
             GimnasioEntities db = new GimnasioEntities();
-            return db.Cliente;
+            return db.Cliente.ToList();
         }
+
+        public Cliente obtenerClienteID(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Cliente cli = new Cliente();
+                cli = db.Cliente.Find(id);
+
+                return cli;
+            }
+        }
+
     }
 }
