@@ -27,6 +27,6 @@ namespace Gimnasio
         public virtual Cliente Cliente { get; set; }
         public virtual Plaan Plaan { get; set; }
 
-        // los atributos activo y borrado_logico cumplen la misma funcion. Solo utilizo activo
+        // los atributos activo y borrado_logico cumplen la misma funcion. Solo utilizare activo
     }
 }

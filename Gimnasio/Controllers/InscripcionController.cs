@@ -20,6 +20,9 @@ namespace Gimnasio.Controllers
                 ins.fecha_inicio = fecha_inicio;
                 ins.cant_dias = cant_dias;
                 ins.activo = true;
+
+                db.Inscripcion.Add(ins);
+                db.SaveChanges();
             }
         }
 

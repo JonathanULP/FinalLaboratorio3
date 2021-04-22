@@ -63,5 +63,17 @@ namespace Gimnasio.Controllers
                 db.SaveChanges();
             }
         }
+
+        public Plaan obtenerUltimo()
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Plaan plan = new Plaan();
+
+                var result = db.Plaan.OrderByDescending(p => p.plan_id).FirstOrDefault();
+
+                return result; 
+            }
+        }
     }
 }

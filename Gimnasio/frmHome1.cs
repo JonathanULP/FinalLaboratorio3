@@ -25,21 +25,21 @@ namespace Gimnasio
         public frmHome1()
         {
             InitializeComponent();
-            asignarActividades();
+            asignarActividades(cboactividades);
             rellenarLabels();
             rbdeshabilitar.Select();
             llenarGrillaCliente();
         }
 
         //esta funcion permite llenar el combobox con datos traidos desde la base de datos
-        public void asignarActividades()
+        public void asignarActividades(ComboBox box)
         {
             try
             {
                 ActividadController act = new ActividadController();
-                cboactividades.DataSource = act.obtenerActividad();
-                cboactividades.DisplayMember = "nombre";
-                cboactividades.ValueMember = "actividad_id";
+                box.DataSource = act.obtenerActividad();
+                box.DisplayMember = "nombre";
+                box.ValueMember = "actividad_id";
             }
             catch(Exception ex)
             {
@@ -106,7 +106,7 @@ namespace Gimnasio
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
-            asignarActividades();
+            asignarActividades(cboactividades);
         }
 
         private void button7_Click_1(object sender, EventArgs e)
@@ -117,6 +117,7 @@ namespace Gimnasio
         private void button2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
+            asignarActividades(cbactividadinscripcion);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -167,7 +168,7 @@ namespace Gimnasio
                     {
                         act.modificarActividad(Convert.ToInt32(cboactividades.SelectedValue), tbnombreactividad.Text, tbtipoactividad.Text);
                         MessageBox.Show("Actividad modificada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        asignarActividades();
+                        asignarActividades(cboactividades);
                     }
                     else
                     {
@@ -195,7 +196,7 @@ namespace Gimnasio
                     ActividadController act = new ActividadController();
                     act.bajaLogica(Convert.ToInt32(cboactividades.SelectedValue));
                     MessageBox.Show("Actividad eliminada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    asignarActividades();
+                    asignarActividades(cboactividades);
                 }
                 
             }
@@ -218,7 +219,7 @@ namespace Gimnasio
                     {
                         act.crearActividad(tbnombreactividad.Text,tbtipoactividad.Text);
                         MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        asignarActividades();
+                        asignarActividades(cboactividades);
     
                     }
                 else
@@ -279,6 +280,7 @@ namespace Gimnasio
             try
             {
                 ClienteController cli = new ClienteController();
+                dgvClientes.Rows.Clear();
                 int x = 0;
                 foreach (var item in cli.obtenerClientes())
                 {
@@ -435,6 +437,41 @@ namespace Gimnasio
             tbsexocliente.Clear();
 
             tbnombrecliente.Focus();
+        }
+
+
+
+        //-----------------------------------ACA EMPIEZA LA PARTE DE INSCRIPCION---------------------------
+        //-------------------------------------------------------------------------------------------------
+
+
+        private void btncrearinscripcion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InscripcionController ins = new InscripcionController();
+                PlanController plan = new PlanController();
+                ClienteController cli = new ClienteController();
+                int cant_dias = Convert.ToInt32(tbcantdias.Text);
+                int actividad_id = Convert.ToInt32(cbactividadinscripcion.SelectedValue);
+                 
+                //insertar el plan
+                plan.crearPlan(cant_dias,dtpfechalimiteinscripcion.Value.Date);
+                //obtener el id del ultimo plan obtenido
+                Plaan p = plan.obtenerUltimo();
+                Cliente c = cli.obtenerClienteDNI(Convert.ToInt64(tbdninscripcion.Text));
+
+                //creacion de inscripcion
+
+                ins.crearInscripcion(c.cliente_id,actividad_id,p.plan_id,dtpfechainicioinscripcion.Value.Date,cant_dias);
+                MessageBox.Show("Inscripcion creada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear inscripcion. Verifique el DNI del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -89,5 +89,23 @@ namespace Gimnasio.Controllers
             }
         }
 
+        public Cliente obtenerClienteDNI(long dni)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Cliente cli = new Cliente();
+
+              /*  var resultado = (from c in db.Cliente
+                                where c.dni == dni
+                                select c).FirstOrDefault();
+                return resultado;*/
+
+                return db.Cliente.Where(x => x.dni == dni).First();
+
+               
+
+            }
+        }
+
     }
 }
