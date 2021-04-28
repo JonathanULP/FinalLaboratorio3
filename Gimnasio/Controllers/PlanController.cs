@@ -75,5 +75,37 @@ namespace Gimnasio.Controllers
                 return result; 
             }
         }
+
+        public Plaan obtenerPlanId(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Plaan plan = new Plaan();
+                plan = db.Plaan.Find(id);
+
+                return plan;
+            }
+        }
+
+        public bool restarClase(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Plaan plan = new Plaan();
+                plan = db.Plaan.Find(id);
+                if(plan.cant_dias > 0)
+                {
+                    plan.cant_dias = plan.cant_dias - 1;
+                    db.Entry(plan).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+        }
     }
 }

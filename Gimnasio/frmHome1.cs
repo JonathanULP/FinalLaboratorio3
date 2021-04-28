@@ -29,6 +29,7 @@ namespace Gimnasio
             rellenarLabels();
             rbdeshabilitar.Select();
             llenarGrillaCliente();
+            llenarGrillaInscripcion();
         }
 
         //esta funcion permite llenar el combobox con datos traidos desde la base de datos
@@ -118,6 +119,7 @@ namespace Gimnasio
         {
             tabControl1.SelectedIndex = 2;
             asignarActividades(cbactividadinscripcion);
+            llenarGrillaInscripcion();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -465,12 +467,80 @@ namespace Gimnasio
 
                 ins.crearInscripcion(c.cliente_id,actividad_id,p.plan_id,dtpfechainicioinscripcion.Value.Date,cant_dias);
                 MessageBox.Show("Inscripcion creada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                llenarGrillaInscripcion();
 
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al crear inscripcion. Verifique el DNI del cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al crear inscripcion. Verifique el DNI del clienteb "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void llenarGrillaInscripcion()
+        {
+          try
+            {
+                InscripcionController ins = new InscripcionController();
+                dynamic lista = ins.obtenerInscripcionesActivas();
+                int x = 0;
+                dgvInscripciones.Rows.Clear();
+                foreach(var item in lista)
+                {
+                    dgvInscripciones.Rows.Add();
+                    dgvInscripciones.Rows[x].Cells["nombre_cli"].Value = item.nombre_cli+" "+item.apellido_cli;
+                    dgvInscripciones.Rows[x].Cells["nombre_act"].Value = item.nombre_act;
+                    dgvInscripciones.Rows[x].Cells["fecha_inic"].Value = item.fecha_inic;
+                    dgvInscripciones.Rows[x].Cells["fecha_limite"].Value = item.fecha_limite;
+                    dgvInscripciones.Rows[x].Cells["cant_dias"].Value = item.cant_dias;
+                    x++;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void panel19_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InscripcionController ins = new InscripcionController();
+                PlanController plan = new PlanController();
+
+                Inscripcion i = new Inscripcion();
+                i = ins.obtenerInscripcionxDNI(Convert.ToInt32(tbingreso.Text));
+                int id_plan = i.plan_id;
+
+                Plaan p = new Plaan();
+                p = plan.obtenerPlanId(id_plan);
+
+                if (plan.restarClase(id_plan)) //parece que ya resta una clase en el if
+                {
+                    
+                    MessageBox.Show("Ya puede ingresar al gimnasio", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbdiasrestantes.Text = Convert.ToString(p.cant_dias - 1);
+                    tbfecha_limite.Text = p.fecha_limite.ToString();
+                   
+                }
+                else
+                {
+                    MessageBox.Show("No quedan mas clases disponibles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    plan.bajaLogica(id_plan);
+                    ins.bajaLogica(i.inscripcion_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
         }
     }

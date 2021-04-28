@@ -62,5 +62,38 @@ namespace Gimnasio.Controllers
 
             return lista;
         }
+
+        public object obtenerInscripcionesActivas()
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                var resultado = db.Inscripcion.Where(x => x.activo == true).Select(x => new
+                {
+                    nombre_cli = x.Cliente.nombre,
+                    apellido_cli = x.Cliente.apellido,
+                    nombre_act = x.Actividad.nombre,
+                    fecha_inic = x.fecha_inicio,
+                    fecha_limite = x.Plaan.fecha_limite,
+                    cant_dias = x.Plaan.cant_dias,
+
+                }).ToList();
+
+                return resultado;
+            }
+        }
+
+        public Inscripcion obtenerInscripcionxDNI(int dni)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Inscripcion ins = new Inscripcion();
+
+                ins = (from i in db.Inscripcion
+                       where i.Cliente.dni == dni && i.activo == true && i.Plaan.borrado_logico == false
+                       select i).FirstOrDefault();
+
+                return ins;
+            }
+        }
     }
 }
