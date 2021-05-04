@@ -80,7 +80,6 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.btncrearinscripcion = new System.Windows.Forms.Button();
             this.dtpfechalimiteinscripcion = new System.Windows.Forms.DateTimePicker();
-            this.tbcantdias = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -106,7 +105,6 @@
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel17 = new System.Windows.Forms.Panel();
             this.btnagregarcliente = new System.Windows.Forms.Button();
-            this.tbsexocliente = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dtpcliente = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
@@ -142,6 +140,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.cboCantDia = new System.Windows.Forms.ComboBox();
+            this.cbosexocliente = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -151,6 +152,7 @@
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripciones)).BeginInit();
             this.panel19.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -445,6 +447,7 @@
             // 
             // tbfecha_limite
             // 
+            this.tbfecha_limite.Enabled = false;
             this.tbfecha_limite.Location = new System.Drawing.Point(719, 274);
             this.tbfecha_limite.Name = "tbfecha_limite";
             this.tbfecha_limite.Size = new System.Drawing.Size(168, 20);
@@ -463,6 +466,7 @@
             // 
             // tbdiasrestantes
             // 
+            this.tbdiasrestantes.Enabled = false;
             this.tbdiasrestantes.Location = new System.Drawing.Point(269, 274);
             this.tbdiasrestantes.Name = "tbdiasrestantes";
             this.tbdiasrestantes.Size = new System.Drawing.Size(54, 20);
@@ -498,6 +502,7 @@
             // tbingreso
             // 
             this.tbingreso.Location = new System.Drawing.Point(459, 146);
+            this.tbingreso.MaxLength = 8;
             this.tbingreso.Name = "tbingreso";
             this.tbingreso.Size = new System.Drawing.Size(163, 20);
             this.tbingreso.TabIndex = 2;
@@ -633,9 +638,9 @@
             // 
             // panel19
             // 
+            this.panel19.Controls.Add(this.cboCantDia);
             this.panel19.Controls.Add(this.btncrearinscripcion);
             this.panel19.Controls.Add(this.dtpfechalimiteinscripcion);
-            this.panel19.Controls.Add(this.tbcantdias);
             this.panel19.Controls.Add(this.label19);
             this.panel19.Controls.Add(this.label18);
             this.panel19.Controls.Add(this.label17);
@@ -674,14 +679,7 @@
             this.dtpfechalimiteinscripcion.Name = "dtpfechalimiteinscripcion";
             this.dtpfechalimiteinscripcion.Size = new System.Drawing.Size(200, 20);
             this.dtpfechalimiteinscripcion.TabIndex = 5;
-            this.dtpfechalimiteinscripcion.Value = new System.DateTime(2021, 4, 28, 0, 0, 0, 0);
-            // 
-            // tbcantdias
-            // 
-            this.tbcantdias.Location = new System.Drawing.Point(117, 243);
-            this.tbcantdias.Name = "tbcantdias";
-            this.tbcantdias.Size = new System.Drawing.Size(200, 20);
-            this.tbcantdias.TabIndex = 4;
+            this.dtpfechalimiteinscripcion.Value = new System.DateTime(2021, 5, 3, 0, 9, 0, 0);
             // 
             // label19
             // 
@@ -790,13 +788,14 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(945, 389);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
@@ -958,8 +957,8 @@
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.cbosexocliente);
             this.panel17.Controls.Add(this.btnagregarcliente);
-            this.panel17.Controls.Add(this.tbsexocliente);
             this.panel17.Controls.Add(this.label12);
             this.panel17.Controls.Add(this.dtpcliente);
             this.panel17.Controls.Add(this.label11);
@@ -988,14 +987,6 @@
             this.btnagregarcliente.Text = "Agregar";
             this.btnagregarcliente.UseVisualStyleBackColor = true;
             this.btnagregarcliente.Click += new System.EventHandler(this.btnagregarcliente_Click);
-            // 
-            // tbsexocliente
-            // 
-            this.tbsexocliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbsexocliente.Location = new System.Drawing.Point(104, 266);
-            this.tbsexocliente.Name = "tbsexocliente";
-            this.tbsexocliente.Size = new System.Drawing.Size(152, 22);
-            this.tbsexocliente.TabIndex = 25;
             // 
             // label12
             // 
@@ -1086,11 +1077,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Verdana", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(101, 30);
+            this.label7.Location = new System.Drawing.Point(68, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 18);
+            this.label7.Size = new System.Drawing.Size(141, 23);
             this.label7.TabIndex = 15;
             this.label7.Text = "Nuevo Cliente";
             // 
@@ -1272,7 +1263,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 26);
             this.button5.TabIndex = 8;
-            this.button5.Text = "Ajustes";
+            this.button5.Text = "Acerca de";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -1389,6 +1380,36 @@
             this.panel10.Size = new System.Drawing.Size(10, 371);
             this.panel10.TabIndex = 4;
             // 
+            // cboCantDia
+            // 
+            this.cboCantDia.FormattingEnabled = true;
+            this.cboCantDia.Location = new System.Drawing.Point(117, 242);
+            this.cboCantDia.Name = "cboCantDia";
+            this.cboCantDia.Size = new System.Drawing.Size(199, 21);
+            this.cboCantDia.TabIndex = 10;
+            // 
+            // cbosexocliente
+            // 
+            this.cbosexocliente.FormattingEnabled = true;
+            this.cbosexocliente.Location = new System.Drawing.Point(104, 269);
+            this.cbosexocliente.Name = "cbosexocliente";
+            this.cbosexocliente.Size = new System.Drawing.Size(152, 21);
+            this.cbosexocliente.TabIndex = 27;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label24.Location = new System.Drawing.Point(469, 22);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(185, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Personal/Trainers";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmHome1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1415,6 +1436,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripciones)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
@@ -1490,7 +1513,6 @@
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Button btnagregarcliente;
-        private System.Windows.Forms.TextBox tbsexocliente;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dtpcliente;
         private System.Windows.Forms.Label label11;
@@ -1512,7 +1534,6 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btncrearinscripcion;
         private System.Windows.Forms.DateTimePicker dtpfechalimiteinscripcion;
-        private System.Windows.Forms.TextBox tbcantdias;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -1536,5 +1557,8 @@
         private System.Windows.Forms.TextBox tbingreso;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox cboCantDia;
+        private System.Windows.Forms.ComboBox cbosexocliente;
+        private System.Windows.Forms.Label label24;
     }
 }

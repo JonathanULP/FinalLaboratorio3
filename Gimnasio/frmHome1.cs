@@ -1,5 +1,6 @@
 ﻿using Gimnasio.Controllers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -120,6 +121,8 @@ namespace Gimnasio
             tabControl1.SelectedIndex = 2;
             asignarActividades(cbactividadinscripcion);
             llenarGrillaInscripcion();
+            llenarComboDias();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -135,6 +138,7 @@ namespace Gimnasio
         private void button6_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 5;
+            llenarComboSexoCliente();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -317,6 +321,25 @@ namespace Gimnasio
             }
         }
 
+        private void llenarComboSexoCliente()
+        {
+            try
+            {
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+
+                dic.Add("masculino", "Masculino");
+                dic.Add("femenino", "Femenino");
+
+                cbosexocliente.DataSource = dic.ToList();
+                cbosexocliente.DisplayMember = "Value";
+                cbosexocliente.ValueMember = "Key";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar combobox cliente "+ex.Message, "Error",MessageBoxButtons.OK);
+            }
+        }
+
 
         //-------------------------metodo para agregar un cliente nuevo--------------------------
         private void btnagregarcliente_Click(object sender, EventArgs e)
@@ -325,9 +348,9 @@ namespace Gimnasio
             {
                 ClienteController cli = new ClienteController();
                 Validacion val = new Validacion();
-                if (val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))) && (val.validarGenero(tbsexocliente.Text)))
+                if (val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))))
                 {
-                    cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, tbsexocliente.Text);
+                    cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
                     MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     llenarGrillaCliente();
                     limpiarLabels();
@@ -362,7 +385,6 @@ namespace Gimnasio
                 tbapellidocliente.Text = c.apellido;
                 tbdnicliente.Text = c.dni.ToString();
                 dtpcliente.Text = c.fecha_nac.ToString();
-                tbsexocliente.Text = c.sexo;
                 
             }
             catch(Exception ex)
@@ -380,9 +402,9 @@ namespace Gimnasio
                 Validacion val = new Validacion();
                 int id = Convert.ToInt32(getID());
 
-                if(val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))) && (val.validarGenero(tbsexocliente.Text)))
+                if(val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))))
                 {
-                    cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, tbsexocliente.Text);
+                    cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
                     MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     llenarGrillaCliente();
                     limpiarLabels();
@@ -421,7 +443,8 @@ namespace Gimnasio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar cliente" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Este error puede deberse a que este cliente aun tenga inscripciones activas", "Error al eliminar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
 
             }
             finally
@@ -436,7 +459,7 @@ namespace Gimnasio
             tbnombrecliente.Clear();
             tbapellidocliente.Clear();
             tbdnicliente.Clear();
-            tbsexocliente.Clear();
+           
 
             tbnombrecliente.Focus();
         }
@@ -454,26 +477,34 @@ namespace Gimnasio
                 InscripcionController ins = new InscripcionController();
                 PlanController plan = new PlanController();
                 ClienteController cli = new ClienteController();
-                int cant_dias = Convert.ToInt32(tbcantdias.Text);
+                int cant_dias = Convert.ToInt32(cboCantDia.SelectedValue);
                 int actividad_id = Convert.ToInt32(cbactividadinscripcion.SelectedValue);
-                 
-                //insertar el plan
-                plan.crearPlan(cant_dias,dtpfechalimiteinscripcion.Value.Date);
-                //obtener el id del ultimo plan obtenido
-                Plaan p = plan.obtenerUltimo();
-                Cliente c = cli.obtenerClienteDNI(Convert.ToInt64(tbdninscripcion.Text));
-
-                //creacion de inscripcion
-
-                ins.crearInscripcion(c.cliente_id,actividad_id,p.plan_id,dtpfechainicioinscripcion.Value.Date,cant_dias);
-                MessageBox.Show("Inscripcion creada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                llenarGrillaInscripcion();
 
 
+                if (ins.existe(Convert.ToInt64(tbdninscripcion.Text)))
+                {
+                    //insertar el plan
+                    plan.crearPlan(cant_dias, dtpfechalimiteinscripcion.Value.Date);
+                    //obtener el id del ultimo plan obtenido
+                    Plaan p = plan.obtenerUltimo();
+                    Cliente c = cli.obtenerClienteDNI(Convert.ToInt64(tbdninscripcion.Text));
+
+                    //creacion de inscripcion
+
+                    ins.crearInscripcion(c.cliente_id, actividad_id, p.plan_id, dtpfechainicioinscripcion.Value.Date, cant_dias);
+                    MessageBox.Show("Inscripcion creada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarGrillaInscripcion();
+                }
+                else
+                {
+                    MessageBox.Show("Este cliente ya tiene una inscripcion activa ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }               
+  
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al crear inscripcion. Verifique el DNI del clienteb "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al crear inscripcion. Verifique el DNI del cliente ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -521,20 +552,31 @@ namespace Gimnasio
 
                 Plaan p = new Plaan();
                 p = plan.obtenerPlanId(id_plan);
+                int fecha = DateTime.Compare(Convert.ToDateTime(p.fecha_limite), DateTime.Now); // verificar que no haya pasado la fecha
 
-                if (plan.restarClase(id_plan)) //parece que ya resta una clase en el if
+                if (fecha > 0) 
                 {
-                    
-                    MessageBox.Show("Ya puede ingresar al gimnasio", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tbdiasrestantes.Text = Convert.ToString(p.cant_dias - 1);
-                    tbfecha_limite.Text = p.fecha_limite.ToString();
+
+                    if (plan.restarClase(id_plan))//resta una clase en el if
+                    {
+                        MessageBox.Show("Ya puede ingresar al gimnasio", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tbdiasrestantes.Text = Convert.ToString(p.cant_dias - 1);
+                        tbfecha_limite.Text = p.fecha_limite.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No quedan mas clases disponibles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        plan.bajaLogica(id_plan);
+                        ins.bajaLogica(i.inscripcion_id);
+                    }  
                    
                 }
                 else
                 {
-                    MessageBox.Show("No quedan mas clases disponibles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La fecha limite ya caduco", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     plan.bajaLogica(id_plan);
                     ins.bajaLogica(i.inscripcion_id);
+
                 }
             }
             catch (Exception ex)
@@ -542,6 +584,28 @@ namespace Gimnasio
                 MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void llenarComboDias()
+        {
+            try
+            {
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(8, "2(Dos) veces por semana");
+                dic.Add(12, "3(Tres) veces por semana");
+                dic.Add(20, "5(Cinco) veces por semana");
+                dic.Add(30, "Todos los dias");
+
+                cboCantDia.DataSource = dic.ToList();
+                cboCantDia.DisplayMember = "Value";
+                cboCantDia.ValueMember = "Key";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error a llenar combobox", "Error", MessageBoxButtons.OK);
+                Console.WriteLine(ex.Message);
+            }
+           
         }
     }
 }

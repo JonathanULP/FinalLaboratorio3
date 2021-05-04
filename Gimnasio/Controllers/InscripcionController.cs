@@ -95,5 +95,26 @@ namespace Gimnasio.Controllers
                 return ins;
             }
         }
+
+        //Controlamos si el cliente tiene una cuenta activa
+        public bool existe(long dni)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                var resultado = (from i in db.Inscripcion
+                                 where i.Cliente.dni == dni && i.activo == true
+                                 select i).FirstOrDefault();
+
+                if(resultado == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
     }
 }
