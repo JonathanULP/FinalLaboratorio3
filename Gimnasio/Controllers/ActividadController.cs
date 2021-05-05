@@ -17,6 +17,7 @@ namespace Gimnasio.Controllers
 
                 act.nombre = nombre;
                 act.tipo = tipo;
+                act.borrado_logico = false;
 
                 db.Actividad.Add(act);
                 db.SaveChanges();
@@ -79,6 +80,14 @@ namespace Gimnasio.Controllers
                 act = db.Actividad.Find(id);
 
                 return act;
+            }
+        }
+
+        public List<Actividad> obtenerActividadActiva()
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                return db.Actividad.Where(x => x.borrado_logico == false).ToList();
             }
         }
     }

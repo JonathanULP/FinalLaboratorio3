@@ -31,6 +31,9 @@ namespace Gimnasio
             rbdeshabilitar.Select();
             llenarGrillaCliente();
             llenarGrillaInscripcion();
+            llenarComboTrainer();
+
+
         }
 
         //esta funcion permite llenar el combobox con datos traidos desde la base de datos
@@ -128,6 +131,9 @@ namespace Gimnasio
         private void button3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 3;
+            llenarGrillaTrainer(-1);
+            
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -606,6 +612,110 @@ namespace Gimnasio
                 Console.WriteLine(ex.Message);
             }
            
+        }
+
+        //------------------------ACA EMPIEZA LA VISTA DE PERSONAL-------------------------------------
+        //---------------------------------------------------------------------------------------------
+
+        private void llenarComboTrainer()
+        {
+            try
+            {
+                ActividadController act = new ActividadController();
+                List<Actividad> a = new List<Actividad>();
+
+                a = act.obtenerActividadActiva();
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+
+                dic.Add(-1, "Todos");
+                foreach (var item in a)
+                {
+                    dic.Add(item.actividad_id, item.nombre);
+                }
+
+                cbotipoactividad.DataSource = dic.ToList();
+                cbotipoactividad.DisplayMember = "Value";
+                cbotipoactividad.ValueMember = "Key";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al llenar combobox trainer", "Error", MessageBoxButtons.OK);
+                Console.Write(ex.Message);
+            }
+        }
+
+        private void llenarGrillaTrainer(int id)
+        {
+            try
+            {
+                Entre_Act_Controller ea = new Entre_Act_Controller();
+                EntrenadorController e = new EntrenadorController();
+
+                //limpiar dgv antes de volver a llenar
+                dgvtrainers.Rows.Clear();
+
+                int x = 0;
+
+                if (id == -1)
+                {
+
+                    foreach (var item in e.obtenerEntrenador())
+                    {
+                        dgvtrainers.Rows.Add();
+                        dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre + " " + item.apellido;
+                        dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni;
+                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "Sin actividad designada";
+                        x++;
+                    }
+
+                }
+                else
+                {
+                    dynamic lista = ea.ObtenerEntrenadores(id);
+
+                    foreach (var item in lista)
+                    {
+                        dgvtrainers.Rows.Add();
+                        dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre_entrenador + " " + item.apellido_entrenador;
+                        dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni_entrenador;
+                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = item.nombre_actividad;
+                        x++;
+                    }
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar grilla de entrenadores " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnasignaractividad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbotipoactividad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbotipoactividad_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbotipoactividad_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                llenarGrillaTrainer(Convert.ToInt32(cbotipoactividad.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener entrenadores " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

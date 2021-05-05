@@ -70,6 +70,7 @@
     <Compile Include="Controllers\ActividadController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EntrenadorController.cs" />
+    <Compile Include="Controllers\Entre_Act_Controller.cs" />
     <Compile Include="Controllers\InscripcionController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
