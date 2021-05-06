@@ -11,7 +11,7 @@ namespace Gimnasio
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,6 +33,5 @@ namespace Gimnasio
         public virtual ICollection<Inscripcion> Inscripcion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Registro> Registro { get; set; }
-
     }
 }

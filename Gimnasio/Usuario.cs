@@ -11,9 +11,7 @@ namespace Gimnasio
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
-
-
+    
     public partial class Usuario
     {
         public int usuario_id { get; set; }

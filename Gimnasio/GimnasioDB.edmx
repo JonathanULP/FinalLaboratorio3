@@ -11,7 +11,7 @@
           </Key>
           <Property Name="actividad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="borrado_logico" Type="bit" />
         </EntityType>
         <EntityType Name="Cliente">
@@ -232,7 +232,7 @@
           </Key>
           <Property Name="actividad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Entrenador_Actividad" Relationship="Self.FK__Entrenado__activ__2E1BDC42" FromRole="Actividad" ToRole="Entrenador_Actividad" />
           <NavigationProperty Name="Inscripcion" Relationship="Self.FK__Inscripci__activ__37A5467C" FromRole="Actividad" ToRole="Inscripcion" />
           <Property Name="borrado_logico" Type="Boolean" />

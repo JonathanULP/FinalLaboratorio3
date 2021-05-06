@@ -920,7 +920,6 @@
             this.dgvtrainers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvtrainers.Size = new System.Drawing.Size(470, 219);
             this.dgvtrainers.TabIndex = 8;
-            this.dgvtrainers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvtrainers_CellClick);
             // 
             // cbotipoactividad
             // 
@@ -929,9 +928,7 @@
             this.cbotipoactividad.Name = "cbotipoactividad";
             this.cbotipoactividad.Size = new System.Drawing.Size(182, 21);
             this.cbotipoactividad.TabIndex = 3;
-            this.cbotipoactividad.SelectedIndexChanged += new System.EventHandler(this.cbotipoactividad_SelectedIndexChanged);
             this.cbotipoactividad.SelectionChangeCommitted += new System.EventHandler(this.cbotipoactividad_SelectionChangeCommitted);
-            this.cbotipoactividad.Click += new System.EventHandler(this.cbotipoactividad_Click);
             // 
             // label25
             // 

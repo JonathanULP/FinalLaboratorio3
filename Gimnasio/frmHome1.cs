@@ -717,15 +717,9 @@ namespace Gimnasio
             
         }
 
-        private void cbotipoactividad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
 
-        private void cbotipoactividad_Click(object sender, EventArgs e)
-        {
-            
-        }
+       
 
         private void cbotipoactividad_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -759,10 +753,7 @@ namespace Gimnasio
             }
         }
 
-        private void dgvtrainers_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+      
 
         private void btnasignar_Click(object sender, EventArgs e)
         {
