@@ -16,12 +16,27 @@ namespace Gimnasio.Controllers
             {
                 return db.Entrenador_Actividad.Where(x => x.actividad_id == id_actividad).Select(x => new
                 {
+                    entrenador_id = x.entrenador_id,
                     nombre_entrenador = x.Entrenador.nombre,
                     apellido_entrenador = x.Entrenador.apellido,
                     dni_entrenador = x.Entrenador.dni,
                     nombre_actividad = x.Actividad.nombre        
 
                 }).ToList();
+            }
+        }
+
+        public void crearObjeto(int id_actividad,int id_entrenador)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Entrenador_Actividad ea = new Entrenador_Actividad();
+
+                ea.actividad_id = id_actividad;
+                ea.entrenador_id = id_entrenador;
+
+                db.Entrenador_Actividad.Add(ea);
+                db.SaveChanges();
             }
         }
 

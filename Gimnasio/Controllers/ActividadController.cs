@@ -69,7 +69,7 @@ namespace Gimnasio.Controllers
         public List<Actividad> obtenerActividad()
         {
             GimnasioEntities db = new GimnasioEntities();
-            return db.Actividad.ToList();
+            return db.Actividad.Where(x => x.borrado_logico == false).ToList();
         }
 
         public Actividad buscarId(int id)

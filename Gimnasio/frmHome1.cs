@@ -315,11 +315,11 @@ namespace Gimnasio
         }
 
         //metodo para obtener id desde la grilla
-        private int? getID()
+        private int? getID(DataGridView dgv)
         {
             try
             {
-                return Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentRow.Index].Cells[0].Value.ToString());
+                return Convert.ToInt32(dgv.Rows[dgv.CurrentRow.Index].Cells[0].Value.ToString());
             }
             catch
             {
@@ -384,7 +384,7 @@ namespace Gimnasio
                 ClienteController cli = new ClienteController();
                 Cliente c = new Cliente();
 
-                int id = Convert.ToInt32(getID());
+                int id = Convert.ToInt32(getID(dgvClientes));
 
                 c = cli.obtenerClienteID(id);
                 tbnombrecliente.Text = c.nombre;
@@ -406,7 +406,7 @@ namespace Gimnasio
             {
                 ClienteController cli = new ClienteController();
                 Validacion val = new Validacion();
-                int id = Convert.ToInt32(getID());
+                int id = Convert.ToInt32(getID(dgvClientes));
 
                 if(val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))))
                 {
@@ -436,7 +436,7 @@ namespace Gimnasio
         {
             try
             {
-                int id = Convert.ToInt32(getID());
+                int id = Convert.ToInt32(getID(dgvClientes));
                 ClienteController cli = new ClienteController();
                 DialogResult res = MessageBox.Show("Seguro quiere eliminar este cliente", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(res == DialogResult.Yes)
@@ -662,6 +662,7 @@ namespace Gimnasio
                     foreach (var item in e.obtenerEntrenador())
                     {
                         dgvtrainers.Rows.Add();
+                        dgvtrainers.Rows[x].Cells["entrenador_id"].Value = item.entrenador_id;
                         dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre + " " + item.apellido;
                         dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni;
                         dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "Sin actividad designada";
@@ -676,6 +677,7 @@ namespace Gimnasio
                     foreach (var item in lista)
                     {
                         dgvtrainers.Rows.Add();
+                        dgvtrainers.Rows[x].Cells["entrenador_id"].Value = item.entrenador_id;
                         dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre_entrenador + " " + item.apellido_entrenador;
                         dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni_entrenador;
                         dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = item.nombre_actividad;
@@ -693,7 +695,26 @@ namespace Gimnasio
 
         private void btnasignaractividad_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int id = Convert.ToInt32(getID(dgvtrainers));
+                Entrenador ee = new Entrenador();
+                EntrenadorController ec = new EntrenadorController();
 
+                ee = ec.obtenerEntrenadorID(id);
+
+                lblnombretrainer.Text = ee.nombre + " " + ee.apellido;
+                lbldnitrainer.Text = ee.dni.ToString();
+                lblgenero.Text = ee.sexo;
+                asignarActividades(cboactividadtrainer);
+                pnlasignaractividad.Visible = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al elegir entrenador "+ex.Message,"Error",MessageBoxButtons.OK);
+            }
+            
         }
 
         private void cbotipoactividad_SelectedIndexChanged(object sender, EventArgs e)
@@ -715,6 +736,53 @@ namespace Gimnasio
             catch (Exception ex)
             {
                 MessageBox.Show("Error al obtener entrenadores " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btncancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult res = MessageBox.Show("¿Seguro quiere cancelar la operación?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(res == DialogResult.Yes)
+                {
+                    pnlasignaractividad.Visible =false;
+                    lblnombretrainer.Text = "";
+                    lbldnitrainer.Text = "";
+                    lblgenero.Text = "";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void dgvtrainers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void btnasignar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entre_Act_Controller ea = new Entre_Act_Controller();
+                int id_actividad = Convert.ToInt32(cboactividadtrainer.SelectedValue);
+                int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
+                ea.crearObjeto(id_actividad, id_entrenador);
+
+                DialogResult res = MessageBox.Show("Tarea asignada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(res == DialogResult.OK)
+                {
+                    pnlformulariotrainer.Visible = true;
+                    pnlasignaractividad.Visible = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al asignar tarea "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

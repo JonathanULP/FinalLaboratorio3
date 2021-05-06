@@ -81,5 +81,13 @@ namespace Gimnasio.Controllers
             GimnasioEntities db = new GimnasioEntities();
             return db.Entrenador;
         }
+
+        public Entrenador obtenerEntrenadorID(int id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {    
+                return db.Entrenador.Find(id);    
+            }
+        }
     }
 }
