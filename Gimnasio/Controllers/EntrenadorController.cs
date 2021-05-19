@@ -76,10 +76,10 @@ namespace Gimnasio.Controllers
             }
         }
 
-        public DbSet<Entrenador> obtenerEntrenador()
+        public List<Entrenador> obtenerEntrenador()
         {
             GimnasioEntities db = new GimnasioEntities();
-            return db.Entrenador;
+            return db.Entrenador.Where(x => x.borrado_logico == false).ToList();
         }
 
         public Entrenador obtenerEntrenadorID(int id)

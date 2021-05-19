@@ -51,5 +51,33 @@ namespace Gimnasio.Controllers
             }
         }
 
+        public bool validarTipoActividad(string tipo)
+        {
+            Regex pattern = new Regex(@"^[A-Za-z\s]+$");
+
+            if (pattern.IsMatch(tipo))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool validarTitulo(string titulo)
+        {
+            Regex pattern = new Regex(@"^([A-Z]{1}[a-z]{8,40})|([a-z]{8,40})$");
+
+            if (pattern.IsMatch(titulo))
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+
+        }
+
     }
 }

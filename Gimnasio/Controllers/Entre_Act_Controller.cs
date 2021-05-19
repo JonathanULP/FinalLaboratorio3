@@ -14,7 +14,7 @@ namespace Gimnasio.Controllers
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
-                return db.Entrenador_Actividad.Where(x => x.actividad_id == id_actividad).Select(x => new
+                return db.Entrenador_Actividad.Where(x => x.actividad_id == id_actividad && x.Entrenador.borrado_logico == false).Select(x => new
                 {
                     entrenador_id = x.entrenador_id,
                     nombre_entrenador = x.Entrenador.nombre,

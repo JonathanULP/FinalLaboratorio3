@@ -132,6 +132,8 @@ namespace Gimnasio
         {
             tabControl1.SelectedIndex = 3;
             llenarGrillaTrainer(-1);
+            llenarComboSexo(cbosexotrainer);
+            limpiarCampossTrainer();
             
             
         }
@@ -144,7 +146,7 @@ namespace Gimnasio
         private void button6_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 5;
-            llenarComboSexoCliente();
+            llenarComboSexo(cbosexocliente);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -327,7 +329,7 @@ namespace Gimnasio
             }
         }
 
-        private void llenarComboSexoCliente()
+        private void llenarComboSexo(ComboBox cbo)
         {
             try
             {
@@ -336,9 +338,9 @@ namespace Gimnasio
                 dic.Add("masculino", "Masculino");
                 dic.Add("femenino", "Femenino");
 
-                cbosexocliente.DataSource = dic.ToList();
-                cbosexocliente.DisplayMember = "Value";
-                cbosexocliente.ValueMember = "Key";
+                cbo.DataSource = dic.ToList();
+                cbo.DisplayMember = "Value";
+                cbo.ValueMember = "Key";
             }
             catch(Exception ex)
             {
@@ -774,6 +776,197 @@ namespace Gimnasio
             catch(Exception ex)
             {
                 MessageBox.Show("Error al asignar tarea "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pnlformulariotrainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void limpiarCampossTrainer()
+        {
+            tbnombretrainer.Clear();
+            tbapellidotrainer.Clear();
+            tbdnitrainer.Clear();
+            tbtitulotrainer.Clear();
+
+            tbnombretrainer.Focus();
+        }
+
+
+        //-----------------------------Evento utilizado para crear un nuevo entrenador-----------------------------
+        //----------------------------------------------------------------------------------------------
+        private void btncreartrainer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EntrenadorController trainer = new EntrenadorController();
+                Validacion val = new Validacion();
+                int dni_entrenador = Convert.ToInt32(tbdnitrainer.Text);
+                if (val.validarNombre(tbnombretrainer.Text))
+                {
+                    if (val.validarNombre(tbapellidotrainer.Text))
+                    {
+                        if (val.validarDNI(dni_entrenador))
+                        {
+                            if (val.validarTitulo(tbtitulotrainer.Text))
+                            {
+                                trainer.insertarEntrenador(tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
+                                MessageBox.Show("Personal agregado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                limpiarCampossTrainer();
+                                llenarGrillaTrainer(-1);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Por favor ingrese un titulo valido. El apellido puede comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                tbtitulotrainer.Clear();
+                                tbtitulotrainer.Focus();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor ingrese un DNI valido. El DNI solo debe contener numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            tbdnitrainer.Clear();
+                            tbdnitrainer.Focus();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor ingrese un apellido valido. El apellido debe comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tbapellidotrainer.Clear();
+                        tbapellidotrainer.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor ingrese un nombre valido. El nombre debe comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tbnombretrainer.Clear();
+                    tbnombretrainer.Focus();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No es posible agregar personal nuevo "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        //---------------------------------Evento para editar un entrenador--------------------------------
+        //-------------------------------------------------------------------------------------------------
+        private void btneditartrainer_Click(object sender, EventArgs e)
+        {
+           try
+            {
+                EntrenadorController trainer = new EntrenadorController();
+                Entrenador entrenador = new Entrenador();
+                Validacion val = new Validacion();
+                int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
+                int dni_entrenador = Convert.ToInt32(tbdnitrainer.Text);
+
+
+                if (val.validarNombre(tbnombretrainer.Text))
+                {
+                    if (val.validarNombre(tbapellidotrainer.Text))
+                    {
+                        if (val.validarDNI(dni_entrenador))
+                        {
+                            if (val.validarTitulo(tbtitulotrainer.Text))
+                            {
+                                trainer.modificarEntrenador(id_entrenador,tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
+                                MessageBox.Show("Personal editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                limpiarCampossTrainer();
+                                llenarGrillaTrainer(-1);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Por favor ingrese un titulo valido. El apellido puede comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                tbtitulotrainer.Clear();
+                                tbtitulotrainer.Focus();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por favor ingrese un DNI valido. El DNI solo debe contener numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            tbdnitrainer.Clear();
+                            tbdnitrainer.Focus();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor ingrese un apellido valido. El apellido debe comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tbapellidotrainer.Clear();
+                        tbapellidotrainer.Focus();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor ingrese un nombre valido. El nombre debe comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tbnombretrainer.Clear();
+                    tbnombretrainer.Focus();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No es posible editar personal " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void dgvtrainers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                EntrenadorController trainer = new EntrenadorController();
+                Entrenador entrenador = new Entrenador();
+              
+
+                int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
+
+                entrenador = trainer.obtenerEntrenadorID(id_entrenador);
+
+                tbnombretrainer.Text = entrenador.nombre;
+                tbapellidotrainer.Text = entrenador.apellido;
+                tbdnitrainer.Text = entrenador.dni.ToString();
+                dtpfechanactrainer.Value = entrenador.fecha;
+                tbtitulotrainer.Text = entrenador.titulo;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No es posible obtener los datos de este entrenador " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnborrartrainer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EntrenadorController trainer = new EntrenadorController();
+                int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
+
+                DialogResult res = MessageBox.Show("¿Esta seguro que desea eliminar este entrenador?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(res == DialogResult.Yes)
+                {
+                    trainer.bajaLogica(id_entrenador);
+                    MessageBox.Show("Entrenador eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    llenarGrillaTrainer(-1);
+                    limpiarCampossTrainer();
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No es posible eliminar este entrenador " + ex.Message,"ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

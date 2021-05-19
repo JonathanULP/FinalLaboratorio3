@@ -96,10 +96,22 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pnlformulariotrainer = new System.Windows.Forms.Panel();
+            this.pnlasignaractividad = new System.Windows.Forms.Panel();
+            this.btnasignar = new System.Windows.Forms.Button();
+            this.btncancelar = new System.Windows.Forms.Button();
+            this.lblgenero = new System.Windows.Forms.Label();
+            this.lbldnitrainer = new System.Windows.Forms.Label();
+            this.lblnombretrainer = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cboactividadtrainer = new System.Windows.Forms.ComboBox();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.pnlformulariotrainer = new System.Windows.Forms.Panel();
             this.btnasignaractividad = new System.Windows.Forms.Button();
             this.dgvtrainers = new System.Windows.Forms.DataGridView();
+            this.entrenador_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_entrenador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni_entrenador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbotipoactividad = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -153,18 +165,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.pnlasignaractividad = new System.Windows.Forms.Panel();
-            this.cboactividadtrainer = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.lblnombretrainer = new System.Windows.Forms.Label();
-            this.lbldnitrainer = new System.Windows.Forms.Label();
-            this.lblgenero = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnasignar = new System.Windows.Forms.Button();
-            this.entrenador_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_entrenador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni_entrenador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.tbnombretrainer = new System.Windows.Forms.TextBox();
+            this.tbapellidotrainer = new System.Windows.Forms.TextBox();
+            this.tbdnitrainer = new System.Windows.Forms.TextBox();
+            this.tbtitulotrainer = new System.Windows.Forms.TextBox();
+            this.dtpfechanactrainer = new System.Windows.Forms.DateTimePicker();
+            this.btncreartrainer = new System.Windows.Forms.Button();
+            this.btneditartrainer = new System.Windows.Forms.Button();
+            this.btnborrartrainer = new System.Windows.Forms.Button();
+            this.cbosexotrainer = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -175,7 +190,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscripciones)).BeginInit();
             this.panel19.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.pnlasignaractividad.SuspendLayout();
             this.panel21.SuspendLayout();
+            this.pnlformulariotrainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtrainers)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -187,7 +204,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.pnlasignaractividad.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -824,6 +840,7 @@
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.tabPage4.Controls.Add(this.pnlasignaractividad);
             this.tabPage4.Controls.Add(this.panel21);
+            this.tabPage4.Controls.Add(this.pnlformulariotrainer);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -831,16 +848,113 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
-            // pnlformulariotrainer
+            // pnlasignaractividad
             // 
-            this.pnlformulariotrainer.Location = new System.Drawing.Point(473, 0);
-            this.pnlformulariotrainer.Name = "pnlformulariotrainer";
-            this.pnlformulariotrainer.Size = new System.Drawing.Size(276, 373);
-            this.pnlformulariotrainer.TabIndex = 3;
+            this.pnlasignaractividad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
+            this.pnlasignaractividad.Controls.Add(this.btnasignar);
+            this.pnlasignaractividad.Controls.Add(this.btncancelar);
+            this.pnlasignaractividad.Controls.Add(this.lblgenero);
+            this.pnlasignaractividad.Controls.Add(this.lbldnitrainer);
+            this.pnlasignaractividad.Controls.Add(this.lblnombretrainer);
+            this.pnlasignaractividad.Controls.Add(this.label26);
+            this.pnlasignaractividad.Controls.Add(this.cboactividadtrainer);
+            this.pnlasignaractividad.Location = new System.Drawing.Point(670, 13);
+            this.pnlasignaractividad.Name = "pnlasignaractividad";
+            this.pnlasignaractividad.Size = new System.Drawing.Size(276, 373);
+            this.pnlasignaractividad.TabIndex = 10;
+            this.pnlasignaractividad.Visible = false;
+            // 
+            // btnasignar
+            // 
+            this.btnasignar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnasignar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnasignar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnasignar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnasignar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnasignar.Location = new System.Drawing.Point(161, 286);
+            this.btnasignar.Name = "btnasignar";
+            this.btnasignar.Size = new System.Drawing.Size(94, 24);
+            this.btnasignar.TabIndex = 11;
+            this.btnasignar.Text = "Asignar";
+            this.btnasignar.UseVisualStyleBackColor = true;
+            this.btnasignar.Click += new System.EventHandler(this.btnasignar_Click);
+            // 
+            // btncancelar
+            // 
+            this.btncancelar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btncancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncancelar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btncancelar.Location = new System.Drawing.Point(12, 286);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Size = new System.Drawing.Size(94, 23);
+            this.btncancelar.TabIndex = 10;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.UseVisualStyleBackColor = true;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // lblgenero
+            // 
+            this.lblgenero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblgenero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblgenero.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblgenero.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblgenero.Location = new System.Drawing.Point(60, 163);
+            this.lblgenero.Name = "lblgenero";
+            this.lblgenero.Size = new System.Drawing.Size(158, 28);
+            this.lblgenero.TabIndex = 4;
+            this.lblgenero.Text = "genero";
+            this.lblgenero.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbldnitrainer
+            // 
+            this.lbldnitrainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbldnitrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbldnitrainer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldnitrainer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbldnitrainer.Location = new System.Drawing.Point(60, 116);
+            this.lbldnitrainer.Name = "lbldnitrainer";
+            this.lbldnitrainer.Size = new System.Drawing.Size(158, 28);
+            this.lbldnitrainer.TabIndex = 3;
+            this.lbldnitrainer.Text = "dni";
+            this.lbldnitrainer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblnombretrainer
+            // 
+            this.lblnombretrainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblnombretrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblnombretrainer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnombretrainer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblnombretrainer.Location = new System.Drawing.Point(60, 69);
+            this.lblnombretrainer.Name = "lblnombretrainer";
+            this.lblnombretrainer.Size = new System.Drawing.Size(158, 28);
+            this.lblnombretrainer.TabIndex = 2;
+            this.lblnombretrainer.Text = "nombre";
+            this.lblnombretrainer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label26.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label26.Location = new System.Drawing.Point(9, 219);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(79, 18);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "Actividad";
+            // 
+            // cboactividadtrainer
+            // 
+            this.cboactividadtrainer.FormattingEnabled = true;
+            this.cboactividadtrainer.Location = new System.Drawing.Point(116, 220);
+            this.cboactividadtrainer.Name = "cboactividadtrainer";
+            this.cboactividadtrainer.Size = new System.Drawing.Size(151, 21);
+            this.cboactividadtrainer.TabIndex = 0;
             // 
             // panel21
             // 
-            this.panel21.Controls.Add(this.pnlformulariotrainer);
             this.panel21.Controls.Add(this.btnasignaractividad);
             this.panel21.Controls.Add(this.dgvtrainers);
             this.panel21.Controls.Add(this.cbotipoactividad);
@@ -850,6 +964,29 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(473, 371);
             this.panel21.TabIndex = 2;
+            // 
+            // pnlformulariotrainer
+            // 
+            this.pnlformulariotrainer.Controls.Add(this.cbosexotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btnborrartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btneditartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btncreartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.dtpfechanactrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbtitulotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbdnitrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbapellidotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbnombretrainer);
+            this.pnlformulariotrainer.Controls.Add(this.label32);
+            this.pnlformulariotrainer.Controls.Add(this.label31);
+            this.pnlformulariotrainer.Controls.Add(this.label30);
+            this.pnlformulariotrainer.Controls.Add(this.label29);
+            this.pnlformulariotrainer.Controls.Add(this.label28);
+            this.pnlformulariotrainer.Controls.Add(this.label27);
+            this.pnlformulariotrainer.Location = new System.Drawing.Point(669, 13);
+            this.pnlformulariotrainer.Name = "pnlformulariotrainer";
+            this.pnlformulariotrainer.Size = new System.Drawing.Size(276, 373);
+            this.pnlformulariotrainer.TabIndex = 3;
+            this.pnlformulariotrainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlformulariotrainer_Paint);
             // 
             // btnasignaractividad
             // 
@@ -920,6 +1057,32 @@
             this.dgvtrainers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvtrainers.Size = new System.Drawing.Size(470, 219);
             this.dgvtrainers.TabIndex = 8;
+            this.dgvtrainers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvtrainers_CellClick);
+            // 
+            // entrenador_id
+            // 
+            this.entrenador_id.HeaderText = "entrenador_id";
+            this.entrenador_id.Name = "entrenador_id";
+            this.entrenador_id.ReadOnly = true;
+            this.entrenador_id.Visible = false;
+            // 
+            // nombre_entrenador
+            // 
+            this.nombre_entrenador.HeaderText = "Nombre Entrenador";
+            this.nombre_entrenador.Name = "nombre_entrenador";
+            this.nombre_entrenador.ReadOnly = true;
+            // 
+            // dni_entrenador
+            // 
+            this.dni_entrenador.HeaderText = "DNI Entrenador";
+            this.dni_entrenador.Name = "dni_entrenador";
+            this.dni_entrenador.ReadOnly = true;
+            // 
+            // nombre_actividad
+            // 
+            this.nombre_actividad.HeaderText = "Nombre Actividad";
+            this.nombre_actividad.Name = "nombre_actividad";
+            this.nombre_actividad.ReadOnly = true;
             // 
             // cbotipoactividad
             // 
@@ -1549,134 +1712,168 @@
             this.panel10.Size = new System.Drawing.Size(10, 371);
             this.panel10.TabIndex = 4;
             // 
-            // pnlasignaractividad
+            // label27
             // 
-            this.pnlasignaractividad.Controls.Add(this.btnasignar);
-            this.pnlasignaractividad.Controls.Add(this.btncancelar);
-            this.pnlasignaractividad.Controls.Add(this.lblgenero);
-            this.pnlasignaractividad.Controls.Add(this.lbldnitrainer);
-            this.pnlasignaractividad.Controls.Add(this.lblnombretrainer);
-            this.pnlasignaractividad.Controls.Add(this.label26);
-            this.pnlasignaractividad.Controls.Add(this.cboactividadtrainer);
-            this.pnlasignaractividad.Location = new System.Drawing.Point(670, 10);
-            this.pnlasignaractividad.Name = "pnlasignaractividad";
-            this.pnlasignaractividad.Size = new System.Drawing.Size(276, 373);
-            this.pnlasignaractividad.TabIndex = 10;
-            this.pnlasignaractividad.Visible = false;
+            this.label27.AutoSize = true;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label27.Location = new System.Drawing.Point(6, 34);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(60, 16);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Nombre";
             // 
-            // cboactividadtrainer
+            // label28
             // 
-            this.cboactividadtrainer.FormattingEnabled = true;
-            this.cboactividadtrainer.Location = new System.Drawing.Point(116, 220);
-            this.cboactividadtrainer.Name = "cboactividadtrainer";
-            this.cboactividadtrainer.Size = new System.Drawing.Size(151, 21);
-            this.cboactividadtrainer.TabIndex = 0;
+            this.label28.AutoSize = true;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label28.Location = new System.Drawing.Point(6, 77);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(64, 16);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Apellido";
             // 
-            // label26
+            // label29
             // 
-            this.label26.AutoSize = true;
-            this.label26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label26.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label26.Location = new System.Drawing.Point(9, 219);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(79, 18);
-            this.label26.TabIndex = 1;
-            this.label26.Text = "Actividad";
+            this.label29.AutoSize = true;
+            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label29.Location = new System.Drawing.Point(6, 120);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(31, 16);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "DNI";
             // 
-            // lblnombretrainer
+            // label30
             // 
-            this.lblnombretrainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblnombretrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblnombretrainer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnombretrainer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblnombretrainer.Location = new System.Drawing.Point(60, 69);
-            this.lblnombretrainer.Name = "lblnombretrainer";
-            this.lblnombretrainer.Size = new System.Drawing.Size(158, 28);
-            this.lblnombretrainer.TabIndex = 2;
-            this.lblnombretrainer.Text = "nombre";
-            this.lblnombretrainer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label30.AutoSize = true;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label30.Location = new System.Drawing.Point(6, 163);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(103, 16);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Fecha de Nac.";
             // 
-            // lbldnitrainer
+            // label31
             // 
-            this.lbldnitrainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbldnitrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbldnitrainer.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldnitrainer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lbldnitrainer.Location = new System.Drawing.Point(60, 116);
-            this.lbldnitrainer.Name = "lbldnitrainer";
-            this.lbldnitrainer.Size = new System.Drawing.Size(158, 28);
-            this.lbldnitrainer.TabIndex = 3;
-            this.lbldnitrainer.Text = "dni";
-            this.lbldnitrainer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label31.AutoSize = true;
+            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label31.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label31.Location = new System.Drawing.Point(6, 206);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(38, 16);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "Sexo";
             // 
-            // lblgenero
+            // label32
             // 
-            this.lblgenero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblgenero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblgenero.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblgenero.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblgenero.Location = new System.Drawing.Point(60, 163);
-            this.lblgenero.Name = "lblgenero";
-            this.lblgenero.Size = new System.Drawing.Size(158, 28);
-            this.lblgenero.TabIndex = 4;
-            this.lblgenero.Text = "genero";
-            this.lblgenero.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label32.AutoSize = true;
+            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label32.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label32.Location = new System.Drawing.Point(6, 249);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(42, 16);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "Titulo";
             // 
-            // btncancelar
+            // tbnombretrainer
             // 
-            this.btncancelar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btncancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncancelar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancelar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btncancelar.Location = new System.Drawing.Point(12, 286);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(94, 23);
-            this.btncancelar.TabIndex = 10;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = true;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            this.tbnombretrainer.Location = new System.Drawing.Point(121, 33);
+            this.tbnombretrainer.Name = "tbnombretrainer";
+            this.tbnombretrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbnombretrainer.TabIndex = 8;
             // 
-            // btnasignar
+            // tbapellidotrainer
             // 
-            this.btnasignar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnasignar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnasignar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnasignar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnasignar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnasignar.Location = new System.Drawing.Point(161, 286);
-            this.btnasignar.Name = "btnasignar";
-            this.btnasignar.Size = new System.Drawing.Size(94, 24);
-            this.btnasignar.TabIndex = 11;
-            this.btnasignar.Text = "Asignar";
-            this.btnasignar.UseVisualStyleBackColor = true;
-            this.btnasignar.Click += new System.EventHandler(this.btnasignar_Click);
+            this.tbapellidotrainer.Location = new System.Drawing.Point(121, 75);
+            this.tbapellidotrainer.Name = "tbapellidotrainer";
+            this.tbapellidotrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbapellidotrainer.TabIndex = 9;
             // 
-            // entrenador_id
+            // tbdnitrainer
             // 
-            this.entrenador_id.HeaderText = "entrenador_id";
-            this.entrenador_id.Name = "entrenador_id";
-            this.entrenador_id.ReadOnly = true;
-            this.entrenador_id.Visible = false;
+            this.tbdnitrainer.Location = new System.Drawing.Point(121, 117);
+            this.tbdnitrainer.Name = "tbdnitrainer";
+            this.tbdnitrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbdnitrainer.TabIndex = 10;
             // 
-            // nombre_entrenador
+            // tbtitulotrainer
             // 
-            this.nombre_entrenador.HeaderText = "Nombre Entrenador";
-            this.nombre_entrenador.Name = "nombre_entrenador";
-            this.nombre_entrenador.ReadOnly = true;
+            this.tbtitulotrainer.Location = new System.Drawing.Point(121, 248);
+            this.tbtitulotrainer.Name = "tbtitulotrainer";
+            this.tbtitulotrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbtitulotrainer.TabIndex = 12;
             // 
-            // dni_entrenador
+            // dtpfechanactrainer
             // 
-            this.dni_entrenador.HeaderText = "DNI Entrenador";
-            this.dni_entrenador.Name = "dni_entrenador";
-            this.dni_entrenador.ReadOnly = true;
+            this.dtpfechanactrainer.Location = new System.Drawing.Point(121, 159);
+            this.dtpfechanactrainer.Name = "dtpfechanactrainer";
+            this.dtpfechanactrainer.Size = new System.Drawing.Size(149, 20);
+            this.dtpfechanactrainer.TabIndex = 13;
             // 
-            // nombre_actividad
+            // btncreartrainer
             // 
-            this.nombre_actividad.HeaderText = "Nombre Actividad";
-            this.nombre_actividad.Name = "nombre_actividad";
-            this.nombre_actividad.ReadOnly = true;
+            this.btncreartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btncreartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btncreartrainer.FlatAppearance.BorderSize = 0;
+            this.btncreartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncreartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncreartrainer.ForeColor = System.Drawing.Color.White;
+            this.btncreartrainer.Location = new System.Drawing.Point(8, 314);
+            this.btncreartrainer.Name = "btncreartrainer";
+            this.btncreartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btncreartrainer.TabIndex = 14;
+            this.btncreartrainer.Text = "Crear";
+            this.btncreartrainer.UseVisualStyleBackColor = false;
+            this.btncreartrainer.Click += new System.EventHandler(this.btncreartrainer_Click);
+            // 
+            // btneditartrainer
+            // 
+            this.btneditartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btneditartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btneditartrainer.FlatAppearance.BorderSize = 0;
+            this.btneditartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneditartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditartrainer.ForeColor = System.Drawing.Color.White;
+            this.btneditartrainer.Location = new System.Drawing.Point(109, 314);
+            this.btneditartrainer.Name = "btneditartrainer";
+            this.btneditartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btneditartrainer.TabIndex = 15;
+            this.btneditartrainer.Text = "Editar";
+            this.btneditartrainer.UseVisualStyleBackColor = false;
+            this.btneditartrainer.Click += new System.EventHandler(this.btneditartrainer_Click);
+            // 
+            // btnborrartrainer
+            // 
+            this.btnborrartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnborrartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnborrartrainer.FlatAppearance.BorderSize = 0;
+            this.btnborrartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnborrartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnborrartrainer.ForeColor = System.Drawing.Color.White;
+            this.btnborrartrainer.Location = new System.Drawing.Point(203, 314);
+            this.btnborrartrainer.Name = "btnborrartrainer";
+            this.btnborrartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btnborrartrainer.TabIndex = 16;
+            this.btnborrartrainer.Text = "Borrar";
+            this.btnborrartrainer.UseVisualStyleBackColor = false;
+            this.btnborrartrainer.Click += new System.EventHandler(this.btnborrartrainer_Click);
+            // 
+            // cbosexotrainer
+            // 
+            this.cbosexotrainer.FormattingEnabled = true;
+            this.cbosexotrainer.Location = new System.Drawing.Point(121, 205);
+            this.cbosexotrainer.Name = "cbosexotrainer";
+            this.cbosexotrainer.Size = new System.Drawing.Size(147, 21);
+            this.cbosexotrainer.TabIndex = 17;
             // 
             // frmHome1
             // 
@@ -1705,8 +1902,12 @@
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.pnlasignaractividad.ResumeLayout(false);
+            this.pnlasignaractividad.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
+            this.pnlformulariotrainer.ResumeLayout(false);
+            this.pnlformulariotrainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtrainers)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
@@ -1719,8 +1920,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.pnlasignaractividad.ResumeLayout(false);
-            this.pnlasignaractividad.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1850,5 +2049,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_entrenador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni_entrenador;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_actividad;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btnborrartrainer;
+        private System.Windows.Forms.Button btneditartrainer;
+        private System.Windows.Forms.Button btncreartrainer;
+        private System.Windows.Forms.DateTimePicker dtpfechanactrainer;
+        private System.Windows.Forms.TextBox tbtitulotrainer;
+        private System.Windows.Forms.TextBox tbdnitrainer;
+        private System.Windows.Forms.TextBox tbapellidotrainer;
+        private System.Windows.Forms.TextBox tbnombretrainer;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ComboBox cbosexotrainer;
     }
 }
