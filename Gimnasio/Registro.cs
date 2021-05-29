@@ -16,9 +16,9 @@ namespace Gimnasio
     {
         public int registro_id { get; set; }
         public System.DateTime dia_ingreso { get; set; }
-        public System.DateTime hora_ingreso { get; set; }
         public int cliente_id { get; set; }
         public Nullable<bool> borrado_logico { get; set; }
+        public string hora_ingreso { get; set; }
     
         public virtual Cliente Cliente { get; set; }
     }

@@ -108,17 +108,20 @@ namespace Gimnasio
         }
 
 
+        //abre tabpage de actividades
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
             asignarActividades(cboactividades);
         }
 
+        //abre tabpage de ingresos
         private void button7_Click_1(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
         }
 
+        //abre tabpage de inscripciones
         private void button2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
@@ -128,6 +131,7 @@ namespace Gimnasio
 
         }
 
+        //abre tabpage de personal
         private void button3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 3;
@@ -143,12 +147,16 @@ namespace Gimnasio
             tabControl1.SelectedIndex = 4;
         }
 
+        //abre tabpage de clientes
         private void button6_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 5;
             llenarComboSexo(cbosexocliente);
+            limpiarLabelsCliente();
         }
 
+
+        //abre tabpage de registros
         private void button5_Click(object sender, EventArgs e)
         {
             llenarGrillaCliente();
@@ -361,7 +369,7 @@ namespace Gimnasio
                     cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
                     MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     llenarGrillaCliente();
-                    limpiarLabels();
+                    limpiarLabelsCliente();
                 }
                 else
                 {
@@ -415,7 +423,7 @@ namespace Gimnasio
                     cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
                     MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     llenarGrillaCliente();
-                    limpiarLabels();
+                    limpiarLabelsCliente();
                 }
                 else
                 {
@@ -462,7 +470,7 @@ namespace Gimnasio
         }
 
         //-------------------------metodo para limpiar labels------------------------
-        public void limpiarLabels()
+        public void limpiarLabelsCliente()
         {
             tbnombrecliente.Clear();
             tbapellidocliente.Clear();
@@ -502,6 +510,7 @@ namespace Gimnasio
                     ins.crearInscripcion(c.cliente_id, actividad_id, p.plan_id, dtpfechainicioinscripcion.Value.Date, cant_dias);
                     MessageBox.Show("Inscripcion creada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     llenarGrillaInscripcion();
+                    tbdninscripcion.Clear();
                 }
                 else
                 {
@@ -546,16 +555,25 @@ namespace Gimnasio
         {
 
         }
-
+        //-----------EVENTO QUE GENERA UN NUEVO INGRESO DE UN CLIENTE--------------------------
+        //----------------------------------------------------------------------------------
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             try
             {
                 InscripcionController ins = new InscripcionController();
                 PlanController plan = new PlanController();
+                RegistroController register = new RegistroController();
+                ClienteController cli = new ClienteController();
+                Cliente c = new Cliente();
+
 
                 Inscripcion i = new Inscripcion();
-                i = ins.obtenerInscripcionxDNI(Convert.ToInt32(tbingreso.Text));
+                i = ins.obtenerInscripcionxDNI(Convert.ToInt32(tbingreso.Text)); // busca el ingreso de un cliente a traves del dni del cliente
+                                                                                 //
+
+                c = cli.obtenerClienteDNI(Convert.ToInt32(tbingreso.Text));
+                int id_cliente = Convert.ToInt32(c.cliente_id);
                 int id_plan = i.plan_id;
 
                 Plaan p = new Plaan();
@@ -565,11 +583,14 @@ namespace Gimnasio
                 if (fecha > 0) 
                 {
 
-                    if (plan.restarClase(id_plan))//resta una clase en el if
+                    if (p.cant_dias > 0)//resta una clase en el if
                     {
-                        MessageBox.Show("Ya puede ingresar al gimnasio", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        plan.restarClase(id_plan);
+                        MessageBox.Show("Ya puede ingresar al gimnasio ", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         tbdiasrestantes.Text = Convert.ToString(p.cant_dias - 1);
                         tbfecha_limite.Text = p.fecha_limite.ToString();
+                        //generar un registro
+                        register.insertarRegistro(DateTime.Now.Date, DateTime.Now.ToShortTimeString(), id_cliente);
                     }
                     else
                     {
@@ -589,7 +610,7 @@ namespace Gimnasio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas"+ex.InnerException.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
             }
         }
@@ -657,6 +678,8 @@ namespace Gimnasio
                 dgvtrainers.Rows.Clear();
 
                 int x = 0;
+                dynamic lista = ea.obtenerEntrenadores(id);
+                
 
                 if (id == -1)
                 {
@@ -667,14 +690,14 @@ namespace Gimnasio
                         dgvtrainers.Rows[x].Cells["entrenador_id"].Value = item.entrenador_id;
                         dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre + " " + item.apellido;
                         dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni;
-                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "Sin actividad designada";
+                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "-";
                         x++;
                     }
 
                 }
                 else
                 {
-                    dynamic lista = ea.ObtenerEntrenadores(id);
+                    
 
                     foreach (var item in lista)
                     {
@@ -771,6 +794,7 @@ namespace Gimnasio
                 {
                     pnlformulariotrainer.Visible = true;
                     pnlasignaractividad.Visible = false;
+                    llenarGrillaTrainer(-1);
                 }
             }
             catch(Exception ex)

@@ -9,7 +9,7 @@ namespace Gimnasio.Controllers
 {
     class RegistroController
     {
-        public void crearRegistro(DateTime dia_ingreso,DateTime hora_ingreso,int cliente_id)
+        public void crearRegistro(DateTime dia_ingreso,string hora_ingreso,int cliente_id)
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
@@ -19,6 +19,24 @@ namespace Gimnasio.Controllers
                 register.hora_ingreso = hora_ingreso;
                 register.cliente_id = cliente_id;
                 register.borrado_logico = false;
+
+                db.Registro.Add(register);
+                db.SaveChanges();
+            }
+ 
+        }
+
+        public void insertarRegistro(DateTime dia_ingreso,string hora_ingreso,int cliente_id)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Registro register = new Registro();
+
+                register.dia_ingreso = dia_ingreso;
+                register.cliente_id = cliente_id;
+                register.borrado_logico = false;
+                register.hora_ingreso = hora_ingreso;
+
 
                 db.Registro.Add(register);
                 db.SaveChanges();

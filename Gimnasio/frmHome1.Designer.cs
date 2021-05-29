@@ -105,7 +105,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.cboactividadtrainer = new System.Windows.Forms.ComboBox();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.pnlformulariotrainer = new System.Windows.Forms.Panel();
             this.btnasignaractividad = new System.Windows.Forms.Button();
             this.dgvtrainers = new System.Windows.Forms.DataGridView();
             this.entrenador_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,6 +114,22 @@
             this.cbotipoactividad = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.pnlformulariotrainer = new System.Windows.Forms.Panel();
+            this.cbosexotrainer = new System.Windows.Forms.ComboBox();
+            this.btnborrartrainer = new System.Windows.Forms.Button();
+            this.btneditartrainer = new System.Windows.Forms.Button();
+            this.btncreartrainer = new System.Windows.Forms.Button();
+            this.dtpfechanactrainer = new System.Windows.Forms.DateTimePicker();
+            this.tbtitulotrainer = new System.Windows.Forms.TextBox();
+            this.tbdnitrainer = new System.Windows.Forms.TextBox();
+            this.tbapellidotrainer = new System.Windows.Forms.TextBox();
+            this.tbnombretrainer = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -165,21 +180,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.tbnombretrainer = new System.Windows.Forms.TextBox();
-            this.tbapellidotrainer = new System.Windows.Forms.TextBox();
-            this.tbdnitrainer = new System.Windows.Forms.TextBox();
-            this.tbtitulotrainer = new System.Windows.Forms.TextBox();
-            this.dtpfechanactrainer = new System.Windows.Forms.DateTimePicker();
-            this.btncreartrainer = new System.Windows.Forms.Button();
-            this.btneditartrainer = new System.Windows.Forms.Button();
-            this.btnborrartrainer = new System.Windows.Forms.Button();
-            this.cbosexotrainer = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -192,8 +192,8 @@
             this.tabPage4.SuspendLayout();
             this.pnlasignaractividad.SuspendLayout();
             this.panel21.SuspendLayout();
-            this.pnlformulariotrainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtrainers)).BeginInit();
+            this.pnlformulariotrainer.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -768,9 +768,10 @@
             // 
             // dtpfechainicioinscripcion
             // 
-            this.dtpfechainicioinscripcion.Location = new System.Drawing.Point(117, 153);
+            this.dtpfechainicioinscripcion.CustomFormat = "MMMMdd, yyyy | hh:mm";
+            this.dtpfechainicioinscripcion.Location = new System.Drawing.Point(115, 153);
             this.dtpfechainicioinscripcion.Name = "dtpfechainicioinscripcion";
-            this.dtpfechainicioinscripcion.Size = new System.Drawing.Size(200, 20);
+            this.dtpfechainicioinscripcion.Size = new System.Drawing.Size(201, 20);
             this.dtpfechainicioinscripcion.TabIndex = 3;
             // 
             // cbactividadinscripcion
@@ -838,7 +839,6 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
-            this.tabPage4.Controls.Add(this.pnlasignaractividad);
             this.tabPage4.Controls.Add(this.panel21);
             this.tabPage4.Controls.Add(this.pnlformulariotrainer);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -858,7 +858,7 @@
             this.pnlasignaractividad.Controls.Add(this.lblnombretrainer);
             this.pnlasignaractividad.Controls.Add(this.label26);
             this.pnlasignaractividad.Controls.Add(this.cboactividadtrainer);
-            this.pnlasignaractividad.Location = new System.Drawing.Point(670, 13);
+            this.pnlasignaractividad.Location = new System.Drawing.Point(0, 0);
             this.pnlasignaractividad.Name = "pnlasignaractividad";
             this.pnlasignaractividad.Size = new System.Drawing.Size(276, 373);
             this.pnlasignaractividad.TabIndex = 10;
@@ -964,29 +964,6 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(473, 371);
             this.panel21.TabIndex = 2;
-            // 
-            // pnlformulariotrainer
-            // 
-            this.pnlformulariotrainer.Controls.Add(this.cbosexotrainer);
-            this.pnlformulariotrainer.Controls.Add(this.btnborrartrainer);
-            this.pnlformulariotrainer.Controls.Add(this.btneditartrainer);
-            this.pnlformulariotrainer.Controls.Add(this.btncreartrainer);
-            this.pnlformulariotrainer.Controls.Add(this.dtpfechanactrainer);
-            this.pnlformulariotrainer.Controls.Add(this.tbtitulotrainer);
-            this.pnlformulariotrainer.Controls.Add(this.tbdnitrainer);
-            this.pnlformulariotrainer.Controls.Add(this.tbapellidotrainer);
-            this.pnlformulariotrainer.Controls.Add(this.tbnombretrainer);
-            this.pnlformulariotrainer.Controls.Add(this.label32);
-            this.pnlformulariotrainer.Controls.Add(this.label31);
-            this.pnlformulariotrainer.Controls.Add(this.label30);
-            this.pnlformulariotrainer.Controls.Add(this.label29);
-            this.pnlformulariotrainer.Controls.Add(this.label28);
-            this.pnlformulariotrainer.Controls.Add(this.label27);
-            this.pnlformulariotrainer.Location = new System.Drawing.Point(669, 13);
-            this.pnlformulariotrainer.Name = "pnlformulariotrainer";
-            this.pnlformulariotrainer.Size = new System.Drawing.Size(276, 373);
-            this.pnlformulariotrainer.TabIndex = 3;
-            this.pnlformulariotrainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlformulariotrainer_Paint);
             // 
             // btnasignaractividad
             // 
@@ -1120,6 +1097,193 @@
             this.label24.TabIndex = 1;
             this.label24.Text = "Personal/Trainers";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlformulariotrainer
+            // 
+            this.pnlformulariotrainer.Controls.Add(this.pnlasignaractividad);
+            this.pnlformulariotrainer.Controls.Add(this.cbosexotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btnborrartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btneditartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.btncreartrainer);
+            this.pnlformulariotrainer.Controls.Add(this.dtpfechanactrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbtitulotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbdnitrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbapellidotrainer);
+            this.pnlformulariotrainer.Controls.Add(this.tbnombretrainer);
+            this.pnlformulariotrainer.Controls.Add(this.label32);
+            this.pnlformulariotrainer.Controls.Add(this.label31);
+            this.pnlformulariotrainer.Controls.Add(this.label30);
+            this.pnlformulariotrainer.Controls.Add(this.label29);
+            this.pnlformulariotrainer.Controls.Add(this.label28);
+            this.pnlformulariotrainer.Controls.Add(this.label27);
+            this.pnlformulariotrainer.Location = new System.Drawing.Point(669, 13);
+            this.pnlformulariotrainer.Name = "pnlformulariotrainer";
+            this.pnlformulariotrainer.Size = new System.Drawing.Size(276, 373);
+            this.pnlformulariotrainer.TabIndex = 3;
+            this.pnlformulariotrainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlformulariotrainer_Paint);
+            // 
+            // cbosexotrainer
+            // 
+            this.cbosexotrainer.FormattingEnabled = true;
+            this.cbosexotrainer.Location = new System.Drawing.Point(121, 205);
+            this.cbosexotrainer.Name = "cbosexotrainer";
+            this.cbosexotrainer.Size = new System.Drawing.Size(147, 21);
+            this.cbosexotrainer.TabIndex = 17;
+            // 
+            // btnborrartrainer
+            // 
+            this.btnborrartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnborrartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnborrartrainer.FlatAppearance.BorderSize = 0;
+            this.btnborrartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnborrartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnborrartrainer.ForeColor = System.Drawing.Color.White;
+            this.btnborrartrainer.Location = new System.Drawing.Point(203, 314);
+            this.btnborrartrainer.Name = "btnborrartrainer";
+            this.btnborrartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btnborrartrainer.TabIndex = 16;
+            this.btnborrartrainer.Text = "Borrar";
+            this.btnborrartrainer.UseVisualStyleBackColor = false;
+            this.btnborrartrainer.Click += new System.EventHandler(this.btnborrartrainer_Click);
+            // 
+            // btneditartrainer
+            // 
+            this.btneditartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btneditartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btneditartrainer.FlatAppearance.BorderSize = 0;
+            this.btneditartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneditartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditartrainer.ForeColor = System.Drawing.Color.White;
+            this.btneditartrainer.Location = new System.Drawing.Point(109, 314);
+            this.btneditartrainer.Name = "btneditartrainer";
+            this.btneditartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btneditartrainer.TabIndex = 15;
+            this.btneditartrainer.Text = "Editar";
+            this.btneditartrainer.UseVisualStyleBackColor = false;
+            this.btneditartrainer.Click += new System.EventHandler(this.btneditartrainer_Click);
+            // 
+            // btncreartrainer
+            // 
+            this.btncreartrainer.BackColor = System.Drawing.Color.SteelBlue;
+            this.btncreartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btncreartrainer.FlatAppearance.BorderSize = 0;
+            this.btncreartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncreartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncreartrainer.ForeColor = System.Drawing.Color.White;
+            this.btncreartrainer.Location = new System.Drawing.Point(8, 314);
+            this.btncreartrainer.Name = "btncreartrainer";
+            this.btncreartrainer.Size = new System.Drawing.Size(61, 24);
+            this.btncreartrainer.TabIndex = 14;
+            this.btncreartrainer.Text = "Crear";
+            this.btncreartrainer.UseVisualStyleBackColor = false;
+            this.btncreartrainer.Click += new System.EventHandler(this.btncreartrainer_Click);
+            // 
+            // dtpfechanactrainer
+            // 
+            this.dtpfechanactrainer.Location = new System.Drawing.Point(121, 159);
+            this.dtpfechanactrainer.Name = "dtpfechanactrainer";
+            this.dtpfechanactrainer.Size = new System.Drawing.Size(149, 20);
+            this.dtpfechanactrainer.TabIndex = 13;
+            // 
+            // tbtitulotrainer
+            // 
+            this.tbtitulotrainer.Location = new System.Drawing.Point(121, 248);
+            this.tbtitulotrainer.Name = "tbtitulotrainer";
+            this.tbtitulotrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbtitulotrainer.TabIndex = 12;
+            // 
+            // tbdnitrainer
+            // 
+            this.tbdnitrainer.Location = new System.Drawing.Point(121, 117);
+            this.tbdnitrainer.Name = "tbdnitrainer";
+            this.tbdnitrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbdnitrainer.TabIndex = 10;
+            // 
+            // tbapellidotrainer
+            // 
+            this.tbapellidotrainer.Location = new System.Drawing.Point(121, 75);
+            this.tbapellidotrainer.Name = "tbapellidotrainer";
+            this.tbapellidotrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbapellidotrainer.TabIndex = 9;
+            // 
+            // tbnombretrainer
+            // 
+            this.tbnombretrainer.Location = new System.Drawing.Point(121, 33);
+            this.tbnombretrainer.Name = "tbnombretrainer";
+            this.tbnombretrainer.Size = new System.Drawing.Size(149, 20);
+            this.tbnombretrainer.TabIndex = 8;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label32.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label32.Location = new System.Drawing.Point(6, 249);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(42, 16);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "Titulo";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label31.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label31.Location = new System.Drawing.Point(6, 206);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(38, 16);
+            this.label31.TabIndex = 6;
+            this.label31.Text = "Sexo";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label30.Location = new System.Drawing.Point(6, 163);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(103, 16);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Fecha de Nac.";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label29.Location = new System.Drawing.Point(6, 120);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(31, 16);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "DNI";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label28.Location = new System.Drawing.Point(6, 77);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(64, 16);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Apellido";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label27.Location = new System.Drawing.Point(6, 34);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(60, 16);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Nombre";
             // 
             // tabPage5
             // 
@@ -1333,6 +1497,8 @@
             // 
             // dtpcliente
             // 
+            this.dtpcliente.CustomFormat = "MMMMdd, yyyy | hh:mm";
+            this.dtpcliente.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpcliente.Location = new System.Drawing.Point(104, 224);
             this.dtpcliente.Name = "dtpcliente";
             this.dtpcliente.Size = new System.Drawing.Size(152, 20);
@@ -1419,13 +1585,13 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(945, 389);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPage7";
-            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
@@ -1525,7 +1691,7 @@
             this.button7.Location = new System.Drawing.Point(12, 188);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(185, 26);
-            this.button7.TabIndex = 13;
+            this.button7.TabIndex = 2;
             this.button7.Text = "Ingreso";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = true;
@@ -1578,7 +1744,7 @@
             this.button6.Location = new System.Drawing.Point(12, 315);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(185, 26);
-            this.button6.TabIndex = 10;
+            this.button6.TabIndex = 6;
             this.button6.Text = "Clientes";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = true;
@@ -1594,8 +1760,8 @@
             this.button5.Location = new System.Drawing.Point(12, 347);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(185, 26);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Acerca de";
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Registros";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -1618,7 +1784,7 @@
             this.button4.Location = new System.Drawing.Point(12, 284);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 26);
-            this.button4.TabIndex = 6;
+            this.button4.TabIndex = 5;
             this.button4.Text = "Informes";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = true;
@@ -1666,7 +1832,7 @@
             this.button2.Location = new System.Drawing.Point(12, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(185, 26);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Inscripcion";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button2.UseVisualStyleBackColor = true;
@@ -1690,7 +1856,7 @@
             this.button1.Location = new System.Drawing.Point(12, 156);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(185, 26);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Actividades";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
@@ -1711,169 +1877,6 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(10, 371);
             this.panel10.TabIndex = 4;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label27.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label27.Location = new System.Drawing.Point(6, 34);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(60, 16);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "Nombre";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label28.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label28.Location = new System.Drawing.Point(6, 77);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 16);
-            this.label28.TabIndex = 3;
-            this.label28.Text = "Apellido";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label29.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label29.Location = new System.Drawing.Point(6, 120);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(31, 16);
-            this.label29.TabIndex = 4;
-            this.label29.Text = "DNI";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label30.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label30.Location = new System.Drawing.Point(6, 163);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(103, 16);
-            this.label30.TabIndex = 5;
-            this.label30.Text = "Fecha de Nac.";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label31.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label31.Location = new System.Drawing.Point(6, 206);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(38, 16);
-            this.label31.TabIndex = 6;
-            this.label31.Text = "Sexo";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label32.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label32.Location = new System.Drawing.Point(6, 249);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(42, 16);
-            this.label32.TabIndex = 7;
-            this.label32.Text = "Titulo";
-            // 
-            // tbnombretrainer
-            // 
-            this.tbnombretrainer.Location = new System.Drawing.Point(121, 33);
-            this.tbnombretrainer.Name = "tbnombretrainer";
-            this.tbnombretrainer.Size = new System.Drawing.Size(149, 20);
-            this.tbnombretrainer.TabIndex = 8;
-            // 
-            // tbapellidotrainer
-            // 
-            this.tbapellidotrainer.Location = new System.Drawing.Point(121, 75);
-            this.tbapellidotrainer.Name = "tbapellidotrainer";
-            this.tbapellidotrainer.Size = new System.Drawing.Size(149, 20);
-            this.tbapellidotrainer.TabIndex = 9;
-            // 
-            // tbdnitrainer
-            // 
-            this.tbdnitrainer.Location = new System.Drawing.Point(121, 117);
-            this.tbdnitrainer.Name = "tbdnitrainer";
-            this.tbdnitrainer.Size = new System.Drawing.Size(149, 20);
-            this.tbdnitrainer.TabIndex = 10;
-            // 
-            // tbtitulotrainer
-            // 
-            this.tbtitulotrainer.Location = new System.Drawing.Point(121, 248);
-            this.tbtitulotrainer.Name = "tbtitulotrainer";
-            this.tbtitulotrainer.Size = new System.Drawing.Size(149, 20);
-            this.tbtitulotrainer.TabIndex = 12;
-            // 
-            // dtpfechanactrainer
-            // 
-            this.dtpfechanactrainer.Location = new System.Drawing.Point(121, 159);
-            this.dtpfechanactrainer.Name = "dtpfechanactrainer";
-            this.dtpfechanactrainer.Size = new System.Drawing.Size(149, 20);
-            this.dtpfechanactrainer.TabIndex = 13;
-            // 
-            // btncreartrainer
-            // 
-            this.btncreartrainer.BackColor = System.Drawing.Color.SteelBlue;
-            this.btncreartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btncreartrainer.FlatAppearance.BorderSize = 0;
-            this.btncreartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncreartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncreartrainer.ForeColor = System.Drawing.Color.White;
-            this.btncreartrainer.Location = new System.Drawing.Point(8, 314);
-            this.btncreartrainer.Name = "btncreartrainer";
-            this.btncreartrainer.Size = new System.Drawing.Size(61, 24);
-            this.btncreartrainer.TabIndex = 14;
-            this.btncreartrainer.Text = "Crear";
-            this.btncreartrainer.UseVisualStyleBackColor = false;
-            this.btncreartrainer.Click += new System.EventHandler(this.btncreartrainer_Click);
-            // 
-            // btneditartrainer
-            // 
-            this.btneditartrainer.BackColor = System.Drawing.Color.SteelBlue;
-            this.btneditartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btneditartrainer.FlatAppearance.BorderSize = 0;
-            this.btneditartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneditartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneditartrainer.ForeColor = System.Drawing.Color.White;
-            this.btneditartrainer.Location = new System.Drawing.Point(109, 314);
-            this.btneditartrainer.Name = "btneditartrainer";
-            this.btneditartrainer.Size = new System.Drawing.Size(61, 24);
-            this.btneditartrainer.TabIndex = 15;
-            this.btneditartrainer.Text = "Editar";
-            this.btneditartrainer.UseVisualStyleBackColor = false;
-            this.btneditartrainer.Click += new System.EventHandler(this.btneditartrainer_Click);
-            // 
-            // btnborrartrainer
-            // 
-            this.btnborrartrainer.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnborrartrainer.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnborrartrainer.FlatAppearance.BorderSize = 0;
-            this.btnborrartrainer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnborrartrainer.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnborrartrainer.ForeColor = System.Drawing.Color.White;
-            this.btnborrartrainer.Location = new System.Drawing.Point(203, 314);
-            this.btnborrartrainer.Name = "btnborrartrainer";
-            this.btnborrartrainer.Size = new System.Drawing.Size(61, 24);
-            this.btnborrartrainer.TabIndex = 16;
-            this.btnborrartrainer.Text = "Borrar";
-            this.btnborrartrainer.UseVisualStyleBackColor = false;
-            this.btnborrartrainer.Click += new System.EventHandler(this.btnborrartrainer_Click);
-            // 
-            // cbosexotrainer
-            // 
-            this.cbosexotrainer.FormattingEnabled = true;
-            this.cbosexotrainer.Location = new System.Drawing.Point(121, 205);
-            this.cbosexotrainer.Name = "cbosexotrainer";
-            this.cbosexotrainer.Size = new System.Drawing.Size(147, 21);
-            this.cbosexotrainer.TabIndex = 17;
             // 
             // frmHome1
             // 
@@ -1906,9 +1909,9 @@
             this.pnlasignaractividad.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvtrainers)).EndInit();
             this.pnlformulariotrainer.ResumeLayout(false);
             this.pnlformulariotrainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvtrainers)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();

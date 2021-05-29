@@ -75,9 +75,9 @@
           </Key>
           <Property Name="registro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dia_ingreso" Type="date" Nullable="false" />
-          <Property Name="hora_ingreso" Type="date" Nullable="false" />
           <Property Name="cliente_id" Type="int" Nullable="false" />
           <Property Name="borrado_logico" Type="bit" />
+          <Property Name="hora_ingreso" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -307,10 +307,10 @@
           </Key>
           <Property Name="registro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dia_ingreso" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="hora_ingreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="cliente_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK__Registro__client__33D4B598" FromRole="Registro" ToRole="Cliente" />
           <Property Name="borrado_logico" Type="Boolean" />
+          <Property Name="hora_ingreso" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -536,10 +536,10 @@
           <EntitySetMapping Name="Registro">
             <EntityTypeMapping TypeName="GimnasioModel.Registro">
               <MappingFragment StoreEntitySet="Registro">
+                <ScalarProperty Name="hora_ingreso" ColumnName="hora_ingreso" />
                 <ScalarProperty Name="borrado_logico" ColumnName="borrado_logico" />
                 <ScalarProperty Name="registro_id" ColumnName="registro_id" />
                 <ScalarProperty Name="dia_ingreso" ColumnName="dia_ingreso" />
-                <ScalarProperty Name="hora_ingreso" ColumnName="hora_ingreso" />
                 <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
               </MappingFragment>
             </EntityTypeMapping>

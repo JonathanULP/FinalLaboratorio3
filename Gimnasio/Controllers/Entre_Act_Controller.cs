@@ -10,7 +10,7 @@ namespace Gimnasio.Controllers
     {
 
         //metodo para retornar los datos del entrenador segun la activada que dicta siempre y cuando la activdad este activa
-        public object ObtenerEntrenadores(int id_actividad)
+        public object obtenerEntrenadores(int id_actividad)
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
@@ -23,6 +23,23 @@ namespace Gimnasio.Controllers
                     nombre_actividad = x.Actividad.nombre        
 
                 }).ToList();
+            }
+        }
+
+        //obtiene solo los entrenadores que tuvieron algun cargo
+        public object obtenerTodosEntrenadores()
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                return db.Entrenador_Actividad.Where(x => x.Entrenador.borrado_logico == false).Select(x => new
+                    {
+                        entrenador_id = x.entrenador_id,
+                        nombre = x.Entrenador.nombre,
+                        apellido = x.Entrenador.apellido,
+                        dni = x.Entrenador.dni,
+                        nombre_actividad = x.Actividad.nombre
+
+                    }).Distinct().ToList();
             }
         }
 
