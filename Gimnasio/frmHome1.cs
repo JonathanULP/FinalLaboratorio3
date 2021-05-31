@@ -159,8 +159,21 @@ namespace Gimnasio
         //abre tabpage de registros
         private void button5_Click(object sender, EventArgs e)
         {
-            llenarGrillaCliente();
-            tabControl1.SelectedIndex = 6;
+            try
+            {
+                llenarComboRegistro();
+                tabControl1.SelectedIndex = 6;
+
+                RegistroController register = new RegistroController();
+                dynamic objeto = register.obtenerRegistroDeClientesXFecha(DateTime.Today.AddYears(-100));
+                llenarGrillaRegistros(objeto);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar esta vista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
             
         }
 
@@ -991,6 +1004,74 @@ namespace Gimnasio
             catch(Exception ex)
             {
                 MessageBox.Show("No es posible eliminar este entrenador " + ex.Message,"ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        //-----------------------------------------ACA EMPIEZA LA PARTE DE REGISTRO--------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------
+
+
+        private void llenarComboRegistro()
+        {
+            try
+            {
+                Dictionary<string, DateTime> dic = new Dictionary<string, DateTime>();
+
+                dic.Add("Todos", DateTime.Today.AddYears(-100));
+                dic.Add("Hoy",DateTime.Now.Date);
+                dic.Add("Ultimos 3 dias", DateTime.Today.AddDays(-3));
+                dic.Add("Ultima semana", DateTime.Today.AddDays(-7));
+                dic.Add("Ultimo mes", DateTime.Today.AddMonths(-1));
+                dic.Add("Ultimos tres meses", DateTime.Today.AddMonths(-3));
+                dic.Add("Ultimos seis meses", DateTime.Today.AddMonths(-6));
+                dic.Add("Ultimo año", DateTime.Today.AddYears(-1));
+               
+
+                cbofecharegistro.DataSource = dic.ToList();
+                cbofecharegistro.DisplayMember = "Key";
+                cbofecharegistro.ValueMember = "Value";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No se puede llenar el combobox de registro "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void llenarGrillaRegistros(dynamic objeto)
+        {
+            dgvregistros.Rows.Clear();//limpiamos la grilla
+
+            //llenamos la grilla con datos obtenidos desde la base de datos
+            int x = 0;
+            foreach (var item in objeto)
+            {
+                dgvregistros.Rows.Add();//genera la fila donde se guardaran los datos
+                dgvregistros.Rows[x].Cells["nombre_cliente"].Value = item.nombre_cliente;
+                dgvregistros.Rows[x].Cells["apellido_cliente"].Value = item.apellido_cliente;
+                dgvregistros.Rows[x].Cells["dni_cliente"].Value = item.dni_cliente;
+                dgvregistros.Rows[x].Cells["fecha_ingreso"].Value = item.dia_ingreso;
+                dgvregistros.Rows[x].Cells["hora_ingreso"].Value = item.hora_ingreso;
+                x++;
+            }
+        }
+
+        private void cbofecharegistro_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                RegistroController register = new RegistroController();
+
+                dynamic objeto = register.obtenerRegistroDeClientesXFecha(Convert.ToDateTime(cbofecharegistro.SelectedValue));
+
+                llenarGrillaRegistros(objeto);
+
+               
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar fecha. "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

@@ -76,19 +76,54 @@ namespace Gimnasio.Controllers
         }
 
         //hay que probarlo, probablemente hay que cambiar el tipo de retorno
-        public Registro obtenerRegistroDeCliente(int cliente_id)
+        public object obtenerRegistroDeClienteXDNI(int cliente_dni)
         {
-            Registro register;
+            
             using (GimnasioEntities db = new GimnasioEntities())
             {
-                var resultado = (from r in db.Registro
-                                 where r.cliente_id == cliente_id
-                                 select r).FirstOrDefault();
-
-                register = resultado;
+               return db.Registro.Where(x => x.Cliente.cliente_id == cliente_dni)
+                           .Select(x => new
+                           {
+                               nombre_cliente = x.Cliente.nombre,
+                               apellido_cliente = x.Cliente.apellido,
+                               dni_cliente = x.Cliente.dni,
+                               hora_ingreso = x.hora_ingreso,
+                               dia_ingreso = x.dia_ingreso
+                            
+                           });
             }
+        }
 
-            return register;
+        public object obtenerRegistroDeClienteXNombreOrApellido(string nombre)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+               return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre, "%"+ nombre +"%") || DbFunctions.Like(x.Cliente.apellido,"%"+nombre+"%"))
+                           .Select(x => new
+                           {
+                               nombre_cliente = x.Cliente.nombre,
+                               apellido_cliente = x.Cliente.apellido,
+                               dni_cliente = x.Cliente.dni,
+                               hora_ingreso = x.hora_ingreso,
+                               dia_ingreso = x.dia_ingreso
+                           });
+            }
+        }
+
+        public object obtenerRegistroDeClientesXFecha(DateTime dia_ingreso)
+        {
+            GimnasioEntities db = new GimnasioEntities();
+
+            return db.Registro.Where(x => DbFunctions.TruncateTime(x.dia_ingreso) >= DbFunctions.TruncateTime(dia_ingreso))
+                              .Select(x => new
+                              {
+
+                                  nombre_cliente = x.Cliente.nombre,
+                                  apellido_cliente = x.Cliente.apellido,
+                                  dni_cliente = x.Cliente.dni,
+                                  hora_ingreso = x.hora_ingreso,
+                                  dia_ingreso = x.dia_ingreso
+                              });
         }
     }
 }
