@@ -551,8 +551,8 @@ namespace Gimnasio
                     dgvInscripciones.Rows.Add();
                     dgvInscripciones.Rows[x].Cells["nombre_cli"].Value = item.nombre_cli+" "+item.apellido_cli;
                     dgvInscripciones.Rows[x].Cells["nombre_act"].Value = item.nombre_act;
-                    dgvInscripciones.Rows[x].Cells["fecha_inic"].Value = item.fecha_inic;
-                    dgvInscripciones.Rows[x].Cells["fecha_limite"].Value = item.fecha_limite;
+                    dgvInscripciones.Rows[x].Cells["fecha_inic"].Value = item.fecha_inic.ToShortDateString();
+                    dgvInscripciones.Rows[x].Cells["fecha_limite"].Value = item.fecha_limite.ToShortDateString();
                     dgvInscripciones.Rows[x].Cells["cant_dias"].Value = item.cant_dias;
                     x++;
                 }
@@ -1051,7 +1051,7 @@ namespace Gimnasio
                 dgvregistros.Rows[x].Cells["nombre_cliente"].Value = item.nombre_cliente;
                 dgvregistros.Rows[x].Cells["apellido_cliente"].Value = item.apellido_cliente;
                 dgvregistros.Rows[x].Cells["dni_cliente"].Value = item.dni_cliente;
-                dgvregistros.Rows[x].Cells["fecha_ingreso"].Value = item.dia_ingreso;
+                dgvregistros.Rows[x].Cells["fecha_ingreso"].Value = item.dia_ingreso.ToShortDateString();
                 dgvregistros.Rows[x].Cells["hora_ingreso"].Value = item.hora_ingreso;
                 x++;
             }
@@ -1063,6 +1063,7 @@ namespace Gimnasio
             {
                 RegistroController register = new RegistroController();
 
+                //obtenemos un object de la busqueda en la base de datos y ese objeto lo usamos para llenar la grilla
                 dynamic objeto = register.obtenerRegistroDeClientesXFecha(Convert.ToDateTime(cbofecharegistro.SelectedValue));
 
                 llenarGrillaRegistros(objeto);
@@ -1072,6 +1073,39 @@ namespace Gimnasio
             catch(Exception ex)
             {
                 MessageBox.Show("Error al cargar fecha. "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void tbfiltrarregistro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Validacion val = new Validacion();
+                RegistroController register = new RegistroController();
+                dynamic objeto;
+                int n;
+                bool isNumero = int.TryParse(tbfiltrarregistro.Text, out n);
+                try
+                {
+                    if (!isNumero && val.validarNombreMinusculas(tbfiltrarregistro.Text))
+                    {
+                        objeto = register.obtenerRegistroDeClienteXNombreOrApellido(tbfiltrarregistro.Text);
+                        llenarGrillaRegistros(objeto);
+                    }
+                    else if (isNumero && val.validarDNI(Convert.ToInt64(tbfiltrarregistro.Text)))
+                    {
+                        objeto = register.obtenerRegistroDeClienteXDNI(Convert.ToInt64(tbfiltrarregistro.Text));
+                        llenarGrillaRegistros(objeto);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontraron resultados para: " + tbfiltrarregistro.Text, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la grilla de registros "+ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

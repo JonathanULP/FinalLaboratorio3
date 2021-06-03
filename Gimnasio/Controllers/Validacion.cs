@@ -24,6 +24,22 @@ namespace Gimnasio.Controllers
             }
         }
 
+        public bool validarNombreMinusculas(string nombre)
+        {
+            //debe comenzar con mayuscula y seguir con minimo dos caracteres mas en minusculas
+            Regex pattern = new Regex(@"^[a-z]{2,20}$");
+
+            if (pattern.IsMatch(nombre))
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public bool validarDNI(long dni)
         {
             //verificamos que el numero tenga entre 7 y 8 caracteres

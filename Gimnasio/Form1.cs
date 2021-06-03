@@ -81,5 +81,35 @@ namespace Gimnasio
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void tbcontraseñauser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if((int)e.KeyChar == (int)Keys.Enter)
+            {
+                try
+                {
+                    UsuarioController user = new UsuarioController();
+                    bool result = user.ingresoUser(tbnombreuser.Text, tbcontraseñauser.Text);
+
+                    if (((home == null) || (home.IsDisposed)) && (result))
+                    {
+                        home = new frmHome1();
+                        home.Show();
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario incorrecto", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 }

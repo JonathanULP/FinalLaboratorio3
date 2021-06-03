@@ -76,12 +76,12 @@ namespace Gimnasio.Controllers
         }
 
         //hay que probarlo, probablemente hay que cambiar el tipo de retorno
-        public object obtenerRegistroDeClienteXDNI(int cliente_dni)
+        public object obtenerRegistroDeClienteXDNI(long cliente_dni)
         {
+
+            GimnasioEntities db = new GimnasioEntities();
             
-            using (GimnasioEntities db = new GimnasioEntities())
-            {
-               return db.Registro.Where(x => x.Cliente.cliente_id == cliente_dni)
+               return db.Registro.Where(x => x.Cliente.dni == cliente_dni)
                            .Select(x => new
                            {
                                nombre_cliente = x.Cliente.nombre,
@@ -91,23 +91,23 @@ namespace Gimnasio.Controllers
                                dia_ingreso = x.dia_ingreso
                             
                            });
-            }
+            
         }
 
         public object obtenerRegistroDeClienteXNombreOrApellido(string nombre)
         {
-            using (GimnasioEntities db = new GimnasioEntities())
-            {
-               return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre, "%"+ nombre +"%") || DbFunctions.Like(x.Cliente.apellido,"%"+nombre+"%"))
-                           .Select(x => new
-                           {
+            GimnasioEntities db = new GimnasioEntities();
+            
+            return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre.ToLower(), "%"+ nombre.ToLower() +"%") || DbFunctions.Like(x.Cliente.apellido.ToLower(),"%"+nombre.ToLower()+"%"))
+                              .Select(x => new
+                             {
                                nombre_cliente = x.Cliente.nombre,
                                apellido_cliente = x.Cliente.apellido,
                                dni_cliente = x.Cliente.dni,
                                hora_ingreso = x.hora_ingreso,
                                dia_ingreso = x.dia_ingreso
-                           });
-            }
+                             });
+            
         }
 
         public object obtenerRegistroDeClientesXFecha(DateTime dia_ingreso)
