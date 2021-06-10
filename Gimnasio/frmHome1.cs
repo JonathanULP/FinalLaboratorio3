@@ -377,16 +377,44 @@ namespace Gimnasio
             {
                 ClienteController cli = new ClienteController();
                 Validacion val = new Validacion();
-                if (val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))))
+                if (val.validarNombre(tbnombrecliente.Text))
                 {
-                    cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
-                    MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    llenarGrillaCliente();
-                    limpiarLabelsCliente();
+                    if (val.validarNombre(tbapellidocliente.Text))
+                    {
+
+                        if (val.validarDNI(Convert.ToInt32(tbdnicliente.Text)))
+                        {
+                            if (cli.existe(Convert.ToInt64(tbdnicliente.Text)))
+                            {
+                                cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
+                                MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                llenarGrillaCliente();
+                                limpiarLabelsCliente();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ya existe un cliente con este DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese un DNI correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un apellido correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Ingrese valores correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ingrese un nombre correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
@@ -499,6 +527,7 @@ namespace Gimnasio
         //-------------------------------------------------------------------------------------------------
 
 
+        //--------------------EVENTO QUE CREA UNA NUEVA INSCRIPCION----------------------------------------
         private void btncrearinscripcion_Click(object sender, EventArgs e)
         {
             try
@@ -568,6 +597,42 @@ namespace Gimnasio
         {
 
         }
+
+        private void llenarGrillaIngresos()
+        {
+           
+            try
+            {
+                InscripcionController ins = new InscripcionController();
+                long dni_cliente = Convert.ToInt64(tbingreso.Text);
+                dynamic clientes = ins.obtenerRegistrosActivos(dni_cliente);
+
+                dgvingreso.Rows.Clear();//Limpiamos la grilla antes de volver a escribir los datos
+                int x = 0;
+                foreach(var item in clientes)
+                {
+                    dgvingreso.Rows.Add();
+                    dgvingreso.Rows[x].Cells["nombre_cliente1"].Value = item.nombre_cliente+" "+item.apellido_cliente;
+                    dgvingreso.Rows[x].Cells["fecha_ingreso1"].Value = item.fecha_ingresoToShortDateString();
+                    dgvingreso.Rows[x].Cells["hora_ingreso1"].Value = item.hora_ingreso;
+                    x++;
+                }
+            }
+            catch (InvalidCastException)
+            {
+                MessageBox.Show("Error al obtener DNI", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbingreso.Focus();
+                tbingreso.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar grilla "+ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbingreso.Focus();
+                tbingreso.Clear();
+            }
+
+
+        }
         //-----------EVENTO QUE GENERA UN NUEVO INGRESO DE UN CLIENTE--------------------------
         //----------------------------------------------------------------------------------
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -596,7 +661,7 @@ namespace Gimnasio
                 if (fecha > 0) 
                 {
 
-                    if (p.cant_dias > 0)//resta una clase en el if
+                    if (p.cant_dias > 0)
                     {
                         plan.restarClase(id_plan);
                         MessageBox.Show("Ya puede ingresar al gimnasio ", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -604,6 +669,8 @@ namespace Gimnasio
                         tbfecha_limite.Text = p.fecha_limite.ToString();
                         //generar un registro
                         register.insertarRegistro(DateTime.Now.Date, DateTime.Now.ToShortTimeString(), id_cliente);
+                        llenarGrillaIngresos();
+                        tbingreso.Clear();
                     }
                     else
                     {
@@ -623,7 +690,7 @@ namespace Gimnasio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas"+ex.InnerException.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas"+ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
             }
         }

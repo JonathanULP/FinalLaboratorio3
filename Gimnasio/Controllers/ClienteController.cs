@@ -107,5 +107,26 @@ namespace Gimnasio.Controllers
             }
         }
 
+        //este metodo tiene que optimizar 
+        public bool existe(long dni)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Cliente cli = new Cliente();
+                cli = db.Cliente.Where(x => x.dni == dni && x.borrado_logico == false).FirstOrDefault();
+
+                if(cli == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                
+        }
+
+
     }
 }

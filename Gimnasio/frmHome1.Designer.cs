@@ -74,9 +74,6 @@
             this.tbnombreactividad = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvingreso = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbfecha_limite = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.tbdiasrestantes = new System.Windows.Forms.TextBox();
@@ -204,6 +201,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.nombre_cliente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_ingreso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hora_ingreso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -534,10 +534,10 @@
             this.dgvingreso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvingreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvingreso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.nombre_cliente1,
+            this.fecha_ingreso1,
+            this.hora_ingreso1});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
@@ -567,24 +567,6 @@
             this.dgvingreso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvingreso.Size = new System.Drawing.Size(743, 99);
             this.dgvingreso.TabIndex = 12;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nombre Cliente";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Fecha de Ingreso";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Hora de Ingreso";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // tbfecha_limite
             // 
@@ -2146,6 +2128,24 @@
             this.panel10.Size = new System.Drawing.Size(10, 371);
             this.panel10.TabIndex = 4;
             // 
+            // nombre_cliente1
+            // 
+            this.nombre_cliente1.HeaderText = "Nombre Cliente";
+            this.nombre_cliente1.Name = "nombre_cliente1";
+            this.nombre_cliente1.ReadOnly = true;
+            // 
+            // fecha_ingreso1
+            // 
+            this.fecha_ingreso1.HeaderText = "Fecha de Ingreso";
+            this.fecha_ingreso1.Name = "fecha_ingreso1";
+            this.fecha_ingreso1.ReadOnly = true;
+            // 
+            // hora_ingreso1
+            // 
+            this.hora_ingreso1.HeaderText = "Hora de Ingreso";
+            this.hora_ingreso1.Name = "hora_ingreso1";
+            this.hora_ingreso1.ReadOnly = true;
+            // 
             // frmHome1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2352,8 +2352,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn hora_ingreso;
         private System.Windows.Forms.ComboBox cbofecharegistro;
         private System.Windows.Forms.DataGridView dgvingreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_cliente1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_ingreso1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hora_ingreso1;
     }
 }

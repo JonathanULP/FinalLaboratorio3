@@ -36,7 +36,7 @@ namespace Gimnasio.Controllers
                 inscripcion.activo = false;
 
                 db.Entry(inscripcion).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges(); 
+                db.SaveChanges();
             }
         }
 
@@ -105,7 +105,7 @@ namespace Gimnasio.Controllers
                                  where i.Cliente.dni == dni && i.activo == true
                                  select i).FirstOrDefault();
 
-                if(resultado == null)
+                if (resultado == null)
                 {
                     return true;
                 }
@@ -114,6 +114,23 @@ namespace Gimnasio.Controllers
                     return false;
                 }
             }
+        }
+
+        public object obtenerRegistrosActivos(long cliente_dni)
+        {
+            GimnasioEntities db = new GimnasioEntities();
+
+            Inscripcion ins = db.Inscripcion.Where(x => x.activo == true && x.Cliente.dni == cliente_dni).First();
+
+            return db.Registro.Where(x => x.cliente_id == ins.cliente_id)
+                             .Select(x => new
+                             {
+                                 nombre_cliente = x.Cliente.nombre,
+                                 apellido_cliente = x.Cliente.apellido,
+                                 fecha_ingreso = x.dia_ingreso,
+                                 hora_ingreso = x.hora_ingreso
+                             });
+
         }
 
     }
