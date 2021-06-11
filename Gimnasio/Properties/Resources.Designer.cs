@@ -63,6 +63,16 @@ namespace Gimnasio.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _157941 {
+            get {
+                object obj = ResourceManager.GetObject("157941", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _4092564_about_mobile_ui_profile_ui_user_website_114033 {
             get {
                 object obj = ResourceManager.GetObject("4092564-about-mobile-ui-profile-ui-user-website_114033", resourceCulture);

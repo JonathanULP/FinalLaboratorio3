@@ -184,6 +184,7 @@
       <DependentUpon>GimnasioDB.edmx</DependentUpon>
       <LastGenOutput>GimnasioDB.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\157941.png" />
     <None Include="Resources\4092564-about-mobile-ui-profile-ui-user-website_114033.ico" />
     <None Include="Resources\exit21.png" />
     <None Include="Resources\exit2.png" />

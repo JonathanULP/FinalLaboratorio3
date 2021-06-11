@@ -28,11 +28,11 @@ namespace Gimnasio
             try
             {
                 UsuarioController user = new UsuarioController();
-                bool result = user.ingresoUser(tbnombreuser.Text, tbcontraseñauser.Text);
+                int result = user.ingresoUser(tbnombreuser.Text, tbcontraseñauser.Text);
 
-                if(((home == null) || (home.IsDisposed)) && (result))
+                if(((home == null) || (home.IsDisposed)) && (result != -1))
                 {
-                    home = new frmHome1();
+                    home = new frmHome1(result);
                     home.Show();
 
                     this.Close();
@@ -89,11 +89,11 @@ namespace Gimnasio
                 try
                 {
                     UsuarioController user = new UsuarioController();
-                    bool result = user.ingresoUser(tbnombreuser.Text, tbcontraseñauser.Text);
+                    int result = user.ingresoUser(tbnombreuser.Text, tbcontraseñauser.Text);
 
-                    if (((home == null) || (home.IsDisposed)) && (result))
+                    if (((home == null) || (home.IsDisposed)) && (result != -1))
                     {
-                        home = new frmHome1();
+                        home = new frmHome1(result);
                         home.Show();
 
                         this.Close();

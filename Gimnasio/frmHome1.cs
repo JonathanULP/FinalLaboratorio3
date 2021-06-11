@@ -23,7 +23,7 @@ namespace Gimnasio
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        public frmHome1()
+        public frmHome1(int id_usuario)
         {
             InitializeComponent();
             asignarActividades(cboactividades);
@@ -32,6 +32,19 @@ namespace Gimnasio
             llenarGrillaCliente();
             llenarGrillaInscripcion();
             llenarComboTrainer();
+
+            try
+            {
+                Usuario user = new Usuario();
+                UsuarioController u = new UsuarioController();
+
+                user = u.obtenerUsuario(id_usuario);
+                lblnombreusuario.Text = user.nombre + " " + user.apellido;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
 
         }
@@ -190,6 +203,7 @@ namespace Gimnasio
         //funcion que permite editar una actividad
         private void btneditar_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 ActividadController act = new ActividadController();
@@ -199,17 +213,35 @@ namespace Gimnasio
 
                 if (res == DialogResult.Yes)
                 {
-                    if((val.validarNombre(tbnombreactividad.Text)) && (val.validarNombre(tbtipoactividad.Text)))
+                    if (res == DialogResult.Yes)
                     {
-                        act.modificarActividad(Convert.ToInt32(cboactividades.SelectedValue), tbnombreactividad.Text, tbtipoactividad.Text);
-                        MessageBox.Show("Actividad modificada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        asignarActividades(cboactividades);
+
+                        if (val.validarNombre(tbnombreactividad.Text))
+                        {
+                            if (val.validarTipoActividad(tbtipoactividad.Text))
+                            {
+                                act.modificarActividad(Convert.ToInt32(cboactividades.SelectedValue), tbnombreactividad.Text, tbtipoactividad.Text);
+                                MessageBox.Show("Actividad modificada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                asignarActividades(cboactividades);
+                            }
+                            else
+                            {
+                                MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                tbtipoactividad.Clear();
+                                tbtipoactividad.Focus();
+                            }
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El nombre de la activad debe comenzar con mayusculas y debe ser una sola palabra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            tbnombreactividad.Clear();
+                            tbnombreactividad.Focus();
+                        }
+
                     }
-                    else
-                    {
-                        MessageBox.Show("Ingrese valores validos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    
+
                 }
             }catch(Exception ex)
             {
@@ -224,14 +256,15 @@ namespace Gimnasio
         {
             try
             {
+                Validacion val = new Validacion();
                 DialogResult res = MessageBox.Show("¿Seguro quiere eliminar esta actividad?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if(res == DialogResult.Yes)
-                {
-                    ActividadController act = new ActividadController();
-                    act.bajaLogica(Convert.ToInt32(cboactividades.SelectedValue));
-                    MessageBox.Show("Actividad eliminada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    asignarActividades(cboactividades);
+                { 
+                   ActividadController act = new ActividadController();
+                   act.bajaLogica(Convert.ToInt32(cboactividades.SelectedValue));
+                   MessageBox.Show("Actividad eliminada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   asignarActividades(cboactividades);
                 }
                 
             }
@@ -250,18 +283,29 @@ namespace Gimnasio
                 ActividadController act = new ActividadController();
                 Validacion val = new Validacion();
                 
-                    if((val.validarNombre(tbnombreactividad.Text)) && (val.validarNombre(tbtipoactividad.Text)))
+                    if(val.validarNombre(tbnombreactividad.Text))
                     {
-                        act.crearActividad(tbnombreactividad.Text,tbtipoactividad.Text);
-                        MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        asignarActividades(cboactividades);
-    
-                    }
-                else
-                {
-                    MessageBox.Show("Ingrese valores validos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (val.validarTipoActividad(tbtipoactividad.Text))
+                        {
+                            act.crearActividad(tbnombreactividad.Text, tbtipoactividad.Text);
+                            MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            asignarActividades(cboactividades);
+                        }
+                       else
+                       {
+                        MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbtipoactividad.Clear();
+                        tbtipoactividad.Focus();
+                       }
 
-                }
+
+                    }
+                    else
+                    {
+                    MessageBox.Show("El nombre de la activad debe comenzar con mayusculas y debe ser una sola palabra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbnombreactividad.Clear();
+                    tbnombreactividad.Focus();
+                    }
 
             }catch(Exception ex)
             {
@@ -453,24 +497,48 @@ namespace Gimnasio
         //---------------------metodo para modificar cliente-------------------------------------
         private void button8_Click(object sender, EventArgs e)
         {
+
+           
             try
             {
                 ClienteController cli = new ClienteController();
                 Validacion val = new Validacion();
                 int id = Convert.ToInt32(getID(dgvClientes));
 
-                if(val.validarNombre((tbnombrecliente.Text)) && (val.validarNombre(tbapellidocliente.Text)) && (val.validarDNI(Convert.ToInt32(tbdnicliente.Text))))
+                if (val.validarNombre(tbnombrecliente.Text))
                 {
-                    cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
-                    MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    llenarGrillaCliente();
-                    limpiarLabelsCliente();
+                    if (val.validarNombre(tbapellidocliente.Text))
+                    {
+
+                        if (val.validarDNI(Convert.ToInt32(tbdnicliente.Text)))
+                        {    
+                          cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
+                          MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                          llenarGrillaCliente();
+                          limpiarLabelsCliente();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese un DNI correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un apellido correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Ingrese valores correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ingrese un nombre correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
+
+
 
 
 

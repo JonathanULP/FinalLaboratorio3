@@ -41,9 +41,9 @@ namespace Gimnasio.Controllers
         }
 
         //metodo para login
-        public bool ingresoUser(string nombre, string contraseña)
+        public int ingresoUser(string nombre, string contraseña)
         {
-            bool respuesta;
+            int respuesta;
             string contraseñaE = GetSHA1(contraseña);
             using (GimnasioEntities db = new GimnasioEntities())
             {
@@ -54,11 +54,11 @@ namespace Gimnasio.Controllers
 
                 if (user != null)
                 {
-                    respuesta = true;
+                    respuesta = user.usuario_id;
                 }
                 else
                 {
-                    respuesta = false;
+                    respuesta = -1;
                 }
             }
 
@@ -88,6 +88,14 @@ namespace Gimnasio.Controllers
 
                 db.Usuario.Remove(user);
                 db.SaveChanges();
+            }
+        }
+
+        public Usuario obtenerUsuario(int id_usuario)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                return db.Usuario.Find(id_usuario);
             }
         }
     }
