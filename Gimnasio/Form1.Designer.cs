@@ -62,7 +62,7 @@
             this.button1.Location = new System.Drawing.Point(278, 17);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 31);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Ingresar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -139,7 +139,7 @@
             this.button2.Location = new System.Drawing.Point(278, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 23);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 7;
             this.button2.Text = "Registrarse";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -208,7 +208,7 @@
             this.tbcontraseñauser.Name = "tbcontraseñauser";
             this.tbcontraseñauser.PasswordChar = '*';
             this.tbcontraseñauser.Size = new System.Drawing.Size(169, 20);
-            this.tbcontraseñauser.TabIndex = 1;
+            this.tbcontraseñauser.TabIndex = 2;
             this.tbcontraseñauser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbcontraseñauser_KeyPress);
             // 
             // tbnombreuser
@@ -219,7 +219,7 @@
             this.tbnombreuser.Location = new System.Drawing.Point(278, 115);
             this.tbnombreuser.Name = "tbnombreuser";
             this.tbnombreuser.Size = new System.Drawing.Size(169, 20);
-            this.tbnombreuser.TabIndex = 0;
+            this.tbnombreuser.TabIndex = 1;
             // 
             // Form1
             // 

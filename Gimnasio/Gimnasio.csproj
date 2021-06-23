@@ -130,6 +130,12 @@
     <Compile Include="Rol.cs">
       <DependentUpon>GimnasioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="usRelojBoton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="usRelojBoton.Designer.cs">
+      <DependentUpon>usRelojBoton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.cs">
       <DependentUpon>GimnasioDB.tt</DependentUpon>
     </Compile>
@@ -152,6 +158,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="usRelojBoton.resx">
+      <DependentUpon>usRelojBoton.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="GimnasioDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GimnasioDB.Designer.cs</LastGenOutput>

@@ -681,7 +681,7 @@ namespace Gimnasio
                 {
                     dgvingreso.Rows.Add();
                     dgvingreso.Rows[x].Cells["nombre_cliente1"].Value = item.nombre_cliente+" "+item.apellido_cliente;
-                    dgvingreso.Rows[x].Cells["fecha_ingreso1"].Value = item.fecha_ingresoToShortDateString();
+                    dgvingreso.Rows[x].Cells["fecha_ingreso1"].Value = item.fecha_ingreso.ToShortDateString();
                     dgvingreso.Rows[x].Cells["hora_ingreso1"].Value = item.hora_ingreso;
                     x++;
                 }
@@ -906,7 +906,9 @@ namespace Gimnasio
             }
         }
 
-        private void btncancelar_Click(object sender, EventArgs e)
+        //Estos dos metodos sos eventos que funcionaban pero dejaron de hacerlo sin sentido
+
+        /*private void btncancelar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -924,11 +926,11 @@ namespace Gimnasio
             {
                 Console.WriteLine(ex.Message);
             }
-        }
+        }*/
 
       
 
-        private void btnasignar_Click(object sender, EventArgs e)
+      /*  private void btnasignar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -949,7 +951,7 @@ namespace Gimnasio
             {
                 MessageBox.Show("Error al asignar tarea "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
 
         private void pnlformulariotrainer_Paint(object sender, PaintEventArgs e)
         {
@@ -1142,6 +1144,26 @@ namespace Gimnasio
             }
         }
 
+        private void btncancelar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult res = MessageBox.Show("¿Seguro quiere cancelar la operación?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    pnlasignaractividad.Visible = false;
+                    lblnombretrainer.Text = "";
+                    lbldnitrainer.Text = "";
+                    lblgenero.Text = "";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
 
 
         //-----------------------------------------ACA EMPIEZA LA PARTE DE REGISTRO--------------------------------------------
@@ -1242,6 +1264,52 @@ namespace Gimnasio
                     MessageBox.Show("Error al cargar la grilla de registros "+ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void pnlasignaractividad_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnasignar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Entre_Act_Controller ea = new Entre_Act_Controller();
+                int id_actividad = Convert.ToInt32(cboactividadtrainer.SelectedValue);
+                int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
+                ea.crearObjeto(id_actividad, id_entrenador);
+
+                DialogResult res = MessageBox.Show("Tarea asignada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+                    pnlformulariotrainer.Visible = true;
+                    pnlasignaractividad.Visible = false;
+                    llenarGrillaTrainer(-1);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al asignar tarea " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //--------------------------------------------METODOS DE CONTROL DE USUARIO--------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------------------------
+        private void usRelojBoton1_Load(object sender, EventArgs e)
+        {
+            //usRelojBoton1.evCerrar += new EventHandler(usRelojBoton1_evCerrar);
+        }
+
+        private void usRelojBoton1_evCerrar(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("¿Seguro quiere salir de la aplicacion?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (res == DialogResult.Yes)
+            {
+                this.Close();
+            }
+
         }
     }
 }
