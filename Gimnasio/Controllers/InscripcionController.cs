@@ -133,5 +133,26 @@ namespace Gimnasio.Controllers
 
         }
 
+        public int bajaFechasExpiradas()
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                List<Inscripcion> ins = new List<Inscripcion>();
+
+                ins = db.Inscripcion.Where(x => DateTime.Now > x.Plaan.fecha_limite && x.activo == true).ToList();
+
+                foreach(var item in ins)
+                {
+                    item.activo = false;
+                    db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+                return ins.Count();
+
+                
+            }
+        }
+
     }
 }

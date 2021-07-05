@@ -90,5 +90,17 @@ namespace Gimnasio.Controllers
                 return db.Actividad.Where(x => x.borrado_logico == false).ToList();
             }
         }
+
+        public bool Noexiste(string nombre)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Actividad act = new Actividad();
+
+                act = db.Actividad.Where(x => x.nombre == nombre && x.borrado_logico == false).FirstOrDefault();
+
+                return  (act == null) ? true : false;
+            }
+        }
     }
 }

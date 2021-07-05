@@ -23,15 +23,17 @@ namespace Gimnasio
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
         public frmHome1(int id_usuario)
         {
             InitializeComponent();
             asignarActividades(cboactividades);
             rellenarLabels();
-            rbdeshabilitar.Select();
             llenarGrillaCliente();
             llenarGrillaInscripcion();
             llenarComboTrainer();
+
 
             try
             {
@@ -40,6 +42,7 @@ namespace Gimnasio
 
                 user = u.obtenerUsuario(id_usuario);
                 lblnombreusuario.Text = user.nombre + " " + user.apellido;
+                
             }
             catch(Exception ex)
             {
@@ -139,6 +142,7 @@ namespace Gimnasio
         {
             tabControl1.SelectedIndex = 2;
             asignarActividades(cbactividadinscripcion);
+            darDeBajaInscripcionesConFechaLimite();
             llenarGrillaInscripcion();
             llenarComboDias();
 
@@ -287,10 +291,20 @@ namespace Gimnasio
                     {
                         if (val.validarTipoActividad(tbtipoactividad.Text))
                         {
-                            act.crearActividad(tbnombreactividad.Text, tbtipoactividad.Text);
-                            MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            asignarActividades(cboactividades);
-                        }
+                            if(act.Noexiste(tbnombreactividad.Text))
+                            {
+                                act.crearActividad(tbnombreactividad.Text, tbtipoactividad.Text);
+                                MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                asignarActividades(cboactividades);
+                            }
+                            else
+                            {
+
+                            MessageBox.Show("Esta actividad ya existe y esta activada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
+                            }
+
+                    }
                        else
                        {
                         MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -314,32 +328,10 @@ namespace Gimnasio
         }
 
         //radio button para deshabilitar la funcion de agregar 
-        private void rbdeshabilitar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                btnagregar.Enabled = false;
-                btnagregar.ForeColor = Color.White;
-                rellenarLabels();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error" + ex.Message, "Error");
-            }
-           
-        }
+       
 
         //funcion para habilitar campo de agregar actividad
-        private void rbhabilitar_CheckedChanged(object sender, EventArgs e)
-        {
-            btnagregar.Enabled = true;
-
-            tbactivo.Clear();
-            tbnombreactividad.Clear();
-            tbtipoactividad.Clear();
-            tbnombreactividad.Focus();
-            tbactivo.Enabled = false;
-        }
+       
 
 
         //--------------------------------------hasta aca llega la parte de actividad-------------------------
@@ -632,6 +624,31 @@ namespace Gimnasio
             {
                 MessageBox.Show("Error al crear inscripcion. Verifique el DNI del cliente ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        private void darDeBajaInscripcionesConFechaLimite()
+        {
+            try
+            {
+                List<Inscripcion> ins = new List<Inscripcion>();
+                InscripcionController i = new InscripcionController();
+
+                int cantidad = i.bajaFechasExpiradas();
+
+                if(cantidad > 0)
+                {
+                    //mensaje += $"La inscripcion del cliente {item.Cliente.nombre} {item.Cliente.apellido} se dio de baja debido que expiro su fecha limite"; 
+                     MessageBox.Show("Se dio de baja a "+cantidad+" inscripciones debido a que se expiro su fecha limite ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                }
+                
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -1311,5 +1328,7 @@ namespace Gimnasio
             }
 
         }
+
+       
     }
 }

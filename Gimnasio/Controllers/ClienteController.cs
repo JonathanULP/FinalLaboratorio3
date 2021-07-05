@@ -100,7 +100,7 @@ namespace Gimnasio.Controllers
                                 select c).FirstOrDefault();
                 return resultado;*/
 
-                return db.Cliente.Where(x => x.dni == dni).First();
+                return db.Cliente.Where(x => x.dni == dni).FirstOrDefault();
 
                
 
