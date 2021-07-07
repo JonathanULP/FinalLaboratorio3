@@ -33,6 +33,7 @@ namespace Gimnasio
             llenarGrillaCliente();
             llenarGrillaInscripcion();
             llenarComboTrainer();
+            mostrarMensajesToolTip();
 
 
             try
@@ -145,6 +146,7 @@ namespace Gimnasio
             darDeBajaInscripcionesConFechaLimite();
             llenarGrillaInscripcion();
             llenarComboDias();
+            valorPorDefectoADate();
 
         }
 
@@ -632,17 +634,22 @@ namespace Gimnasio
         {
             try
             {
-                List<Inscripcion> ins = new List<Inscripcion>();
+                dynamic ins;
+                int cantidad = 0;
                 InscripcionController i = new InscripcionController();
 
-                int cantidad = i.bajaFechasExpiradas();
+                ins = i.bajaFechasExpiradas(ref cantidad);
+                string mensaje = "";
 
                 if(cantidad > 0)
                 {
-                    //mensaje += $"La inscripcion del cliente {item.Cliente.nombre} {item.Cliente.apellido} se dio de baja debido que expiro su fecha limite"; 
-                     MessageBox.Show("Se dio de baja a "+cantidad+" inscripciones debido a que se expiro su fecha limite ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                    foreach (var item in ins)
+                    {
+                        mensaje += $"{item.nombre} {item.apellido} \n";
+                    }
+
+                    MessageBox.Show("La inscripciones de los siguientes clientes se dieron de baja debido a que expiro su fecha limiete de ingreso \n\n" + mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
                 
             }
             catch(Exception ex)
@@ -676,6 +683,11 @@ namespace Gimnasio
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void valorPorDefectoADate()
+        {
+            dtpfechalimiteinscripcion.Value = DateTime.Now.AddMonths(+1);
         }
 
         private void panel19_Paint(object sender, PaintEventArgs e)
@@ -775,7 +787,7 @@ namespace Gimnasio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas"+ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Es probable que el DNI no sea correcto o este cliente ya no tenga inscripciones activas","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
             }
         }
@@ -1327,6 +1339,23 @@ namespace Gimnasio
                 this.Close();
             }
 
+        }
+
+        //Esta funcion permitira mostrar mensajes tipo tooltip sobre determinados textbox o cualquier otro componente
+        private void mostrarMensajesToolTip()
+        {
+            //vista registro
+            this.ttmensaje.SetToolTip(this.tbfiltrarregistro, "Puede filtrar por nombre, apellido o DNI");
+
+            //vista ingreso
+            this.ttmensaje.SetToolTip(this.tbingreso, "Ingrese el DNI del cliente que desea ingresar al gimnasio");
+
+            //vista actividad
+            this.ttmensaje.SetToolTip(this.tbnombreactividad,"Nombre de actividad");
+            this.ttmensaje.SetToolTip(this.tbtipoactividad, "Descripcion breve de la actividad");
+
+            //vista personal
+            this.ttmensaje.SetToolTip(this.btnasignaractividad, "Aca podra asignarle una actividad al trainer elegido");
         }
 
        

@@ -133,13 +133,22 @@ namespace Gimnasio.Controllers
 
         }
 
-        public int bajaFechasExpiradas()
+        public object bajaFechasExpiradas(ref int cantidad)
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
                 List<Inscripcion> ins = new List<Inscripcion>();
+                object result = db.Inscripcion.Where(x => DateTime.Now > x.Plaan.fecha_limite && x.activo == true)
+                                              .Select(x => new
+                                              {
+                                                  nombre = x.Cliente.nombre,
+                                                  apellido = x.Cliente.apellido,
+                                                  dni = x.Cliente.dni
+
+                                              }).ToList();
 
                 ins = db.Inscripcion.Where(x => DateTime.Now > x.Plaan.fecha_limite && x.activo == true).ToList();
+                cantidad = ins.Count();
 
                 foreach(var item in ins)
                 {
@@ -148,7 +157,7 @@ namespace Gimnasio.Controllers
                     db.SaveChanges();
                 }
 
-                return ins.Count();
+                return result;
 
                 
             }

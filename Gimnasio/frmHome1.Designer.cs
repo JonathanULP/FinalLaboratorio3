@@ -204,6 +204,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.ttmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.usRelojBoton1 = new Gimnasio.usRelojBoton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2144,6 +2145,13 @@
             this.panel10.Size = new System.Drawing.Size(10, 524);
             this.panel10.TabIndex = 4;
             // 
+            // ttmensaje
+            // 
+            this.ttmensaje.AutoPopDelay = 5000;
+            this.ttmensaje.InitialDelay = 350;
+            this.ttmensaje.IsBalloon = true;
+            this.ttmensaje.ReshowDelay = 100;
+            // 
             // usRelojBoton1
             // 
             this.usRelojBoton1.BackColor = System.Drawing.Color.Transparent;
@@ -2365,5 +2373,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox cboactividadtrainer;
         private usRelojBoton usRelojBoton1;
+        private System.Windows.Forms.ToolTip ttmensaje;
     }
 }
