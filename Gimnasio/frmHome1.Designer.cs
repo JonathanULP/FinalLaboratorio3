@@ -80,7 +80,6 @@
             this.tbdiasrestantes = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.tbingreso = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -101,7 +100,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.dtpfechainicioinscripcion = new System.Windows.Forms.DateTimePicker();
             this.cbactividadinscripcion = new System.Windows.Forms.ComboBox();
-            this.tbdninscripcion = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -132,7 +130,6 @@
             this.btncreartrainer = new System.Windows.Forms.Button();
             this.dtpfechanactrainer = new System.Windows.Forms.DateTimePicker();
             this.tbtitulotrainer = new System.Windows.Forms.TextBox();
-            this.tbdnitrainer = new System.Windows.Forms.TextBox();
             this.tbapellidotrainer = new System.Windows.Forms.TextBox();
             this.tbnombretrainer = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -159,7 +156,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dtpcliente = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.tbdnicliente = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbapellidocliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -206,6 +202,10 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.ttmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.usRelojBoton1 = new Gimnasio.usRelojBoton();
+            this.tbingreso = new Gimnasio.tbSoloNumeros();
+            this.tbdninscripcion = new Gimnasio.tbSoloNumeros();
+            this.tbdnicliente = new Gimnasio.tbSoloNumeros();
+            this.tbdnitrainer = new Gimnasio.tbSoloNumeros();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -470,13 +470,13 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.tabPage2.Controls.Add(this.tbingreso);
             this.tabPage2.Controls.Add(this.dgvingreso);
             this.tabPage2.Controls.Add(this.tbfecha_limite);
             this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.tbdiasrestantes);
             this.tabPage2.Controls.Add(this.label22);
             this.tabPage2.Controls.Add(this.btnIngresar);
-            this.tabPage2.Controls.Add(this.tbingreso);
             this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -612,14 +612,6 @@
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            // 
-            // tbingreso
-            // 
-            this.tbingreso.Location = new System.Drawing.Point(625, 138);
-            this.tbingreso.MaxLength = 8;
-            this.tbingreso.Name = "tbingreso";
-            this.tbingreso.Size = new System.Drawing.Size(163, 20);
-            this.tbingreso.TabIndex = 2;
             // 
             // label21
             // 
@@ -765,6 +757,7 @@
             // 
             // panel19
             // 
+            this.panel19.Controls.Add(this.tbdninscripcion);
             this.panel19.Controls.Add(this.cboCantDia);
             this.panel19.Controls.Add(this.btncrearinscripcion);
             this.panel19.Controls.Add(this.dtpfechalimiteinscripcion);
@@ -773,7 +766,6 @@
             this.panel19.Controls.Add(this.label17);
             this.panel19.Controls.Add(this.dtpfechainicioinscripcion);
             this.panel19.Controls.Add(this.cbactividadinscripcion);
-            this.panel19.Controls.Add(this.tbdninscripcion);
             this.panel19.Controls.Add(this.label16);
             this.panel19.Controls.Add(this.label15);
             this.panel19.Controls.Add(this.label14);
@@ -864,17 +856,10 @@
             // cbactividadinscripcion
             // 
             this.cbactividadinscripcion.FormattingEnabled = true;
-            this.cbactividadinscripcion.Location = new System.Drawing.Point(147, 181);
+            this.cbactividadinscripcion.Location = new System.Drawing.Point(145, 181);
             this.cbactividadinscripcion.Name = "cbactividadinscripcion";
-            this.cbactividadinscripcion.Size = new System.Drawing.Size(200, 21);
+            this.cbactividadinscripcion.Size = new System.Drawing.Size(202, 21);
             this.cbactividadinscripcion.TabIndex = 2;
-            // 
-            // tbdninscripcion
-            // 
-            this.tbdninscripcion.Location = new System.Drawing.Point(147, 152);
-            this.tbdninscripcion.Name = "tbdninscripcion";
-            this.tbdninscripcion.Size = new System.Drawing.Size(200, 20);
-            this.tbdninscripcion.TabIndex = 1;
             // 
             // label16
             // 
@@ -1083,6 +1068,7 @@
             // 
             // pnlformulariotrainer
             // 
+            this.pnlformulariotrainer.Controls.Add(this.tbdnitrainer);
             this.pnlformulariotrainer.Controls.Add(this.pnlasignaractividad);
             this.pnlformulariotrainer.Controls.Add(this.cbosexotrainer);
             this.pnlformulariotrainer.Controls.Add(this.btnborrartrainer);
@@ -1090,7 +1076,6 @@
             this.pnlformulariotrainer.Controls.Add(this.btncreartrainer);
             this.pnlformulariotrainer.Controls.Add(this.dtpfechanactrainer);
             this.pnlformulariotrainer.Controls.Add(this.tbtitulotrainer);
-            this.pnlformulariotrainer.Controls.Add(this.tbdnitrainer);
             this.pnlformulariotrainer.Controls.Add(this.tbapellidotrainer);
             this.pnlformulariotrainer.Controls.Add(this.tbnombretrainer);
             this.pnlformulariotrainer.Controls.Add(this.label32);
@@ -1281,13 +1266,6 @@
             this.tbtitulotrainer.Name = "tbtitulotrainer";
             this.tbtitulotrainer.Size = new System.Drawing.Size(249, 20);
             this.tbtitulotrainer.TabIndex = 12;
-            // 
-            // tbdnitrainer
-            // 
-            this.tbdnitrainer.Location = new System.Drawing.Point(192, 150);
-            this.tbdnitrainer.Name = "tbdnitrainer";
-            this.tbdnitrainer.Size = new System.Drawing.Size(249, 20);
-            this.tbdnitrainer.TabIndex = 10;
             // 
             // tbapellidotrainer
             // 
@@ -1538,12 +1516,12 @@
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.tbdnicliente);
             this.panel17.Controls.Add(this.cbosexocliente);
             this.panel17.Controls.Add(this.btnagregarcliente);
             this.panel17.Controls.Add(this.label12);
             this.panel17.Controls.Add(this.dtpcliente);
             this.panel17.Controls.Add(this.label11);
-            this.panel17.Controls.Add(this.tbdnicliente);
             this.panel17.Controls.Add(this.label10);
             this.panel17.Controls.Add(this.tbapellidocliente);
             this.panel17.Controls.Add(this.label9);
@@ -1609,14 +1587,6 @@
             this.label11.Size = new System.Drawing.Size(101, 16);
             this.label11.TabIndex = 22;
             this.label11.Text = "Fecha de nac.";
-            // 
-            // tbdnicliente
-            // 
-            this.tbdnicliente.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdnicliente.Location = new System.Drawing.Point(149, 233);
-            this.tbdnicliente.Name = "tbdnicliente";
-            this.tbdnicliente.Size = new System.Drawing.Size(152, 22);
-            this.tbdnicliente.TabIndex = 21;
             // 
             // label10
             // 
@@ -2162,6 +2132,42 @@
             this.usRelojBoton1.evCerrar += new System.EventHandler(this.usRelojBoton1_evCerrar);
             this.usRelojBoton1.Load += new System.EventHandler(this.usRelojBoton1_Load);
             // 
+            // tbingreso
+            // 
+            this.tbingreso.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbingreso.Location = new System.Drawing.Point(619, 135);
+            this.tbingreso.Name = "tbingreso";
+            this.tbingreso.Size = new System.Drawing.Size(168, 22);
+            this.tbingreso.TabIndex = 13;
+            this.tbingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbdninscripcion
+            // 
+            this.tbdninscripcion.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdninscripcion.Location = new System.Drawing.Point(145, 150);
+            this.tbdninscripcion.Name = "tbdninscripcion";
+            this.tbdninscripcion.Size = new System.Drawing.Size(202, 22);
+            this.tbdninscripcion.TabIndex = 11;
+            this.tbdninscripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbdnicliente
+            // 
+            this.tbdnicliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnicliente.Location = new System.Drawing.Point(149, 229);
+            this.tbdnicliente.Name = "tbdnicliente";
+            this.tbdnicliente.Size = new System.Drawing.Size(152, 22);
+            this.tbdnicliente.TabIndex = 28;
+            this.tbdnicliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbdnitrainer
+            // 
+            this.tbdnitrainer.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnitrainer.Location = new System.Drawing.Point(192, 148);
+            this.tbdnitrainer.Name = "tbdnitrainer";
+            this.tbdnitrainer.Size = new System.Drawing.Size(247, 22);
+            this.tbdnitrainer.TabIndex = 19;
+            this.tbdnitrainer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmHome1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2277,7 +2283,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dtpcliente;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbdnicliente;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbapellidocliente;
         private System.Windows.Forms.Label label9;
@@ -2300,7 +2305,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker dtpfechainicioinscripcion;
         private System.Windows.Forms.ComboBox cbactividadinscripcion;
-        private System.Windows.Forms.TextBox tbdninscripcion;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -2315,7 +2319,6 @@
         private System.Windows.Forms.TextBox tbdiasrestantes;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.TextBox tbingreso;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cboCantDia;
@@ -2341,7 +2344,6 @@
         private System.Windows.Forms.Button btncreartrainer;
         private System.Windows.Forms.DateTimePicker dtpfechanactrainer;
         private System.Windows.Forms.TextBox tbtitulotrainer;
-        private System.Windows.Forms.TextBox tbdnitrainer;
         private System.Windows.Forms.TextBox tbapellidotrainer;
         private System.Windows.Forms.TextBox tbnombretrainer;
         private System.Windows.Forms.Label label32;
@@ -2374,5 +2376,9 @@
         private System.Windows.Forms.ComboBox cboactividadtrainer;
         private usRelojBoton usRelojBoton1;
         private System.Windows.Forms.ToolTip ttmensaje;
+        private tbSoloNumeros tbingreso;
+        private tbSoloNumeros tbdninscripcion;
+        private tbSoloNumeros tbdnicliente;
+        private tbSoloNumeros tbdnitrainer;
     }
 }

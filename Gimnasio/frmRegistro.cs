@@ -37,12 +37,24 @@ namespace Gimnasio
 
         private void frmRegistro_Load(object sender, EventArgs e)
         {
+            try
+            {
+                cargarComboBox(cboRol);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error al cargar combobox de roles", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cargarComboBox(ComboBox box)
+        {
             using (GimnasioEntities db = new GimnasioEntities())
             {
-                cboRol.DataSource = db.Rol.ToList();
+                box.DataSource = db.Rol.ToList();
 
-                cboRol.DisplayMember = "nombre";
-                cboRol.ValueMember = "rol_id";
+                box.DisplayMember = "nombre";
+                box.ValueMember = "rol_id";
             }
         }
 

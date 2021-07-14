@@ -362,7 +362,7 @@ namespace Gimnasio
                     dgvClientes.Rows[x].Cells["nombre"].Value = item.nombre;
                     dgvClientes.Rows[x].Cells["apellido"].Value = item.apellido;
                     dgvClientes.Rows[x].Cells["dni"].Value = item.dni;
-                    dgvClientes.Rows[x].Cells["fecha_nac"].Value = item.fecha_nac;
+                    dgvClientes.Rows[x].Cells["fecha_nac"].Value = item.fecha_nac.Value.ToShortDateString();
                     dgvClientes.Rows[x].Cells["sexo"].Value = item.sexo;
                     x++;
 

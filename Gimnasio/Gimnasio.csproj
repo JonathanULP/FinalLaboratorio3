@@ -130,6 +130,12 @@
     <Compile Include="Rol.cs">
       <DependentUpon>GimnasioDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbSoloNumeros.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="tbSoloNumeros.Designer.cs">
+      <DependentUpon>tbSoloNumeros.cs</DependentUpon>
+    </Compile>
     <Compile Include="usRelojBoton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -158,6 +164,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="tbSoloNumeros.resx">
+      <DependentUpon>tbSoloNumeros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="usRelojBoton.resx">
       <DependentUpon>usRelojBoton.cs</DependentUpon>
     </EmbeddedResource>
