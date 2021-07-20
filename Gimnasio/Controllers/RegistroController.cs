@@ -123,7 +123,7 @@ namespace Gimnasio.Controllers
                                   dni_cliente = x.Cliente.dni,
                                   hora_ingreso = x.hora_ingreso,
                                   dia_ingreso = x.dia_ingreso
-                              });
+                              }).OrderByDescending(x => x.dia_ingreso);
         }
     }
 }

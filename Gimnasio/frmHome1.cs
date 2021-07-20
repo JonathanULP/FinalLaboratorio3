@@ -1,4 +1,5 @@
 ﻿using Gimnasio.Controllers;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1358,6 +1359,30 @@ namespace Gimnasio
             this.ttmensaje.SetToolTip(this.btnasignaractividad, "Aca podra asignarle una actividad al trainer elegido");
         }
 
-       
+        private void frmHome1_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet.Registro' Puede moverla o quitarla según sea necesario.
+            this.RegistroTableAdapter.Fill(this.GimnasioDataSet.Registro);
+            // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet1.Cliente' Puede moverla o quitarla según sea necesario.
+            this.ClienteTableAdapter.Fill(this.GimnasioDataSet1.Cliente);
+
+            ReportParameter rp = new ReportParameter("ReportParameterFecha", dateTimePicker1.Value.AddYears(-100).ToString());
+
+            this.reportViewer1.LocalReport.SetParameters(rp);
+
+            this.reportViewer1.RefreshReport();
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            ReportParameter rp = new ReportParameter("ReportParameterFecha", dateTimePicker1.Value.AddDays(-1).ToString());
+
+            this.reportViewer1.LocalReport.SetParameters(rp);
+
+
+            this.reportViewer1.RefreshReport();
+
+        }
     }
 }
