@@ -46,13 +46,15 @@ namespace Gimnasio.Controllers
             int respuesta;
             string contraseñaE = GetSHA1(contraseña);
             GimnasioEntities db = new GimnasioEntities();
-            
-                //seleccionamos el usuario el cual coincida el nombre y la contraseña
-                /*var user = (from u in db.Usuario
-                            where u.nombre == nombre && u.contraseña == contraseñaE
-                            select u).FirstOrDefault();*/
 
-                 var user = db.Usuario.Where(x => x.nombre == nombre && x.contraseña == contraseñaE).FirstOrDefault();
+            //seleccionamos el usuario el cual coincida el nombre y la contraseña
+            /*var user = (from u in db.Usuario
+                        where u.nombre == nombre && u.contraseña == contraseñaE
+                        select u).FirstOrDefault();*/
+
+                  Usuario user = new Usuario();
+
+                  user = db.Usuario.Where(x => x.nombre == nombre && x.contraseña == contraseñaE).FirstOrDefault();
 
                 if (user != null)
                 {

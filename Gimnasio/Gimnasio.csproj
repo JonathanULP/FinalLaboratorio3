@@ -143,6 +143,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GimnasioDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GimnasioDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GimnasioDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GimnasioDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,6 +212,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportInscripcion.rdlc" />
     <EmbeddedResource Include="ReportRegistro.rdlc" />
     <EmbeddedResource Include="tbSoloNumeros.resx">
       <DependentUpon>tbSoloNumeros.cs</DependentUpon>
@@ -261,6 +267,17 @@
     </None>
     <None Include="GimnasioDataSet3.xss">
       <DependentUpon>GimnasioDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="GimnasioDataSet4.xsc">
+      <DependentUpon>GimnasioDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="GimnasioDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GimnasioDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GimnasioDataSet4.xss">
+      <DependentUpon>GimnasioDataSet4.xsd</DependentUpon>
     </None>
     <None Include="GimnasioDB.edmx.diagram">
       <DependentUpon>GimnasioDB.edmx</DependentUpon>

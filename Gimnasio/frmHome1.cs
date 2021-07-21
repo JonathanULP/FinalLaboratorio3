@@ -164,6 +164,7 @@ namespace Gimnasio
 
         private void button4_Click(object sender, EventArgs e)
         {
+            llenarComboReporte();
             tabControl1.SelectedIndex = 4;
         }
 
@@ -1361,17 +1362,36 @@ namespace Gimnasio
 
         private void frmHome1_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet4.Inscripcion' Puede moverla o quitarla según sea necesario.
+            this.InscripcionTableAdapter.Fill(this.GimnasioDataSet4.Inscripcion);
+            // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet4.Actividad' Puede moverla o quitarla según sea necesario.
+            this.ActividadTableAdapter.Fill(this.GimnasioDataSet4.Actividad);
+            // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet4.Plaan' Puede moverla o quitarla según sea necesario.
+            this.PlaanTableAdapter.Fill(this.GimnasioDataSet4.Plaan);
             // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet.Registro' Puede moverla o quitarla según sea necesario.
             this.RegistroTableAdapter.Fill(this.GimnasioDataSet.Registro);
             // TODO: esta línea de código carga datos en la tabla 'GimnasioDataSet1.Cliente' Puede moverla o quitarla según sea necesario.
             this.ClienteTableAdapter.Fill(this.GimnasioDataSet1.Cliente);
 
+            //PARAMETROS INFORMES DE REGISTROS
             ReportParameter rp = new ReportParameter("ReportParameterFecha", dateTimePicker1.Value.AddYears(-100).ToString());
 
             this.reportViewer1.LocalReport.SetParameters(rp);
 
             this.reportViewer1.RefreshReport();
 
+
+            //---------------------------------------------------------------------------------------------------------//
+
+
+            //PARAMETROS INFORMES DE INSCRIPCIONES
+
+
+            ReportParameter rpInscripcions = new ReportParameter("ReportParameterActivo", Convert.ToString(-1));
+
+            this.reportViewer2.LocalReport.SetParameters(rpInscripcions);
+
+            this.reportViewer2.RefreshReport();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -1383,6 +1403,57 @@ namespace Gimnasio
 
             this.reportViewer1.RefreshReport();
 
+        }
+
+
+        //metodo para llenar combobox de informes
+        private void llenarComboReporte()
+        {
+            try
+            {
+                Dictionary<int, string> dic = new Dictionary<int, string>();
+                dic.Add(-1, "Inscripciones activas");
+                dic.Add(0, "Inscripciones expiradas");
+                
+
+                cboinscripciones.DataSource = dic.ToList();
+                cboinscripciones.DisplayMember = "Value";
+                cboinscripciones.ValueMember = "Key";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error a llenar combobox", "Error", MessageBoxButtons.OK);
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        private void cboinscripciones_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //PARAMETROS INFORMES DE INSCRIPCIONES
+
+            ReportParameter rpInscripcions;
+            if (Convert.ToInt32(cboinscripciones.SelectedValue) == -1)
+            {
+                rpInscripcions = new ReportParameter("ReportParameterActivo", Convert.ToString(-1));
+
+                this.reportViewer2.LocalReport.SetParameters(rpInscripcions);
+
+                this.reportViewer2.RefreshReport();
+            }
+            else
+            {
+                rpInscripcions = new ReportParameter("ReportParameterActivo", Convert.ToString(0));
+
+                this.reportViewer2.LocalReport.SetParameters(rpInscripcions);
+
+                this.reportViewer2.RefreshReport();
+            }
+
+
+            this.reportViewer2.LocalReport.SetParameters(rpInscripcions);
+
+            this.reportViewer2.RefreshReport();
         }
     }
 }
