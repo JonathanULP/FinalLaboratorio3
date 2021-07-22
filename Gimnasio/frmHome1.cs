@@ -108,17 +108,6 @@ namespace Gimnasio
             this.Close();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
@@ -1358,6 +1347,8 @@ namespace Gimnasio
 
             //vista personal
             this.ttmensaje.SetToolTip(this.btnasignaractividad, "Aca podra asignarle una actividad al trainer elegido");
+
+            this.ttmensaje.SetToolTip(this.usRelojBoton1, "Cerrar app");
         }
 
         private void frmHome1_Load(object sender, EventArgs e)

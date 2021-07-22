@@ -41,6 +41,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,14 +56,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome1));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RegistroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GimnasioDataSet = new Gimnasio.GimnasioDataSet();
             this.ClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GimnasioDataSet1 = new Gimnasio.GimnasioDataSet1();
+            this.InscripcionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GimnasioDataSet4 = new Gimnasio.GimnasioDataSet4();
+            this.ActividadBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PlaanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -81,6 +85,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbnombreactividad = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbingreso = new Gimnasio.tbSoloNumeros();
             this.dgvingreso = new System.Windows.Forms.DataGridView();
             this.nombre_cliente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_ingreso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +107,7 @@
             this.fecha_limite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cant_dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.tbdninscripcion = new Gimnasio.tbSoloNumeros();
             this.cboCantDia = new System.Windows.Forms.ComboBox();
             this.btncrearinscripcion = new System.Windows.Forms.Button();
             this.dtpfechalimiteinscripcion = new System.Windows.Forms.DateTimePicker();
@@ -126,6 +132,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.pnlformulariotrainer = new System.Windows.Forms.Panel();
+            this.tbdnitrainer = new Gimnasio.tbSoloNumeros();
             this.pnlasignaractividad = new System.Windows.Forms.Panel();
             this.btnasignar = new System.Windows.Forms.Button();
             this.btncancelar = new System.Windows.Forms.Button();
@@ -149,6 +156,8 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.cboinscripciones = new System.Windows.Forms.ComboBox();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label36 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -164,6 +173,7 @@
             this.fecha_nac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.tbdnicliente = new Gimnasio.tbSoloNumeros();
             this.cbosexocliente = new System.Windows.Forms.ComboBox();
             this.btnagregarcliente = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -191,9 +201,9 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.usRelojBoton1 = new Gimnasio.usRelojBoton();
             this.lblnombreusuario = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -216,24 +226,17 @@
             this.ttmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.RegistroTableAdapter = new Gimnasio.GimnasioDataSetTableAdapters.RegistroTableAdapter();
             this.ClienteTableAdapter = new Gimnasio.GimnasioDataSet1TableAdapters.ClienteTableAdapter();
-            this.GimnasioDataSet4 = new Gimnasio.GimnasioDataSet4();
-            this.InscripcionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.InscripcionTableAdapter = new Gimnasio.GimnasioDataSet4TableAdapters.InscripcionTableAdapter();
-            this.ActividadBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ActividadTableAdapter = new Gimnasio.GimnasioDataSet4TableAdapters.ActividadTableAdapter();
-            this.PlaanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PlaanTableAdapter = new Gimnasio.GimnasioDataSet4TableAdapters.PlaanTableAdapter();
-            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.cboinscripciones = new System.Windows.Forms.ComboBox();
-            this.usRelojBoton1 = new Gimnasio.usRelojBoton();
-            this.tbingreso = new Gimnasio.tbSoloNumeros();
-            this.tbdninscripcion = new Gimnasio.tbSoloNumeros();
-            this.tbdnitrainer = new Gimnasio.tbSoloNumeros();
-            this.tbdnicliente = new Gimnasio.tbSoloNumeros();
             ((System.ComponentModel.ISupportInitialize)(this.RegistroBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ActividadBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlaanBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -258,14 +261,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvregistros)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActividadBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlaanBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RegistroBindingSource
@@ -287,6 +285,26 @@
             // 
             this.GimnasioDataSet1.DataSetName = "GimnasioDataSet1";
             this.GimnasioDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // InscripcionBindingSource
+            // 
+            this.InscripcionBindingSource.DataMember = "Inscripcion";
+            this.InscripcionBindingSource.DataSource = this.GimnasioDataSet4;
+            // 
+            // GimnasioDataSet4
+            // 
+            this.GimnasioDataSet4.DataSetName = "GimnasioDataSet4";
+            this.GimnasioDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ActividadBindingSource
+            // 
+            this.ActividadBindingSource.DataMember = "Actividad";
+            this.ActividadBindingSource.DataSource = this.GimnasioDataSet4;
+            // 
+            // PlaanBindingSource
+            // 
+            this.PlaanBindingSource.DataMember = "Plaan";
+            this.PlaanBindingSource.DataSource = this.GimnasioDataSet4;
             // 
             // tabControl1
             // 
@@ -538,6 +556,16 @@
             this.tabPage2.Size = new System.Drawing.Size(1257, 542);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
+            // 
+            // tbingreso
+            // 
+            this.tbingreso.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbingreso.Location = new System.Drawing.Point(619, 135);
+            this.tbingreso.MaxLength = 8;
+            this.tbingreso.Name = "tbingreso";
+            this.tbingreso.Size = new System.Drawing.Size(168, 22);
+            this.tbingreso.TabIndex = 13;
+            this.tbingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvingreso
             // 
@@ -828,6 +856,16 @@
             this.panel19.Size = new System.Drawing.Size(366, 524);
             this.panel19.TabIndex = 0;
             this.panel19.Paint += new System.Windows.Forms.PaintEventHandler(this.panel19_Paint);
+            // 
+            // tbdninscripcion
+            // 
+            this.tbdninscripcion.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdninscripcion.Location = new System.Drawing.Point(145, 150);
+            this.tbdninscripcion.MaxLength = 8;
+            this.tbdninscripcion.Name = "tbdninscripcion";
+            this.tbdninscripcion.Size = new System.Drawing.Size(202, 22);
+            this.tbdninscripcion.TabIndex = 11;
+            this.tbdninscripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cboCantDia
             // 
@@ -1143,6 +1181,16 @@
             this.pnlformulariotrainer.TabIndex = 3;
             this.pnlformulariotrainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlformulariotrainer_Paint);
             // 
+            // tbdnitrainer
+            // 
+            this.tbdnitrainer.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnitrainer.Location = new System.Drawing.Point(192, 148);
+            this.tbdnitrainer.MaxLength = 8;
+            this.tbdnitrainer.Name = "tbdnitrainer";
+            this.tbdnitrainer.Size = new System.Drawing.Size(247, 22);
+            this.tbdnitrainer.TabIndex = 19;
+            this.tbdnitrainer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // pnlasignaractividad
             // 
             this.pnlasignaractividad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(71)))));
@@ -1421,6 +1469,38 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             // 
+            // cboinscripciones
+            // 
+            this.cboinscripciones.FormattingEnabled = true;
+            this.cboinscripciones.Location = new System.Drawing.Point(872, 22);
+            this.cboinscripciones.Name = "cboinscripciones";
+            this.cboinscripciones.Size = new System.Drawing.Size(221, 21);
+            this.cboinscripciones.TabIndex = 19;
+            this.cboinscripciones.SelectionChangeCommitted += new System.EventHandler(this.cboinscripciones_SelectionChangeCommitted);
+            // 
+            // reportViewer2
+            // 
+            this.reportViewer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(31)))));
+            reportDataSource1.Name = "Inscripcion";
+            reportDataSource1.Value = this.InscripcionBindingSource;
+            reportDataSource2.Name = "Cliente";
+            reportDataSource2.Value = this.ClienteBindingSource;
+            reportDataSource3.Name = "Actividad";
+            reportDataSource3.Value = this.ActividadBindingSource;
+            reportDataSource4.Name = "Plan";
+            reportDataSource4.Value = this.PlaanBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Gimnasio.ReportInscripcion.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(746, 60);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(505, 474);
+            this.reportViewer2.TabIndex = 18;
+            this.reportViewer2.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            // 
             // label36
             // 
             this.label36.AutoSize = true;
@@ -1627,6 +1707,16 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(346, 536);
             this.panel17.TabIndex = 15;
+            // 
+            // tbdnicliente
+            // 
+            this.tbdnicliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnicliente.Location = new System.Drawing.Point(149, 229);
+            this.tbdnicliente.MaxLength = 8;
+            this.tbdnicliente.Name = "tbdnicliente";
+            this.tbdnicliente.Size = new System.Drawing.Size(152, 22);
+            this.tbdnicliente.TabIndex = 28;
+            this.tbdnicliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbosexocliente
             // 
@@ -1916,7 +2006,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(131)))), ((int)(((byte)(140)))));
             this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -1930,24 +2019,12 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1153, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(1191, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(32, 29);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1191, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -1986,6 +2063,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 536);
             this.panel2.TabIndex = 2;
+            // 
+            // usRelojBoton1
+            // 
+            this.usRelojBoton1.BackColor = System.Drawing.Color.Transparent;
+            this.usRelojBoton1.Location = new System.Drawing.Point(-32, 477);
+            this.usRelojBoton1.Name = "usRelojBoton1";
+            this.usRelojBoton1.Size = new System.Drawing.Size(229, 47);
+            this.usRelojBoton1.TabIndex = 16;
+            this.usRelojBoton1.evCerrar += new System.EventHandler(this.usRelojBoton1_evCerrar);
+            this.usRelojBoton1.Load += new System.EventHandler(this.usRelojBoton1_Load);
             // 
             // lblnombreusuario
             // 
@@ -2224,119 +2311,17 @@
             // 
             this.ClienteTableAdapter.ClearBeforeFill = true;
             // 
-            // GimnasioDataSet4
-            // 
-            this.GimnasioDataSet4.DataSetName = "GimnasioDataSet4";
-            this.GimnasioDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // InscripcionBindingSource
-            // 
-            this.InscripcionBindingSource.DataMember = "Inscripcion";
-            this.InscripcionBindingSource.DataSource = this.GimnasioDataSet4;
-            // 
             // InscripcionTableAdapter
             // 
             this.InscripcionTableAdapter.ClearBeforeFill = true;
-            // 
-            // ActividadBindingSource
-            // 
-            this.ActividadBindingSource.DataMember = "Actividad";
-            this.ActividadBindingSource.DataSource = this.GimnasioDataSet4;
             // 
             // ActividadTableAdapter
             // 
             this.ActividadTableAdapter.ClearBeforeFill = true;
             // 
-            // PlaanBindingSource
-            // 
-            this.PlaanBindingSource.DataMember = "Plaan";
-            this.PlaanBindingSource.DataSource = this.GimnasioDataSet4;
-            // 
             // PlaanTableAdapter
             // 
             this.PlaanTableAdapter.ClearBeforeFill = true;
-            // 
-            // reportViewer2
-            // 
-            this.reportViewer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(4)))), ((int)(((byte)(31)))));
-            reportDataSource1.Name = "Inscripcion";
-            reportDataSource1.Value = this.InscripcionBindingSource;
-            reportDataSource2.Name = "Cliente";
-            reportDataSource2.Value = this.ClienteBindingSource;
-            reportDataSource3.Name = "Actividad";
-            reportDataSource3.Value = this.ActividadBindingSource;
-            reportDataSource4.Name = "Plan";
-            reportDataSource4.Value = this.PlaanBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Gimnasio.ReportInscripcion.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(746, 60);
-            this.reportViewer2.Name = "reportViewer2";
-            this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(505, 474);
-            this.reportViewer2.TabIndex = 18;
-            this.reportViewer2.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-            // 
-            // cboinscripciones
-            // 
-            this.cboinscripciones.FormattingEnabled = true;
-            this.cboinscripciones.Location = new System.Drawing.Point(872, 22);
-            this.cboinscripciones.Name = "cboinscripciones";
-            this.cboinscripciones.Size = new System.Drawing.Size(221, 21);
-            this.cboinscripciones.TabIndex = 19;
-            this.cboinscripciones.SelectionChangeCommitted += new System.EventHandler(this.cboinscripciones_SelectionChangeCommitted);
-            // 
-            // usRelojBoton1
-            // 
-            this.usRelojBoton1.BackColor = System.Drawing.Color.Transparent;
-            this.usRelojBoton1.Location = new System.Drawing.Point(-32, 477);
-            this.usRelojBoton1.Name = "usRelojBoton1";
-            this.usRelojBoton1.Size = new System.Drawing.Size(229, 47);
-            this.usRelojBoton1.TabIndex = 16;
-            this.usRelojBoton1.evCerrar += new System.EventHandler(this.usRelojBoton1_evCerrar);
-            this.usRelojBoton1.Load += new System.EventHandler(this.usRelojBoton1_Load);
-            // 
-            // tbingreso
-            // 
-            this.tbingreso.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbingreso.Location = new System.Drawing.Point(619, 135);
-            this.tbingreso.MaxLength = 8;
-            this.tbingreso.Name = "tbingreso";
-            this.tbingreso.Size = new System.Drawing.Size(168, 22);
-            this.tbingreso.TabIndex = 13;
-            this.tbingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdninscripcion
-            // 
-            this.tbdninscripcion.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdninscripcion.Location = new System.Drawing.Point(145, 150);
-            this.tbdninscripcion.MaxLength = 8;
-            this.tbdninscripcion.Name = "tbdninscripcion";
-            this.tbdninscripcion.Size = new System.Drawing.Size(202, 22);
-            this.tbdninscripcion.TabIndex = 11;
-            this.tbdninscripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdnitrainer
-            // 
-            this.tbdnitrainer.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdnitrainer.Location = new System.Drawing.Point(192, 148);
-            this.tbdnitrainer.MaxLength = 8;
-            this.tbdnitrainer.Name = "tbdnitrainer";
-            this.tbdnitrainer.Size = new System.Drawing.Size(247, 22);
-            this.tbdnitrainer.TabIndex = 19;
-            this.tbdnitrainer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdnicliente
-            // 
-            this.tbdnicliente.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdnicliente.Location = new System.Drawing.Point(149, 229);
-            this.tbdnicliente.MaxLength = 8;
-            this.tbdnicliente.Name = "tbdnicliente";
-            this.tbdnicliente.Size = new System.Drawing.Size(152, 22);
-            this.tbdnicliente.TabIndex = 28;
-            this.tbdnicliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmHome1
             // 
@@ -2359,6 +2344,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ActividadBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlaanBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
@@ -2392,14 +2381,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvregistros)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActividadBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlaanBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2431,7 +2415,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
