@@ -18,7 +18,6 @@ namespace Gimnasio
         public GimnasioEntities()
             : base("name=GimnasioEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false; // con esto evito que me de error en la parte de registro
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

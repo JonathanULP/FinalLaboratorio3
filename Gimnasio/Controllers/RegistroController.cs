@@ -97,8 +97,9 @@ namespace Gimnasio.Controllers
         public object obtenerRegistroDeClienteXNombreOrApellido(string nombre)
         {
             GimnasioEntities db = new GimnasioEntities();
+            string nombreEnMinusculas = nombre.ToLower();
             
-            return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre.ToLower(), "%"+ nombre.ToLower() +"%") || DbFunctions.Like(x.Cliente.apellido.ToLower(),"%"+nombre.ToLower()+"%"))
+            return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre.ToLower(), "%"+ nombreEnMinusculas + "%") || DbFunctions.Like(x.Cliente.apellido.ToLower(),"%"+ nombreEnMinusculas+ "%"))
                               .Select(x => new
                              {
                                nombre_cliente = x.Cliente.nombre,

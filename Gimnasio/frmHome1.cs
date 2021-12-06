@@ -30,12 +30,14 @@ namespace Gimnasio
         {
             InitializeComponent();
             asignarActividades(cboactividades);
-            rellenarLabels();
+            //rellenarLabels();
             llenarGrillaCliente();
             llenarGrillaInscripcion();
             llenarComboTrainer();
             mostrarMensajesToolTip();
 
+            //Iniciar en la vista ingreso
+            tabControl1.SelectedIndex = 1;
 
             try
             {
@@ -118,14 +120,32 @@ namespace Gimnasio
         //abre tabpage de actividades
         private void button1_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
-            asignarActividades(cboactividades);
+            tabControl1.SelectedIndex = 1;
+
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(72,83,121);
+            button2.BackColor = Color.FromArgb(49,56,82);
+            button3.BackColor = Color.FromArgb(49, 56, 82);
+            button4.BackColor = Color.FromArgb(49, 56, 82);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(49, 56, 82);
+            button7.BackColor = Color.FromArgb(49, 56, 82);
         }
 
         //abre tabpage de ingresos
         private void button7_Click_1(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 1;
+            tabControl1.SelectedIndex = 0;
+            asignarActividades(cboactividades);
+
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(49, 56, 82);
+            button2.BackColor = Color.FromArgb(49, 56, 82);
+            button3.BackColor = Color.FromArgb(49, 56, 82);
+            button4.BackColor = Color.FromArgb(49, 56, 82);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(49, 56, 82);
+            button7.BackColor = Color.FromArgb(72, 83, 121);
         }
 
         //abre tabpage de inscripciones
@@ -138,6 +158,15 @@ namespace Gimnasio
             llenarComboDias();
             valorPorDefectoADate();
 
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(49, 56, 82);
+            button2.BackColor = Color.FromArgb(72, 83, 121);
+            button3.BackColor = Color.FromArgb(49, 56, 82);
+            button4.BackColor = Color.FromArgb(49, 56, 82);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(49, 56, 82);
+            button7.BackColor = Color.FromArgb(49, 56, 82);
+
         }
 
         //abre tabpage de personal
@@ -147,22 +176,32 @@ namespace Gimnasio
             llenarGrillaTrainer(-1);
             llenarComboSexo(cbosexotrainer);
             limpiarCampossTrainer();
-            
-            
+
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(49, 56, 82);
+            button2.BackColor = Color.FromArgb(49, 56, 82);
+            button3.BackColor = Color.FromArgb(72, 83, 121);
+            button4.BackColor = Color.FromArgb(49, 56, 82);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(49, 56, 82);
+            button7.BackColor = Color.FromArgb(49, 56, 82);
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             llenarComboReporte();
             tabControl1.SelectedIndex = 4;
-        }
 
-        //abre tabpage de clientes
-        private void button6_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 5;
-            llenarComboSexo(cbosexocliente);
-            limpiarLabelsCliente();
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(49, 56, 82);
+            button2.BackColor = Color.FromArgb(49, 56, 82);
+            button3.BackColor = Color.FromArgb(49, 56, 82);
+            button4.BackColor = Color.FromArgb(72, 83, 121);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(49, 56, 82);
+            button7.BackColor = Color.FromArgb(49, 56, 82);
         }
 
 
@@ -177,20 +216,46 @@ namespace Gimnasio
                 RegistroController register = new RegistroController();
                 dynamic objeto = register.obtenerRegistroDeClientesXFecha(DateTime.Today.AddYears(-100));
                 llenarGrillaRegistros(objeto);
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar esta vista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            finally
+            {
+                //Cambiar de color el boton clickeado
+                button1.BackColor = Color.FromArgb(49, 56, 82);
+                button2.BackColor = Color.FromArgb(49, 56, 82);
+                button3.BackColor = Color.FromArgb(49, 56, 82);
+                button4.BackColor = Color.FromArgb(49, 56, 82);
+                button5.BackColor = Color.FromArgb(72, 83, 121);
+                button6.BackColor = Color.FromArgb(49, 56, 82);
+                button7.BackColor = Color.FromArgb(49, 56, 82);
+            }
 
-            
+
+
         }
 
-       
+        //abre tabpage de clientes
+        private void button6_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 5;
+            llenarComboSexo(cbosexocliente);
+            limpiarLabelsCliente();
 
+            //Cambiar de color el boton clickeado
+            button1.BackColor = Color.FromArgb(49, 56, 82);
+            button2.BackColor = Color.FromArgb(49, 56, 82);
+            button3.BackColor = Color.FromArgb(49, 56, 82);
+            button4.BackColor = Color.FromArgb(49, 56, 82);
+            button5.BackColor = Color.FromArgb(49, 56, 82);
+            button6.BackColor = Color.FromArgb(72, 83, 121);
+            button7.BackColor = Color.FromArgb(49, 56, 82);
+        }
 
-       
         
         private void cboactividades_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -279,16 +344,21 @@ namespace Gimnasio
             {
                 ActividadController act = new ActividadController();
                 Validacion val = new Validacion();
-                
-                    if(val.validarNombre(tbnombreactividad.Text))
-                    {
-                        if (val.validarTipoActividad(tbtipoactividad.Text))
+
+                if (val.validarNombre(tbnombreactividad.Text))
+                {
+                    /*if (val.validarTipoActividad(tbtipoactividad.Text))
+                        {*/
+                        if (act.Noexiste(tbnombreactividad.Text))
                         {
-                            if(act.Noexiste(tbnombreactividad.Text))
-                            {
-                                act.crearActividad(tbnombreactividad.Text, tbtipoactividad.Text);
-                                MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                asignarActividades(cboactividades);
+                            act.crearActividad(tbnombreactividad.Text, tbtipoactividad.Text);
+                            MessageBox.Show("Actividad agregada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            asignarActividades(cboactividades);
+                            tbnombreactividad.Clear();
+                            tbtipoactividad.Clear();
+                            tbactivo.Clear();
+                            tbnombreactividad.Focus();
+
                             }
                             else
                             {
@@ -297,17 +367,17 @@ namespace Gimnasio
                    
                             }
 
-                    }
-                       else
-                       {
-                        MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbtipoactividad.Clear();
-                        tbtipoactividad.Focus();
-                       }
+                    /* }
+                   else
+                    {
+                     MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     tbtipoactividad.Clear();
+                     tbtipoactividad.Focus();
+                    }*/
 
 
-                    }
-                    else
+                }
+                else
                     {
                     MessageBox.Show("El nombre de la activad debe comenzar con mayusculas y debe ser una sola palabra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbnombreactividad.Clear();
@@ -905,7 +975,7 @@ namespace Gimnasio
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al elegir entrenador "+ex.Message,"Error",MessageBoxButtons.OK);
+                MessageBox.Show("Error al elegir entrenador","Error",MessageBoxButtons.OK);
             }
             
         }
@@ -1264,7 +1334,7 @@ namespace Gimnasio
                 bool isNumero = int.TryParse(tbfiltrarregistro.Text, out n);
                 try
                 {
-                    if (!isNumero && val.validarNombreMinusculas(tbfiltrarregistro.Text))
+                    if (!isNumero && val.validarNombreMinusculas(tbfiltrarregistro.Text.ToLower()))
                     {
                         objeto = register.obtenerRegistroDeClienteXNombreOrApellido(tbfiltrarregistro.Text);
                         llenarGrillaRegistros(objeto);
@@ -1446,5 +1516,7 @@ namespace Gimnasio
 
             this.reportViewer2.RefreshReport();
         }
+
+        
     }
 }

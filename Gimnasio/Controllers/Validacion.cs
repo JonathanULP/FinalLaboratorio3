@@ -69,7 +69,7 @@ namespace Gimnasio.Controllers
 
         public bool validarTipoActividad(string tipo)
         {
-            Regex pattern = new Regex(@"^[A-Za-z\s]{10,200}");
+            Regex pattern = new Regex(@"^([A-Z]{1}[a-z]{8,120})|([a-z]{8,120})$");
 
             if (pattern.IsMatch(tipo))
             {
@@ -79,6 +79,7 @@ namespace Gimnasio.Controllers
             {
                 return false;
             }
+
         }
 
         public bool validarTitulo(string titulo)
