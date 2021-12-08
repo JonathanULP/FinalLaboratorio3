@@ -84,7 +84,7 @@ namespace Gimnasio.Controllers
 
         public bool validarTitulo(string titulo)
         {
-            Regex pattern = new Regex(@"^([A-Z]{1}[a-z]{8,40})|([a-z]{8,40})$");
+            Regex pattern = new Regex(@"^[A-Z\s]{1}[a-z\s]{2,20}$");
 
             if (pattern.IsMatch(titulo))
             {
@@ -94,6 +94,11 @@ namespace Gimnasio.Controllers
                 return false;
             }
 
+        }
+
+        public bool validarFechaNac(DateTime fecha)
+        {
+            return fecha >= DateTime.Now.Date ? false : true;
         }
 
     }

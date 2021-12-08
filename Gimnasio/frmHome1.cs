@@ -36,6 +36,9 @@ namespace Gimnasio
             llenarComboTrainer();
             mostrarMensajesToolTip();
 
+            //cambiarcolor a boton inicial
+            button1.BackColor = Color.FromArgb(72, 83, 121);
+
             //Iniciar en la vista ingreso
             tabControl1.SelectedIndex = 1;
 
@@ -73,14 +76,14 @@ namespace Gimnasio
         }
 
         //funcion que permite rellenar textbox con los datos de la activadad seleccionada a traves del combobox
-        public void rellenarLabels()
+        public void rellenarLabelsActividad()
         {
             try
             {
                 Actividad ac = new Actividad();
                 ActividadController act = new ActividadController();
-
-                ac = act.buscarId(Convert.ToInt32(cboactividades.SelectedValue));
+                int idAct = Convert.ToBoolean(cboactividades.SelectedValue) ? Convert.ToInt32(cboactividades.SelectedValue) : 0;
+                ac = act.buscarId(idAct);
                 tbnombreactividad.Text = ac.nombre;
                 tbtipoactividad.Text = ac.tipo;
                 if (ac.borrado_logico == true)
@@ -259,7 +262,7 @@ namespace Gimnasio
         
         private void cboactividades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rellenarLabels();
+            rellenarLabelsActividad();
         }
 
         //funcion que permite editar una actividad
@@ -483,18 +486,26 @@ namespace Gimnasio
 
                         if (val.validarDNI(Convert.ToInt32(tbdnicliente.Text)))
                         {
-                            if (cli.existe(Convert.ToInt64(tbdnicliente.Text)))
+                            if(val.validarFechaNac(dtpcliente.Value.Date))
                             {
-                                cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
-                                MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                llenarGrillaCliente();
-                                limpiarLabelsCliente();
+                                if (cli.existe(Convert.ToInt64(tbdnicliente.Text)))
+                                {
+                                    cli.insertarCliente(tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
+                                    MessageBox.Show("Cliente agregado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    llenarGrillaCliente();
+                                    limpiarLabelsCliente();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ya existe un cliente con este DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe un cliente con este DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                                MessageBox.Show("La fecha de nacimiento no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+                           
                         }
                         else
                         {
@@ -564,18 +575,24 @@ namespace Gimnasio
                 {
                     if (val.validarNombre(tbapellidocliente.Text))
                     {
+                        if(val.validarFechaNac(dtpcliente.Value.Date))
+                        {
+                            if (val.validarDNI(Convert.ToInt32(tbdnicliente.Text)))
+                            {
+                                cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
+                                MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                llenarGrillaCliente();
+                                limpiarLabelsCliente();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ingrese un DNI correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        if (val.validarDNI(Convert.ToInt32(tbdnicliente.Text)))
-                        {    
-                          cli.modificarCliente(id, tbnombrecliente.Text, tbapellidocliente.Text, Convert.ToInt64(tbdnicliente.Text), dtpcliente.Value.Date, cbosexocliente.SelectedValue.ToString());
-                          MessageBox.Show("Cliente modificado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                          llenarGrillaCliente();
-                          limpiarLabelsCliente();
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Ingrese un DNI correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                            MessageBox.Show("La fecha de nacimiento no es correcta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -928,7 +945,7 @@ namespace Gimnasio
                         dgvtrainers.Rows[x].Cells["entrenador_id"].Value = item.entrenador_id;
                         dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre + " " + item.apellido;
                         dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni;
-                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "-";
+                        //dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = "-";
                         x++;
                     }
 
@@ -943,7 +960,7 @@ namespace Gimnasio
                         dgvtrainers.Rows[x].Cells["entrenador_id"].Value = item.entrenador_id;
                         dgvtrainers.Rows[x].Cells["nombre_entrenador"].Value = item.nombre_entrenador + " " + item.apellido_entrenador;
                         dgvtrainers.Rows[x].Cells["dni_entrenador"].Value = item.dni_entrenador;
-                        dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = item.nombre_actividad;
+                        //dgvtrainers.Rows[x].Cells["nombre_actividad"].Value = item.nombre_actividad;
                         x++;
                     }
 
@@ -971,9 +988,10 @@ namespace Gimnasio
                 lblgenero.Text = ee.sexo;
                 asignarActividades(cboactividadtrainer);
                 pnlasignaractividad.Visible = true;
+                tbdnitrainer.Visible = false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error al elegir entrenador","Error",MessageBoxButtons.OK);
             }
@@ -1074,19 +1092,27 @@ namespace Gimnasio
                     {
                         if (val.validarDNI(dni_entrenador))
                         {
-                            if (val.validarTitulo(tbtitulotrainer.Text))
+                            if(val.validarFechaNac(dtpfechanactrainer.Value.Date))
                             {
-                                trainer.insertarEntrenador(tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
-                                MessageBox.Show("Personal agregado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                limpiarCampossTrainer();
-                                llenarGrillaTrainer(-1);
+                                if (val.validarTitulo(tbtitulotrainer.Text))
+                                {
+                                    trainer.insertarEntrenador(tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
+                                    MessageBox.Show("Personal agregado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    limpiarCampossTrainer();
+                                    llenarGrillaTrainer(-1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Por favor ingrese un titulo valido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    tbtitulotrainer.Clear();
+                                    tbtitulotrainer.Focus();
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Por favor ingrese un titulo valido. El apellido puede comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                tbtitulotrainer.Clear();
-                                tbtitulotrainer.Focus();
+                                MessageBox.Show("La fecha de nacimiento no es correcta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
+
                         }
                         else
                         {
@@ -1113,9 +1139,9 @@ namespace Gimnasio
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("No es posible agregar personal nuevo "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No es posible agregar personal nuevo ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -1139,19 +1165,27 @@ namespace Gimnasio
                     {
                         if (val.validarDNI(dni_entrenador))
                         {
-                            if (val.validarTitulo(tbtitulotrainer.Text))
+                            if(val.validarFechaNac(dtpfechanactrainer.Value.Date))
                             {
-                                trainer.modificarEntrenador(id_entrenador,tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
-                                MessageBox.Show("Personal editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                limpiarCampossTrainer();
-                                llenarGrillaTrainer(-1);
+                                if (val.validarTitulo(tbtitulotrainer.Text))
+                                {
+                                    trainer.modificarEntrenador(id_entrenador, tbnombretrainer.Text, tbapellidotrainer.Text, dni_entrenador, dtpfechanactrainer.Value, cbosexotrainer.SelectedValue.ToString(), tbtitulotrainer.Text);
+                                    MessageBox.Show("Personal editado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    limpiarCampossTrainer();
+                                    llenarGrillaTrainer(-1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Por favor ingrese un titulo valido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    tbtitulotrainer.Clear();
+                                    tbtitulotrainer.Focus();
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Por favor ingrese un titulo valido. El apellido puede comenzar con mayusculas", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                tbtitulotrainer.Clear();
-                                tbtitulotrainer.Focus();
+                                MessageBox.Show("La fecha de nacimiento no es correcta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
+
                         }
                         else
                         {
@@ -1177,9 +1211,9 @@ namespace Gimnasio
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("No es posible editar personal " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No es posible editar personal ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -1245,6 +1279,7 @@ namespace Gimnasio
                     lblnombretrainer.Text = "";
                     lbldnitrainer.Text = "";
                     lblgenero.Text = "";
+                    tbdnitrainer.Visible = true;
 
                 }
             }
@@ -1375,6 +1410,7 @@ namespace Gimnasio
                 {
                     pnlformulariotrainer.Visible = true;
                     pnlasignaractividad.Visible = false;
+                    tbdnitrainer.Visible = true;
                     llenarGrillaTrainer(-1);
                 }
             }
