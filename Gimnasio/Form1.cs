@@ -62,7 +62,12 @@ namespace Gimnasio
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Desea salir?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

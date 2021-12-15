@@ -9,7 +9,7 @@ namespace Gimnasio.Controllers
 {
     class RegistroController
     {
-        public void crearRegistro(DateTime dia_ingreso,string hora_ingreso,int cliente_id)
+        public void crearRegistro(DateTime dia_ingreso, string hora_ingreso, int cliente_id)
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
@@ -23,10 +23,10 @@ namespace Gimnasio.Controllers
                 db.Registro.Add(register);
                 db.SaveChanges();
             }
- 
+
         }
 
-        public void insertarRegistro(DateTime dia_ingreso,string hora_ingreso,int cliente_id)
+        public void insertarRegistro(DateTime dia_ingreso, string hora_ingreso, int cliente_id)
         {
             using (GimnasioEntities db = new GimnasioEntities())
             {
@@ -53,7 +53,7 @@ namespace Gimnasio.Controllers
                 register.borrado_logico = true;
 
                 db.Entry(register).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges(); 
+                db.SaveChanges();
             }
         }
 
@@ -80,35 +80,53 @@ namespace Gimnasio.Controllers
         {
 
             GimnasioEntities db = new GimnasioEntities();
-            
-               return db.Registro.Where(x => x.Cliente.dni == cliente_dni)
-                           .Select(x => new
-                           {
-                               nombre_cliente = x.Cliente.nombre,
-                               apellido_cliente = x.Cliente.apellido,
-                               dni_cliente = x.Cliente.dni,
-                               hora_ingreso = x.hora_ingreso,
-                               dia_ingreso = x.dia_ingreso
-                            
-                           });
-            
+
+            return db.Registro.Where(x => x.Cliente.dni == cliente_dni)
+                        .Select(x => new
+                        {
+                            nombre_cliente = x.Cliente.nombre,
+                            apellido_cliente = x.Cliente.apellido,
+                            dni_cliente = x.Cliente.dni,
+                            hora_ingreso = x.hora_ingreso,
+                            dia_ingreso = x.dia_ingreso
+
+                        });
+
+        }
+
+        public object obtenerTodosRegistros()
+        {
+
+            GimnasioEntities db = new GimnasioEntities();
+
+            return db.Registro
+                        .Select(x => new
+                        {
+                            nombre_cliente = x.Cliente.nombre,
+                            apellido_cliente = x.Cliente.apellido,
+                            dni_cliente = x.Cliente.dni,
+                            hora_ingreso = x.hora_ingreso,
+                            dia_ingreso = x.dia_ingreso
+
+                        });
+
         }
 
         public object obtenerRegistroDeClienteXNombreOrApellido(string nombre)
         {
             GimnasioEntities db = new GimnasioEntities();
             string nombreEnMinusculas = nombre.ToLower();
-            
-            return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre.ToLower(), "%"+ nombreEnMinusculas + "%") || DbFunctions.Like(x.Cliente.apellido.ToLower(),"%"+ nombreEnMinusculas+ "%"))
+
+            return db.Registro.Where(x => DbFunctions.Like(x.Cliente.nombre.ToLower(), "%" + nombreEnMinusculas + "%") || DbFunctions.Like(x.Cliente.apellido.ToLower(), "%" + nombreEnMinusculas + "%"))
                               .Select(x => new
-                             {
-                               nombre_cliente = x.Cliente.nombre,
-                               apellido_cliente = x.Cliente.apellido,
-                               dni_cliente = x.Cliente.dni,
-                               hora_ingreso = x.hora_ingreso,
-                               dia_ingreso = x.dia_ingreso
-                             });
-            
+                              {
+                                  nombre_cliente = x.Cliente.nombre,
+                                  apellido_cliente = x.Cliente.apellido,
+                                  dni_cliente = x.Cliente.dni,
+                                  hora_ingreso = x.hora_ingreso,
+                                  dia_ingreso = x.dia_ingreso
+                              });
+
         }
 
         public object obtenerRegistroDeClientesXFecha(DateTime dia_ingreso)

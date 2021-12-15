@@ -110,13 +110,30 @@ namespace Gimnasio
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Desea salir?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void limpiarCamposActividad()
+        {   
+            //limpiar campos
+            tbnombreactividad.Clear();
+            tbtipoactividad.Clear();
+            tbactivo.Clear();
+
+            //
+            tbnombreactividad.Focus();
+
         }
 
 
@@ -140,6 +157,9 @@ namespace Gimnasio
         {
             tabControl1.SelectedIndex = 0;
             asignarActividades(cboactividades);
+
+            //limpiar campos
+            limpiarCamposActividad();
 
             //Cambiar de color el boton clickeado
             button1.BackColor = Color.FromArgb(49, 56, 82);
@@ -177,6 +197,7 @@ namespace Gimnasio
         {
             tabControl1.SelectedIndex = 3;
             llenarGrillaTrainer(-1);
+            llenarComboTrainer();
             llenarComboSexo(cbosexotrainer);
             limpiarCampossTrainer();
 
@@ -282,21 +303,10 @@ namespace Gimnasio
                     {
 
                         if (val.validarNombre(tbnombreactividad.Text))
-                        {
-                            if (val.validarTipoActividad(tbtipoactividad.Text))
-                            {
+                        {                            
                                 act.modificarActividad(Convert.ToInt32(cboactividades.SelectedValue), tbnombreactividad.Text, tbtipoactividad.Text);
                                 MessageBox.Show("Actividad modificada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                asignarActividades(cboactividades);
-                            }
-                            else
-                            {
-                                MessageBox.Show("El tipo de activad debe ser una descripcion pequeña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                tbtipoactividad.Clear();
-                                tbtipoactividad.Focus();
-                            }
-
-
+                                asignarActividades(cboactividades);                  
                         }
                         else
                         {
@@ -708,6 +718,63 @@ namespace Gimnasio
         }
 
 
+        //Accion para editar inscripcion
+        private void btneditarinscripcion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InscripcionController ins = new InscripcionController();
+                PlanController plan = new PlanController();
+                ClienteController cli = new ClienteController();
+                int cant_dias = Convert.ToInt32(cboCantDia.SelectedValue);
+                int actividad_id = Convert.ToInt32(cbactividadinscripcion.SelectedValue);
+
+                int id = Convert.ToInt32(getID(dgvInscripciones));
+
+
+               
+                    //insertar el plan
+                    plan.crearPlan(cant_dias, dtpfechalimiteinscripcion.Value.Date);
+                    //obtener el id del ultimo plan obtenido
+                    Plaan p = plan.obtenerUltimo();
+                    Cliente c = cli.obtenerClienteDNI(Convert.ToInt64(tbdninscripcion.Text));
+
+                    //edicion de inscripcion
+
+                    ins.modificarInscripcion(id,c.cliente_id, actividad_id, p.plan_id, dtpfechainicioinscripcion.Value.Date, cant_dias);
+
+                    MessageBox.Show("Inscripcion editada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    llenarGrillaInscripcion();
+                    tbdninscripcion.Clear();
+             
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al editar inscripcion. Verifique el DNI del cliente ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //metodo para eliminar inscripcion
+        private void btneliminarinscripcions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InscripcionController inscripcion = new InscripcionController();
+                int id = Convert.ToInt32(getID(dgvInscripciones));
+
+                inscripcion.bajaLogica(id);
+                llenarGrillaInscripcion();
+                MessageBox.Show("Inscripcion eliminada", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar inscripcion. "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         private void darDeBajaInscripcionesConFechaLimite()
         {
             try
@@ -748,6 +815,7 @@ namespace Gimnasio
                 foreach(var item in lista)
                 {
                     dgvInscripciones.Rows.Add();
+                    dgvInscripciones.Rows[x].Cells["id_inscripcion"].Value = item.inscripcion_id;
                     dgvInscripciones.Rows[x].Cells["nombre_cli"].Value = item.nombre_cli+" "+item.apellido_cli;
                     dgvInscripciones.Rows[x].Cells["nombre_act"].Value = item.nombre_act;
                     dgvInscripciones.Rows[x].Cells["fecha_inic"].Value = item.fecha_inic.ToShortDateString();
@@ -761,6 +829,31 @@ namespace Gimnasio
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void dgvInscripciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                
+                InscripcionController inscripcionController = new InscripcionController();
+                Inscripcion inscripcion = new Inscripcion();
+
+                int id = Convert.ToInt32(getID(dgvInscripciones));
+
+                inscripcion = inscripcionController.obtenerInscripcionID(id);
+
+                tbdninscripcion.Text = Convert.ToString(inscripcion.Cliente.dni);
+                dtpfechainicioinscripcion.Value = inscripcion.fecha_inicio;
+                dtpfechalimiteinscripcion.Value = inscripcion.Plaan.fecha_limite.Value;
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar inscripción" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void valorPorDefectoADate()
@@ -1360,7 +1453,7 @@ namespace Gimnasio
 
         private void tbfiltrarregistro_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if((int)e.KeyChar == (int)Keys.Enter)
+            if ((int)e.KeyChar == (int)Keys.Enter)
             {
                 Validacion val = new Validacion();
                 RegistroController register = new RegistroController();
@@ -1379,14 +1472,19 @@ namespace Gimnasio
                         objeto = register.obtenerRegistroDeClienteXDNI(Convert.ToInt64(tbfiltrarregistro.Text));
                         llenarGrillaRegistros(objeto);
                     }
+                    else if (tbfiltrarregistro.Text == "")
+                    {
+                        objeto = register.obtenerTodosRegistros();
+                        llenarGrillaRegistros(objeto);
+                    }
                     else
                     {
                         MessageBox.Show("No se encontraron resultados para: " + tbfiltrarregistro.Text, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al cargar la grilla de registros "+ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al cargar la grilla de registros " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -1553,6 +1651,6 @@ namespace Gimnasio
             this.reportViewer2.RefreshReport();
         }
 
-        
+       
     }
 }

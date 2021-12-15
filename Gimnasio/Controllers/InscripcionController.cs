@@ -69,6 +69,7 @@ namespace Gimnasio.Controllers
             {
                 var resultado = db.Inscripcion.Where(x => x.activo == true).Select(x => new
                 {
+                    inscripcion_id = x.inscripcion_id,
                     nombre_cli = x.Cliente.nombre,
                     apellido_cli = x.Cliente.apellido,
                     nombre_act = x.Actividad.nombre,
@@ -161,6 +162,35 @@ namespace Gimnasio.Controllers
 
                 
             }
+
+        }
+
+        public void modificarInscripcion(int id, int cliente_id, int actividad_id, int plan_id, DateTime fecha_inicio, int cant_dias)
+        {
+            using (GimnasioEntities db = new GimnasioEntities())
+            {
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion = db.Inscripcion.Find(id);
+
+                inscripcion.cliente_id = cliente_id;
+                inscripcion.actividad_id = actividad_id;
+                inscripcion.plan_id = plan_id;
+                inscripcion.fecha_inicio = fecha_inicio;
+                inscripcion.cant_dias = cant_dias;
+                inscripcion.activo = true;
+
+                db.Entry(inscripcion).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public Inscripcion obtenerInscripcionID(int id)
+        {
+                GimnasioEntities db = new GimnasioEntities();
+            
+                Inscripcion ins = new Inscripcion();
+                ins = db.Inscripcion.Find(id);
+                return ins;
         }
 
     }
