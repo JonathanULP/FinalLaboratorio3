@@ -57,5 +57,16 @@ namespace Gimnasio.Controllers
             }
         }
 
+        public bool noExiste(int id_actividad, int id_entrenador)
+        {
+            GimnasioEntities db = new GimnasioEntities();
+            Entrenador_Actividad ea = new Entrenador_Actividad();
+
+            ea = db.Entrenador_Actividad.Where(x => x.actividad_id == id_actividad && x.entrenador_id == id_entrenador).FirstOrDefault();
+
+            return ea == null ? true : false;
+
+        }
+
     }
 }

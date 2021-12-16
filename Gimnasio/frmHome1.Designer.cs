@@ -80,6 +80,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbnombreactividad = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbingreso = new Gimnasio.tbSoloNumeros();
             this.dgvingreso = new System.Windows.Forms.DataGridView();
             this.nombre_cliente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_ingreso1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,7 +96,16 @@
             this.panel20 = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
             this.dgvInscripciones = new System.Windows.Forms.DataGridView();
+            this.id_inscripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_inic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_limite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant_dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.btneliminarinscripcions = new System.Windows.Forms.Button();
+            this.btneditarinscripcion = new System.Windows.Forms.Button();
+            this.tbdninscripcion = new Gimnasio.tbSoloNumeros();
             this.cboCantDia = new System.Windows.Forms.ComboBox();
             this.btncrearinscripcion = new System.Windows.Forms.Button();
             this.dtpfechalimiteinscripcion = new System.Windows.Forms.DateTimePicker();
@@ -127,6 +137,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.cboactividadtrainer = new System.Windows.Forms.ComboBox();
             this.pnlformulariotrainer = new System.Windows.Forms.Panel();
+            this.tbdnitrainer = new Gimnasio.tbSoloNumeros();
             this.cbosexotrainer = new System.Windows.Forms.ComboBox();
             this.btnborrartrainer = new System.Windows.Forms.Button();
             this.btneditartrainer = new System.Windows.Forms.Button();
@@ -159,6 +170,7 @@
             this.fecha_nac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.tbdnicliente = new Gimnasio.tbSoloNumeros();
             this.cbosexocliente = new System.Windows.Forms.ComboBox();
             this.btnagregarcliente = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -188,6 +200,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.usRelojBoton1 = new Gimnasio.usRelojBoton();
             this.lblnombreusuario = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -214,19 +227,6 @@
             this.ActividadTableAdapter = new Gimnasio.GimnasioDataSet4TableAdapters.ActividadTableAdapter();
             this.PlaanTableAdapter = new Gimnasio.GimnasioDataSet4TableAdapters.PlaanTableAdapter();
             this.gimnasioDataSet2 = new Gimnasio.GimnasioDataSet();
-            this.id_inscripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_cli = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_inic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_limite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant_dias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btneditarinscripcion = new System.Windows.Forms.Button();
-            this.btneliminarinscripcions = new System.Windows.Forms.Button();
-            this.usRelojBoton1 = new Gimnasio.usRelojBoton();
-            this.tbingreso = new Gimnasio.tbSoloNumeros();
-            this.tbdninscripcion = new Gimnasio.tbSoloNumeros();
-            this.tbdnitrainer = new Gimnasio.tbSoloNumeros();
-            this.tbdnicliente = new Gimnasio.tbSoloNumeros();
             ((System.ComponentModel.ISupportInitialize)(this.InscripcionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GimnasioDataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClienteBindingSource)).BeginInit();
@@ -510,6 +510,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
+            // tbingreso
+            // 
+            this.tbingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbingreso.Location = new System.Drawing.Point(619, 135);
+            this.tbingreso.MaxLength = 8;
+            this.tbingreso.Name = "tbingreso";
+            this.tbingreso.Size = new System.Drawing.Size(168, 21);
+            this.tbingreso.TabIndex = 13;
+            this.tbingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // dgvingreso
             // 
             this.dgvingreso.AllowUserToAddRows = false;
@@ -751,6 +761,43 @@
             this.dgvInscripciones.TabIndex = 7;
             this.dgvInscripciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscripciones_CellClick);
             // 
+            // id_inscripcion
+            // 
+            this.id_inscripcion.HeaderText = "Id";
+            this.id_inscripcion.Name = "id_inscripcion";
+            this.id_inscripcion.ReadOnly = true;
+            this.id_inscripcion.Visible = false;
+            // 
+            // nombre_cli
+            // 
+            this.nombre_cli.HeaderText = "Nombre Cliente";
+            this.nombre_cli.Name = "nombre_cli";
+            this.nombre_cli.ReadOnly = true;
+            // 
+            // nombre_act
+            // 
+            this.nombre_act.HeaderText = "Actividad";
+            this.nombre_act.Name = "nombre_act";
+            this.nombre_act.ReadOnly = true;
+            // 
+            // fecha_inic
+            // 
+            this.fecha_inic.HeaderText = "Fecha Inicio";
+            this.fecha_inic.Name = "fecha_inic";
+            this.fecha_inic.ReadOnly = true;
+            // 
+            // fecha_limite
+            // 
+            this.fecha_limite.HeaderText = "Fecha Limite";
+            this.fecha_limite.Name = "fecha_limite";
+            this.fecha_limite.ReadOnly = true;
+            // 
+            // cant_dias
+            // 
+            this.cant_dias.HeaderText = "Dias";
+            this.cant_dias.Name = "cant_dias";
+            this.cant_dias.ReadOnly = true;
+            // 
             // panel19
             // 
             this.panel19.Controls.Add(this.btneliminarinscripcions);
@@ -773,6 +820,50 @@
             this.panel19.Size = new System.Drawing.Size(366, 524);
             this.panel19.TabIndex = 0;
             this.panel19.Paint += new System.Windows.Forms.PaintEventHandler(this.panel19_Paint);
+            // 
+            // btneliminarinscripcions
+            // 
+            this.btneliminarinscripcions.BackColor = System.Drawing.Color.SteelBlue;
+            this.btneliminarinscripcions.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneliminarinscripcions.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btneliminarinscripcions.FlatAppearance.BorderSize = 0;
+            this.btneliminarinscripcions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneliminarinscripcions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminarinscripcions.ForeColor = System.Drawing.Color.White;
+            this.btneliminarinscripcions.Location = new System.Drawing.Point(259, 407);
+            this.btneliminarinscripcions.Name = "btneliminarinscripcions";
+            this.btneliminarinscripcions.Size = new System.Drawing.Size(78, 37);
+            this.btneliminarinscripcions.TabIndex = 13;
+            this.btneliminarinscripcions.Text = "Eliminar";
+            this.btneliminarinscripcions.UseVisualStyleBackColor = false;
+            this.btneliminarinscripcions.Click += new System.EventHandler(this.btneliminarinscripcions_Click);
+            // 
+            // btneditarinscripcion
+            // 
+            this.btneditarinscripcion.BackColor = System.Drawing.Color.SteelBlue;
+            this.btneditarinscripcion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneditarinscripcion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btneditarinscripcion.FlatAppearance.BorderSize = 0;
+            this.btneditarinscripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneditarinscripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditarinscripcion.ForeColor = System.Drawing.Color.White;
+            this.btneditarinscripcion.Location = new System.Drawing.Point(148, 407);
+            this.btneditarinscripcion.Name = "btneditarinscripcion";
+            this.btneditarinscripcion.Size = new System.Drawing.Size(78, 37);
+            this.btneditarinscripcion.TabIndex = 12;
+            this.btneditarinscripcion.Text = "Editar";
+            this.btneditarinscripcion.UseVisualStyleBackColor = false;
+            this.btneditarinscripcion.Click += new System.EventHandler(this.btneditarinscripcion_Click);
+            // 
+            // tbdninscripcion
+            // 
+            this.tbdninscripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdninscripcion.Location = new System.Drawing.Point(145, 150);
+            this.tbdninscripcion.MaxLength = 8;
+            this.tbdninscripcion.Name = "tbdninscripcion";
+            this.tbdninscripcion.Size = new System.Drawing.Size(202, 21);
+            this.tbdninscripcion.TabIndex = 11;
+            this.tbdninscripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cboCantDia
             // 
@@ -1188,6 +1279,16 @@
             this.pnlformulariotrainer.TabIndex = 3;
             this.pnlformulariotrainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlformulariotrainer_Paint);
             // 
+            // tbdnitrainer
+            // 
+            this.tbdnitrainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnitrainer.Location = new System.Drawing.Point(192, 148);
+            this.tbdnitrainer.MaxLength = 8;
+            this.tbdnitrainer.Name = "tbdnitrainer";
+            this.tbdnitrainer.Size = new System.Drawing.Size(247, 21);
+            this.tbdnitrainer.TabIndex = 19;
+            this.tbdnitrainer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // cbosexotrainer
             // 
             this.cbosexotrainer.FormattingEnabled = true;
@@ -1384,10 +1485,10 @@
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer2.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Gimnasio.ReportInscripcion.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(746, 60);
+            this.reportViewer2.Location = new System.Drawing.Point(729, 60);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(505, 474);
+            this.reportViewer2.Size = new System.Drawing.Size(522, 474);
             this.reportViewer2.TabIndex = 18;
             this.reportViewer2.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
@@ -1597,6 +1698,16 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(346, 536);
             this.panel17.TabIndex = 15;
+            // 
+            // tbdnicliente
+            // 
+            this.tbdnicliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbdnicliente.Location = new System.Drawing.Point(149, 229);
+            this.tbdnicliente.MaxLength = 8;
+            this.tbdnicliente.Name = "tbdnicliente";
+            this.tbdnicliente.Size = new System.Drawing.Size(152, 21);
+            this.tbdnicliente.TabIndex = 28;
+            this.tbdnicliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbosexocliente
             // 
@@ -1945,6 +2056,16 @@
             this.panel2.Size = new System.Drawing.Size(200, 536);
             this.panel2.TabIndex = 2;
             // 
+            // usRelojBoton1
+            // 
+            this.usRelojBoton1.BackColor = System.Drawing.Color.Transparent;
+            this.usRelojBoton1.Location = new System.Drawing.Point(-32, 477);
+            this.usRelojBoton1.Name = "usRelojBoton1";
+            this.usRelojBoton1.Size = new System.Drawing.Size(229, 47);
+            this.usRelojBoton1.TabIndex = 16;
+            this.usRelojBoton1.evCerrar += new System.EventHandler(this.usRelojBoton1_evCerrar);
+            this.usRelojBoton1.Load += new System.EventHandler(this.usRelojBoton1_Load);
+            // 
             // lblnombreusuario
             // 
             this.lblnombreusuario.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2199,127 +2320,6 @@
             // 
             this.gimnasioDataSet2.DataSetName = "GimnasioDataSet";
             this.gimnasioDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // id_inscripcion
-            // 
-            this.id_inscripcion.HeaderText = "Id";
-            this.id_inscripcion.Name = "id_inscripcion";
-            this.id_inscripcion.ReadOnly = true;
-            this.id_inscripcion.Visible = false;
-            // 
-            // nombre_cli
-            // 
-            this.nombre_cli.HeaderText = "Nombre Cliente";
-            this.nombre_cli.Name = "nombre_cli";
-            this.nombre_cli.ReadOnly = true;
-            // 
-            // nombre_act
-            // 
-            this.nombre_act.HeaderText = "Actividad";
-            this.nombre_act.Name = "nombre_act";
-            this.nombre_act.ReadOnly = true;
-            // 
-            // fecha_inic
-            // 
-            this.fecha_inic.HeaderText = "Fecha Inicio";
-            this.fecha_inic.Name = "fecha_inic";
-            this.fecha_inic.ReadOnly = true;
-            // 
-            // fecha_limite
-            // 
-            this.fecha_limite.HeaderText = "Fecha Limite";
-            this.fecha_limite.Name = "fecha_limite";
-            this.fecha_limite.ReadOnly = true;
-            // 
-            // cant_dias
-            // 
-            this.cant_dias.HeaderText = "Dias";
-            this.cant_dias.Name = "cant_dias";
-            this.cant_dias.ReadOnly = true;
-            // 
-            // btneditarinscripcion
-            // 
-            this.btneditarinscripcion.BackColor = System.Drawing.Color.SteelBlue;
-            this.btneditarinscripcion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btneditarinscripcion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btneditarinscripcion.FlatAppearance.BorderSize = 0;
-            this.btneditarinscripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneditarinscripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneditarinscripcion.ForeColor = System.Drawing.Color.White;
-            this.btneditarinscripcion.Location = new System.Drawing.Point(148, 407);
-            this.btneditarinscripcion.Name = "btneditarinscripcion";
-            this.btneditarinscripcion.Size = new System.Drawing.Size(78, 37);
-            this.btneditarinscripcion.TabIndex = 12;
-            this.btneditarinscripcion.Text = "Editar";
-            this.btneditarinscripcion.UseVisualStyleBackColor = false;
-            this.btneditarinscripcion.Click += new System.EventHandler(this.btneditarinscripcion_Click);
-            // 
-            // btneliminarinscripcions
-            // 
-            this.btneliminarinscripcions.BackColor = System.Drawing.Color.SteelBlue;
-            this.btneliminarinscripcions.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btneliminarinscripcions.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btneliminarinscripcions.FlatAppearance.BorderSize = 0;
-            this.btneliminarinscripcions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneliminarinscripcions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminarinscripcions.ForeColor = System.Drawing.Color.White;
-            this.btneliminarinscripcions.Location = new System.Drawing.Point(259, 407);
-            this.btneliminarinscripcions.Name = "btneliminarinscripcions";
-            this.btneliminarinscripcions.Size = new System.Drawing.Size(78, 37);
-            this.btneliminarinscripcions.TabIndex = 13;
-            this.btneliminarinscripcions.Text = "Eliminar";
-            this.btneliminarinscripcions.UseVisualStyleBackColor = false;
-            this.btneliminarinscripcions.Click += new System.EventHandler(this.btneliminarinscripcions_Click);
-            // 
-            // usRelojBoton1
-            // 
-            this.usRelojBoton1.BackColor = System.Drawing.Color.Transparent;
-            this.usRelojBoton1.Location = new System.Drawing.Point(-32, 477);
-            this.usRelojBoton1.Name = "usRelojBoton1";
-            this.usRelojBoton1.Size = new System.Drawing.Size(229, 47);
-            this.usRelojBoton1.TabIndex = 16;
-            this.usRelojBoton1.evCerrar += new System.EventHandler(this.usRelojBoton1_evCerrar);
-            this.usRelojBoton1.Load += new System.EventHandler(this.usRelojBoton1_Load);
-            // 
-            // tbingreso
-            // 
-            this.tbingreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbingreso.Location = new System.Drawing.Point(619, 135);
-            this.tbingreso.MaxLength = 8;
-            this.tbingreso.Name = "tbingreso";
-            this.tbingreso.Size = new System.Drawing.Size(168, 21);
-            this.tbingreso.TabIndex = 13;
-            this.tbingreso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdninscripcion
-            // 
-            this.tbdninscripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdninscripcion.Location = new System.Drawing.Point(145, 150);
-            this.tbdninscripcion.MaxLength = 8;
-            this.tbdninscripcion.Name = "tbdninscripcion";
-            this.tbdninscripcion.Size = new System.Drawing.Size(202, 21);
-            this.tbdninscripcion.TabIndex = 11;
-            this.tbdninscripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdnitrainer
-            // 
-            this.tbdnitrainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdnitrainer.Location = new System.Drawing.Point(192, 148);
-            this.tbdnitrainer.MaxLength = 8;
-            this.tbdnitrainer.Name = "tbdnitrainer";
-            this.tbdnitrainer.Size = new System.Drawing.Size(247, 21);
-            this.tbdnitrainer.TabIndex = 19;
-            this.tbdnitrainer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbdnicliente
-            // 
-            this.tbdnicliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbdnicliente.Location = new System.Drawing.Point(149, 229);
-            this.tbdnicliente.MaxLength = 8;
-            this.tbdnicliente.Name = "tbdnicliente";
-            this.tbdnicliente.Size = new System.Drawing.Size(152, 21);
-            this.tbdnicliente.TabIndex = 28;
-            this.tbdnicliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmHome1
             // 

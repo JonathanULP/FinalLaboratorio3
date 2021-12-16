@@ -1501,16 +1501,25 @@ namespace Gimnasio
                 Entre_Act_Controller ea = new Entre_Act_Controller();
                 int id_actividad = Convert.ToInt32(cboactividadtrainer.SelectedValue);
                 int id_entrenador = Convert.ToInt32(getID(dgvtrainers));
-                ea.crearObjeto(id_actividad, id_entrenador);
 
-                DialogResult res = MessageBox.Show("Tarea asignada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (res == DialogResult.OK)
+                if(ea.noExiste(id_actividad, id_entrenador))
                 {
-                    pnlformulariotrainer.Visible = true;
-                    pnlasignaractividad.Visible = false;
-                    tbdnitrainer.Visible = true;
-                    llenarGrillaTrainer(-1);
+                    ea.crearObjeto(id_actividad, id_entrenador);
+                    DialogResult res = MessageBox.Show("Tarea asignada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+                        pnlformulariotrainer.Visible = true;
+                        pnlasignaractividad.Visible = false;
+                        tbdnitrainer.Visible = true;
+                        llenarGrillaTrainer(-1);
+                    }
                 }
+                else
+                {
+                   MessageBox.Show("Este profesor ya tiene asiganada esta tarea", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+
             }
             catch (Exception ex)
             {

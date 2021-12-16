@@ -468,7 +468,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -619,8 +618,8 @@
               </Filter>
             </Filters>
             <Top>0.73766cm</Top>
-            <Height>2.94625cm</Height>
-            <Width>20.21417cm</Width>
+            <Height>2.94624cm</Height>
+            <Width>20.21416cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -628,12 +627,12 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.44792in</Height>
+        <Height>1.9985in</Height>
         <Style>
           <BackgroundColor>#131530</BackgroundColor>
         </Style>
       </Body>
-      <Width>7.95833in</Width>
+      <Width>7.96192in</Width>
       <Page>
         <PageHeader>
           <Height>1.95792cm</Height>

@@ -70,17 +70,7 @@ namespace Gimnasio
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            if(this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
+        
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
